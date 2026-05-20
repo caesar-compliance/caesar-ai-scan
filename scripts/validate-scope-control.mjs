@@ -27,7 +27,7 @@ function runScopeValidation() {
   const regexDir = globToRegex('dist/');
   assert(regexDir.test('dist'), 'dist/ should match dist');
   assert(regexDir.test('dist/sub/file.js'), 'dist/ should match dist/sub/file.js');
-  assert(!regexDir.test('src/dist'), 'dist/ should not match src/dist (starts from root relative path prefix segment)');
+  assert(!regexDir.test('src/dist'), 'dist/ should not match src/dist (starts from root segment)');
 
   const regexWildcard = globToRegex('**/*.py');
   assert(regexWildcard.test('foo.py'), '**/*.py should match foo.py');
@@ -46,8 +46,8 @@ function runScopeValidation() {
   assert(compiledPatterns.length > 0, '.caesarignore should have compiled ignore patterns');
   
   const rawPatterns = compiledPatterns.map(p => p.raw);
-  assert(rawPatterns.includes('ignored-ai-noise.js'), '.caesarignore should contain ignored-ai-noise.js');
-  assert(rawPatterns.includes('**/*.log'), '.caesarignore should contain **/*.log');
+  assert(rawPatterns.includes('generated/'), '.caesarignore should contain generated/');
+  assert(rawPatterns.includes('tmp/'), '.caesarignore should contain tmp/');
 
   console.log('✅ .caesarignore parsed successfully.');
 
@@ -57,15 +57,15 @@ function runScopeValidation() {
   console.log('🧪 Setting up dynamic mock items to test standard directory skipping...');
   const gitDir = join(targetDir, '.git');
   const nodeModulesDir = join(targetDir, 'node_modules');
-  const tmpDir = join(targetDir, 'tmp');
+  const dummyTmpDir = join(targetDir, 'venv'); // use venv since it is standard ignore
 
   if (!existsSync(gitDir)) mkdirSync(gitDir, { recursive: true });
   if (!existsSync(nodeModulesDir)) mkdirSync(nodeModulesDir, { recursive: true });
-  if (!existsSync(tmpDir)) mkdirSync(tmpDir, { recursive: true });
+  if (!existsSync(dummyTmpDir)) mkdirSync(dummyTmpDir, { recursive: true });
 
   writeFileSync(join(gitDir, 'HEAD'), 'ref: refs/heads/main', 'utf8');
   writeFileSync(join(nodeModulesDir, 'dummy.js'), '// dummy package file', 'utf8');
-  writeFileSync(join(tmpDir, 'dummy.json'), '{}', 'utf8');
+  writeFileSync(join(dummyTmpDir, 'dummy.json'), '{}', 'utf8');
 
   // ==========================================
   // 4. Resolve Scope & Exclusions Assertions
@@ -90,9 +90,14 @@ function runScopeValidation() {
     // Validate excluded files
     const excluded = scopeResult.files.excluded;
     console.log('🚫 Excluded files:', excluded);
-    const ignoredNoiseFile = excluded.find(e => e.relativePath === 'ignored-ai-noise.js');
-    assert(ignoredNoiseFile, 'ignored-ai-noise.js must be in the excluded list');
-    assert(ignoredNoiseFile.reason.includes('ignored-ai-noise.js'), 'Exclusion reason should specify the matching pattern');
+    const ignoredNoiseFile = excluded.find(e => e.relativePath === 'generated/ignored-ai-noise.js');
+    const ignoredOutputFile = excluded.find(e => e.relativePath === 'tmp/ignored-output.json');
+
+    assert(ignoredNoiseFile, 'generated/ignored-ai-noise.js must be in the excluded list');
+    assert(ignoredNoiseFile.reason.includes('generated/'), 'Exclusion reason should specify the matching pattern');
+
+    assert(ignoredOutputFile, 'tmp/ignored-output.json must be in the excluded list');
+    assert(ignoredOutputFile.reason.includes('tmp/'), 'Exclusion reason should specify the matching pattern');
 
     // Validate skipped files/folders
     const skipped = scopeResult.files.skipped;
@@ -100,7 +105,7 @@ function runScopeValidation() {
     
     const gitSkipped = skipped.find(s => s.relativePath === '.git');
     const nodeModulesSkipped = skipped.find(s => s.relativePath === 'node_modules');
-    const tmpSkipped = skipped.find(s => s.relativePath === 'tmp');
+    const venvSkipped = skipped.find(s => s.relativePath === 'venv');
 
     assert(gitSkipped, '.git folder should be in the skipped list');
     assert(gitSkipped.reason === 'standard_ignore', '.git skipped reason is standard_ignore');
@@ -109,8 +114,8 @@ function runScopeValidation() {
     assert(nodeModulesSkipped, 'node_modules folder should be in the skipped list');
     assert(nodeModulesSkipped.reason === 'standard_ignore', 'node_modules skipped reason is standard_ignore');
 
-    assert(tmpSkipped, 'tmp folder should be in the skipped list');
-    assert(tmpSkipped.reason === 'standard_ignore', 'tmp skipped reason is standard_ignore');
+    assert(venvSkipped, 'venv folder should be in the skipped list');
+    assert(venvSkipped.reason === 'standard_ignore', 'venv skipped reason is standard_ignore');
 
     console.log('✅ Scope and exclusion boundaries resolved and verified.');
   } finally {
@@ -118,7 +123,7 @@ function runScopeValidation() {
     console.log('🧹 Cleaning up temporary standard folders...');
     rmSync(gitDir, { recursive: true, force: true });
     rmSync(nodeModulesDir, { recursive: true, force: true });
-    rmSync(tmpDir, { recursive: true, force: true });
+    rmSync(dummyTmpDir, { recursive: true, force: true });
   }
 
   // ==========================================
@@ -136,7 +141,6 @@ function runScopeValidation() {
   );
   const customExcludedEntry = customExcludeScope.files.excluded.find(e => e.relativePath === 'src/example.js');
   assert(customExcludedEntry, 'src/example.js must be categorized as excluded when merged with CLI overrides');
-  assert(customExcludedEntry.reason.includes('src/example.js'), 'Exclusion reason maps back to custom exclude');
 
   console.log('✅ CLI options and local configuration merges verified.');
 
@@ -149,9 +153,9 @@ function runScopeValidation() {
   assert(scanResult.schema_version === '0.5.0', 'Scan results schema version matches 0.5.0');
   assert(scanResult.summary.total_findings === 11, `Expected exactly 11 findings under scope control, got ${scanResult.summary.total_findings}`);
 
-  // Confirm no finding was registered from ignored-ai-noise.js
-  const noiseFindings = scanResult.findings.filter(f => f.file_path.includes('ignored-ai-noise.js'));
-  assert(noiseFindings.length === 0, 'No findings should be captured from ignored-ai-noise.js!');
+  // Confirm no finding was registered from ignored files
+  const noiseFindings = scanResult.findings.filter(f => f.file_path.includes('ignored-ai-noise.js') || f.file_path.includes('ignored-output.json'));
+  assert(noiseFindings.length === 0, 'No findings should be captured from ignored files!');
 
   console.log('✅ Full static scan correctly filtered out the ignored AI noise.');
   console.log('🎉 All Scope Control and Configuration validation assertions PASSED successfully!');

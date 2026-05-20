@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarScanConfig",
+  "type": "object",
+  "properties": {
+    "target": { "type": "string" },
+    "exclude": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "rulesPath": { "type": ["string", "null"] },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "scan_result": { "type": "string" },
+        "evidence_candidates": { "type": "string" },
+        "review_out": { "type": "string" },
+        "review_report": { "type": "string" },
+        "export_pack": { "type": "string" },
+        "scope_out": { "type": "string" },
+        "scope_report": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
