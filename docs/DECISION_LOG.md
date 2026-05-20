@@ -6,6 +6,23 @@ This document maps all high-level technical, strategic, and governance decisions
 
 ## 🏛️ Decision History
 
+### [DEC-005] — 20 May 2026 — Public Static Site & GitHub Pages Deployment
+
+*   **Status:** Approved
+*   **Decisions:**
+    1. **Zero Dynamic CDNs, External Fonts, or Analytics**: Decided to build the presentation dashboard in `site/` as a pure client-side SPA loaded with simulated mock scan datasets, using local assets only. This upholds high privacy standards and works under offline/air-gapped bounds.
+    2. **Anti-Leak Security Validation**: Added a security script (`scripts/validate-site.mjs`) to verify CNAME values, validate linked files, and programmatically prevent any secrets, tracking scripts, or dynamic external API references from leaking into the deployed static bundle.
+    3. **Official GitHub Actions Pages Deployment**: Configured `.github/workflows/deploy-pages.yml` with official Pages actions to automatically execute the full offline validation pipeline and deploy verified build targets on commits to `main`.
+*   **Rationale:** Establishes a highly secure, reliable, and professional public demonstration layer for Caesar AI Scan without introducing dynamic ingestion risks, analytics trackers, or third-party dependency leaks.
+
+### [DEC-004] — 20 May 2026 — Scope Control & Scan Configuration
+
+*   **Status:** Approved
+*   **Decisions:**
+    1. **Custom Target Rule Configurations**: Implemented `caesar-scan.config.json` file parsing to support customizable target patterns and custom rule scopes.
+    2. **Glob-based .caesarignore Exclusions**: Designed a robust `.caesarignore` parser supporting standard gitignore-style glob and directory pattern exclusions to isolate scanning pipelines from test fixtures, vendor modules, and development logs.
+*   **Rationale:** Provides precise traversal controls for scanning pipelines, reducing false positives and improving scan quality on real-world repositories.
+
 ### [DEC-003] — 20 May 2026 — Review Workflow & Evidence Gap Classification
 
 *   **Status:** Approved

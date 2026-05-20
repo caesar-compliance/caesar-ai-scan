@@ -7,7 +7,7 @@ This document outlines the core developmental milestones and phases planned for 
 ## 🚦 Project Phases
 
 ```
-v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review Workflow [COMPLETE] ──> v0.4 CI/CD & HTML ──> v1.0 Stable
+v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review [COMPLETE] ──> v0.4 Export Pack [COMPLETE] ──> v0.5 Scope Control [COMPLETE] ──> v0.6 Pages Deploy [COMPLETE] ──> v1.0 Stable
 ```
 
 ### Phase v0.1 — Repository Foundation
@@ -36,13 +36,29 @@ v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review Workflow [CO
     *   CLI integration supporting `--review-out <path>` and `--review-report <path>`.
     *   Programmatic validation script (`validate-review-workflow.mjs`).
 
-### Phase v0.4 — CI/CD Integration & HTML Reporting
-*   **Goal:** Establish pre-built GitHub actions, ignore-configs, and rich interactive visual reports.
-*   **Status:** **Planned**
+### Phase v0.4 — Evidence Export Pack (v0.4.0)
+*   **Goal:** Establish unified, standardized, relational export package containing full scanner run summaries, review workflows, checklists, checksums, and readiness metrics.
+*   **Status:** **Completed** (20 May 2026)
 *   **Key Deliverables:**
-    *   Off-the-shelf GitHub Action runner.
-    *   Custom exclusion config `.caesarignore`.
-    *   Self-contained interactive HTML audit report dashboard.
+    *   Standardized draft contracts version `0.4.0` in `schemas/`.
+    *   Unified `--export-pack <directory>` generator compiling 7 relational JSON logs.
+    *   Programmatic validator `validate-export-pack.mjs` verifying schemas and checksum lists.
+
+### Phase v0.5 — Scan Configuration & Scope Control (v0.5.0)
+*   **Goal:** Add scan target configurations and clean scope controls through `.caesarignore` rules.
+*   **Status:** **Completed** (20 May 2026)
+*   **Key Deliverables:**
+    *   Configurable JSON scanner criteria mappings (`caesar-scan.config.json`).
+    *   Exclusion matching rules via `.caesarignore` ignoring vendor folders and test assets.
+    *   Programmatic validator `validate-scope-control.mjs`.
+
+### Phase v0.6 — Public Static Site & Pages Deployment (v0.6.0)
+*   **Goal:** Build a clean self-contained public dashboard presentation showing off scanner sample metrics and deploy automatically via GitHub Pages.
+*   **Status:** **Completed** (20 May 2026)
+*   **Key Deliverables:**
+    *   Client-side interactive demonstration website shell in `site/` with zero dynamic CDNs or tracker frameworks.
+    *   Metadata build logs compiler `build-site.mjs` and anti-leak validator `validate-site.mjs`.
+    *   Automated official GitHub Pages workflow `.github/workflows/deploy-pages.yml` deploying on push to `main` with CNAME `ai-scan.caesar.no`.
 
 ### Phase v1.0 — Stable Initial Release
 *   **Goal:** Stable production-ready command line interface.
@@ -61,5 +77,5 @@ v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review Workflow [CO
 > - **It identifies governance review needs, not final legal conclusions.**
 > - **Findings are signals, not proof of non-compliance.**
 > - **All exports are Candidates:** Every evidence export candidate starts as a `draft` and strictly requires developer/compliance human review and sign-off before official Governance OS ingestion. Status remains locked in `draft` with `review_required: true`.
-> - **No live integrations:** No network calls, GitHub Actions, deployment, monitoring, or real database ingestion are included in this offline prototype.
-
+> - **Simulated Presentation Site**: The public site deployed at `ai-scan.caesar.no` presents static mock data only. It does not perform live repo scanning or network integration.
+> - **No live integrations:** No network calls, workspace scanning, pull request scanning, monitoring, or real database ingestion are included in this version.

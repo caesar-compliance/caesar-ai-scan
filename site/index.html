@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caesar AI Scan — Offline AI Governance Scanner</title>
+  <meta name="description" content="An offline static-analysis tool for discovering AI components, dependencies, credentials, vector databases, and matching them against compliance requirements.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container header-container">
+      <a href="#" class="brand">
+        🛡️ Caesar AI Scan
+        <span class="brand-badge">Offline MVP</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#demo">Interactive Demo</a>
+        <a href="#disclaimer">Disclaimers</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge-v060">Version 0.6.0 Released</span>
+      <h1>Static-Analysis for AI Governance</h1>
+      <p>An air-gapped compliance scanner prototype detecting AI dependencies, framework usage, vector database configurations, and plain-text API credentials.</p>
+    </div>
+  </section>
+
+  <!-- Content Containers -->
+  <main class="container">
+
+    <!-- Alert / Banner -->
+    <div class="alert-banner" id="about">
+      <span>⚠️</span>
+      <div>
+        <strong>Ecosystem Status Beacon:</strong> Caesar AI Scan operates completely offline. All generated evidence candidates are flagged as <em>drafts</em> and hardlocked to require human review before downstream ingestion into Governance OS or caesar-ai-evidence can proceed.
+      </div>
+    </div>
+
+    <!-- Capabilities Section -->
+    <section class="features-section" id="capabilities">
+      <h2 class="section-title">Core Scanner Capabilities</h2>
+      <div class="grid-3">
+        
+        <div class="card">
+          <div class="card-icon">01</div>
+          <h3>AI Usage Signal Detection</h3>
+          <p>Scans project files for AI dependencies (e.g. OpenAI SDK, LangChain, PyTorch) and high-dimensional vector databases (e.g. Pinecone, ChromaDB).</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">02</div>
+          <h3>Evidence Candidate Export</h3>
+          <p>Converts raw code scanner findings into standard structural evidence export candidates using ecosystem schema specifications.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">03</div>
+          <h3>Review Workflow Orchestration</h3>
+          <p>Classifies missing evidence gaps, generates actionable auditor questions, and routes results to designated governance review lanes.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">04</div>
+          <h3>Export Readiness Model</h3>
+          <p>Computes overall compliance scores. Enforces a strict 70% readiness capping rule when critical evidence gaps remain unresolved.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">05</div>
+          <h3>Offline Evidence Export Pack</h3>
+          <p>Compiles findings, readiness metrics, manifests, and signatures into a unified offline bundle protected by deterministically mapped SHA-256 hashes.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">06</div>
+          <h3>Granular Traversal & Scope Control</h3>
+          <p>Parses local <code>.caesarignore</code> glob patterns and configuration files, halt recursing directories progressively to optimize filesystem access.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Demo Dashboard -->
+    <section class="demo-section" id="demo">
+      <div class="dashboard-header">
+        <div class="dashboard-title">
+          <h2>Interactive Scan Dashboard</h2>
+          <p>Browse live, offline scan data parsed directly from the fixture sample project outputs.</p>
+        </div>
+        <div class="selector-tabs">
+          <button class="selector-tab active" data-tab="scan">Scan Findings</button>
+          <button class="selector-tab" data-tab="candidates">Evidence Candidates</button>
+          <button class="selector-tab" data-tab="workflow">Review Workflow</button>
+          <button class="selector-tab" data-tab="raw">Raw JSON Export</button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Summary -->
+      <div class="dashboard-summary">
+        <div class="metric-card">
+          <div class="value" id="metric-findings">-</div>
+          <div class="label">Total AI Signals</div>
+        </div>
+        <div class="metric-card">
+          <div class="value" id="metric-files">-</div>
+          <div class="label">Files Included</div>
+        </div>
+        <div class="metric-card">
+          <div class="value" id="metric-readiness">-</div>
+          <div class="label">Readiness Score</div>
+        </div>
+        <div class="metric-card">
+          <div class="value" id="metric-gaps">-</div>
+          <div class="label">Logged Gaps</div>
+        </div>
+      </div>
+
+      <!-- Active View Content -->
+      <pre class="json-viewer-container" id="json-viewer">// Loading static compliance data...</pre>
+
+      <!-- Build Metadata Info -->
+      <div class="build-info">
+        <div>Ecosystem Version: <strong id="build-version">v0.6.0</strong></div>
+        <div>Build DateTime: <span id="build-date">-</span></div>
+        <div>Source Commit: <code id="build-commit">-</code></div>
+      </div>
+    </section>
+
+    <!-- Disclaimers Section -->
+    <section class="disclaimer-section" id="disclaimer">
+      <h3>📋 Compliance Policy & Legal Disclaimers</h3>
+      <p><strong>Findings are Signals:</strong> The detection outcomes presented here indicate static-analysis matches (e.g. library imports, prompt files) and do not represent a final legal or regulatory determination of compliance status.</p>
+      <p><strong>No Automated Ingestion:</strong> By default, this offline prototype executes zero automatic database writing, cloud synchronization, or ingestion into caesar-ai-evidence / Governance OS. Ingestion requires explicit, cryptographic human sign-off.</p>
+      <p><strong>Safe Demo Environment:</strong> All demonstrated artifacts represent synthetically configured test environments. No real customer source code, credentials, or proprietary files are uploaded or hosted.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Caesar AI Governance Ecosystem. Deployed securely at <a href="https://ai-scan.caesar.no/" style="color: var(--accent-primary);">ai-scan.caesar.no</a>.</p>
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
