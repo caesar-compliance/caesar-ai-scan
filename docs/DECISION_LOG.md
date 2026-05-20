@@ -55,3 +55,8 @@ This document maps all high-level technical, strategic, and governance decisions
 **Date:** 2026-05-20
 **Context:** Need a way to track deltas between static scan runs without requiring a database.
 **Decision:** Store historical scan results locally in `.caesar/history/` and build diffing tools in T006.
+
+## DECISION-T006: Stable Diff Key Strategy
+**Date:** 2026-05-20
+**Context:** Finding IDs are random per scan run, making naive ID comparison useless for diffing.
+**Decision:** Derive a stable MD5 hash key from category + detector + rule_id + matched_name + file_path.

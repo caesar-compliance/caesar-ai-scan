@@ -66,3 +66,5 @@ This document tracks the current active state, milestones, and boundaries for th
     *   [docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md](docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md) — Manual review procedures and checklist
 
 - T006-A: Monitoring Run Model Planning Pack (Completed)
+
+- T006: Offline Scan History & Diff Model (Completed)

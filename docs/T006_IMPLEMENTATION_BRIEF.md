@@ -11,3 +11,6 @@
 
 ## Summary
 The upcoming T006 task will implement these schemas and components to support tracking scan diffs across multiple runs, strictly locally.
+
+## Status
+All files implemented in T006 / v0.7.0.

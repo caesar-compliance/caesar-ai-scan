@@ -81,3 +81,5 @@ v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review [COMPLETE] �
 > - **No live integrations:** No network calls, workspace scanning, pull request scanning, monitoring, or real database ingestion are included in this version.
 
 - **T006-A (v0.6.1):** Monitoring Run Model Planning Pack (Completed)
+
+- **T006 (v0.7.0):** Offline Scan History & Diff Model (Completed)

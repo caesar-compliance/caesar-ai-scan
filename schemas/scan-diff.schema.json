@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Caesar Scan Diff",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "diff_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "baseline_run_id": {
+      "type": "string"
+    },
+    "current_run_id": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "added_findings": {
+      "type": "array"
+    },
+    "removed_findings": {
+      "type": "array"
+    },
+    "unchanged_findings": {
+      "type": "array"
+    },
+    "changed_findings": {
+      "type": "array"
+    },
+    "recommended_review_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "diff_id",
+    "generated_at",
+    "baseline_run_id",
+    "current_run_id",
+    "summary",
+    "added_findings",
+    "removed_findings",
+    "unchanged_findings",
+    "changed_findings"
+  ]
+}

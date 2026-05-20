@@ -13,3 +13,6 @@ The offline scan history model enables stateful comparison of Caesar AI Scans ov
 
 ## Diffing Strategy
 When a new scan is executed, it is compared against the most recent run in the history index to produce a delta (new findings, resolved findings).
+
+## Status
+Implemented in T006 / v0.7.0.

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Caesar Scan History Index",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "history_dir": {
+      "type": "string"
+    },
+    "target_project": {
+      "type": "string"
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "run_id",
+          "generated_at"
+        ]
+      }
+    },
+    "latest_run_id": {
+      "type": "string"
+    },
+    "run_count": {
+      "type": "integer"
+    },
+    "safety_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "generated_at",
+    "history_dir",
+    "target_project",
+    "runs",
+    "latest_run_id",
+    "run_count"
+  ]
+}
