@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+
+## [0.6.1] - T006-A Monitoring Run Model Planning Pack
+### Added
+- Created offline scan history models and planning docs (T006-A).
+
 ## [0.6.0] - 20 May 2026
 
 ### Added

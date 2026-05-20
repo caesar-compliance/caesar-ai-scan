@@ -107,3 +107,8 @@ When modifying this repository:
 1. Ensure any new architectural specs or regex detectors are correctly documented inside `SPEC.md`.
 2. Add any newly introduced folders or core file assets to this registry table.
 3. Update `CHANGELOG.md` reflecting the appropriate semver version bump.
+
+- `docs/MONITORING_RUN_MODEL_PLAN.md`
+- `docs/OFFLINE_SCAN_HISTORY_MODEL.md`
+- `docs/T006_IMPLEMENTATION_BRIEF.md`
+- `work-items/T006A-monitoring-run-model-planning/`
