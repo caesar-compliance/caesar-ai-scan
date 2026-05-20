@@ -1,0 +1,54 @@
+# Implementation Report: T001 — Evidence Export Candidate Pipeline Foundation
+
+- **Branch Name:** `feat/T001-evidence-export-candidate-pipeline`
+- **Starting Commit:** `9d01291496c31d419d2f4116109d9158847e5cda`
+- **Final Commit:** `1a022bf673f55e36356ae1371fabc56cabf7d957`
+- **Files Created:**
+  - `package.json`
+  - `src/cli.mjs`
+  - `src/scanner/file-walker.mjs`
+  - `src/scanner/scan-runner.mjs`
+  - `src/rules/load-rules.mjs`
+  - `src/detectors/dependency-detector.mjs`
+  - `src/detectors/env-var-detector.mjs`
+  - `src/detectors/prompt-file-detector.mjs`
+  - `src/detectors/vector-db-detector.mjs`
+  - `src/export/evidence-candidate-exporter.mjs`
+  - `src/report/markdown-report.mjs`
+  - `src/utils/read-json-safe.mjs`
+  - `data/detection-rules.ai-usage.json`
+  - `schemas/scan-result.schema.json`
+  - `schemas/evidence-export-candidate.schema.json`
+  - `fixtures/sample-ai-project/package.json`
+  - `fixtures/sample-ai-project/requirements.txt`
+  - `fixtures/sample-ai-project/.env.example`
+  - `fixtures/sample-ai-project/prompts/system.prompt.md`
+  - `fixtures/sample-ai-project/src/example.js`
+  - `scripts/check-syntax.mjs`
+  - `scripts/validate-samples.mjs`
+  - `docs/EVIDENCE_EXPORT_CONTRACT.md`
+  - `docs/TAXONOMY_AND_REVIEW_WORKFLOW.md`
+  - `docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md`
+  - `work-items/T001-evidence-export-candidate-pipeline/TASK.md`
+  - `work-items/T001-evidence-export-candidate-pipeline/VALIDATION.md`
+  - `work-items/T001-evidence-export-candidate-pipeline/DECISIONS.md`
+  - `work-items/T001-evidence-export-candidate-pipeline/IMPLEMENTATION_REPORT.md`
+- **Files Changed:**
+  - `.gitignore` (modified to ignore `tmp/` and `node_modules/`)
+  - `README.md`
+  - `SPEC.md`
+  - `ARCHITECTURE.md`
+  - `ROADMAP.md`
+  - `NEXT_ACTIONS.md`
+  - `PROJECT_STATE.md`
+  - `CHANGELOG.md`
+  - `REPO_INVENTORY.md`
+  - `docs/DECISION_LOG.md`
+- **Working Tree Clean:** Yes, verified by `git status`.
+- **Verification Commands Run:**
+  - `npm run check:syntax` — Passed syntactical checks on 13 script files.
+  - `npm run scan:sample` — Successfully scanned fixture project and compiled JSON reports/candidates.
+  - `npm run validate:samples` — Programmatic assertion check verified 100% schema and reference accuracy.
+  - `npm run check:all-offline` — End-to-end confirmation of offline pipeline correctness.
+- **Deviations:** None.
+- **Next Recommended Step:** Implement the ignore file parser (`.caesarignore`) and expand detectors to scan python import statements.

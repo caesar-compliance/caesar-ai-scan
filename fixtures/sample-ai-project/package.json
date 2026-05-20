@@ -1,0 +1,13 @@
+{
+  "name": "sample-ai-project",
+  "version": "1.0.0",
+  "description": "Mock AI codebase containing clean-room signal markers for Caesar static-analysis validation.",
+  "main": "src/example.js",
+  "dependencies": {
+    "openai": "^4.20.0",
+    "langchain": "^0.0.198"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -6,6 +6,15 @@ This document maps all high-level technical, strategic, and governance decisions
 
 ## 🏛️ Decision History
 
+### [DEC-002] — 20 May 2026 — Zero-Dependency ESM Architecture & Candidate Pipeline
+
+*   **Status:** Approved
+*   **Decisions:**
+    1. **Runtime Isolation:** Decided to write the scanning CLI in pure ESM Javascript using exclusively Node.js core libraries (e.g. `fs`, `path`, `crypto`).
+    2. **Strict Matching rules:** Defined clean-room regular expressions targeting 17 core package names, 6 secret environments, and prompt files, avoiding external dependencies or commercial API scanners.
+    3. **Evidence Isolation:** Enforced that all automated findings must emit as "Candidates" requiring manual human developer and security expert review, preserving human oversight and blocking blind automated ingestion.
+*   **Rationale:** Guarantees absolute offline safety, avoids external registry dependencies, preserves performance, and conforms perfectly to the licensing and governance principles of the Caesar compliance ecosystem.
+
 ### [DEC-001] — 19 May 2026 — Repository Standardization & Governance
 
 *   **Status:** Approved

@@ -1,0 +1,23 @@
+# Task Checklist: T001 — Evidence Export Candidate Pipeline Foundation
+
+- `[x]` 1. Create root `package.json` (ESM, zero external dependencies, version 0.2.0, scripts)
+- `[x]` 2. Implement core helper utility `src/utils/read-json-safe.mjs`
+- `[x]` 3. Implement rule loading `src/rules/load-rules.mjs` and clean-room JSON rules `data/detection-rules.ai-usage.json`
+- `[x]` 4. Implement file walker `src/scanner/file-walker.mjs`
+- `[x]` 5. Implement core detectors:
+  - `[x]` Dependency Detector (`src/detectors/dependency-detector.mjs`)
+  - `[x]` Env Var Detector (`src/detectors/env-var-detector.mjs`)
+  - `[x]` Prompt File Detector (`src/detectors/prompt-file-detector.mjs`)
+  - `[x]` Vector DB Detector (`src/detectors/vector-db-detector.mjs`)
+- `[x]` 6. Implement scan runner `src/scanner/scan-runner.mjs`
+- `[x]` 7. Implement evidence exporter `src/export/evidence-candidate-exporter.mjs` and schemas:
+  - `[x]` `schemas/scan-result.schema.json`
+  - `[x]` `schemas/evidence-export-candidate.schema.json`
+- `[x]` 8. Implement Markdown reports `src/report/markdown-report.mjs`
+- `[x]` 9. Implement CLI controller `src/cli.mjs`
+- `[x]` 10. Set up sample fixture project `fixtures/sample-ai-project/`
+- `[x]` 11. Implement validation script `scripts/validate-samples.mjs`
+- `[x]` 12. Create/Update documentation files
+- `[x]` 13. Create supplementary work-item tracking files (`VALIDATION.md`, `DECISIONS.md`, `IMPLEMENTATION_REPORT.md`)
+- `[x]` 14. Verify all syntax, scan, and validation scripts offline
+- `[x]` 15. Commit changes to conventional git branch `feat/T001-evidence-export-candidate-pipeline`
