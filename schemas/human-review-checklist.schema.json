@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarHumanReviewChecklist",
+  "type": "OBJECT",
+  "required": [
+    "checklist_id",
+    "generated_at",
+    "review_lanes",
+    "required_questions",
+    "required_confirmations",
+    "blocking_items",
+    "signoff_required"
+  ],
+  "properties": {
+    "checklist_id": { "type": "STRING" },
+    "generated_at": { "type": "STRING", "format": "date-time" },
+    "review_lanes": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "required_questions": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "required_confirmations": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "blocking_items": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "signoff_required": {
+      "type": "BOOLEAN",
+      "const": true
+    }
+  }
+}

@@ -52,7 +52,7 @@ export function exportEvidenceCandidates(findings, reviewWorkflow = null) {
       candidate_id: `ec_${Math.random().toString(36).substring(2, 10)}${Math.random().toString(36).substring(2, 10)}`,
       source_tool: {
         name: 'caesar-ai-scan',
-        version: '0.3.0'
+        version: '0.4.0'
       },
       generated_at: new Date().toISOString(),
       evidence_type: evidenceType,

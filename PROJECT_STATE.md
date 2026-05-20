@@ -7,11 +7,11 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.3.0`
-*   **Current Phase:** `v0.3.0 — Review Workflow + Evidence Gap Classification`
+*   **Current Version:** `0.4.0`
+*   **Current Phase:** `v0.4.0 — Evidence Export Pack + Governance OS / Caesar AI Evidence Contract`
 *   **Status:** `active`
-*   **Latest Known Commit:** `fc35314e9647be8cd768dee3b54fe46eb8a66d2c` (Starting main commit)
-*   **Latest Completed Task:** `Implemented T002 / v0.3.0 — Review Workflow + Evidence Gap Classification.`
+*   **Latest Known Commit:** `433b64b2c8b6538c457481bd687e01d52f8b7a7e` (Pre-T003 base commit)
+*   **Latest Completed Task:** `Implemented T003 / v0.4.0 — Evidence Export Pack + Governance OS / Caesar AI Evidence Contract.`
 *   **Active Work Item:** `none`
 *   **Next Recommended Step:** `implement custom exclusions ignore list parser (.caesarignore)`
 

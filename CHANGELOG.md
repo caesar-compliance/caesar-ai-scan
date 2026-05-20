@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 20 May 2026
+
+### Added
+- **Evidence Export Pack (T003 / v0.4.0):** Compiles and packages scan results, evidence candidate drafts, review workflows, import readiness, checklist, and manifest into a self-contained offline evidence export pack directory.
+- **Export Pack Parent Schema (`schemas/evidence-export-pack.schema.json`):** Master parent index document governing the offline bundle structure.
+- **Manifest Integrity Schema (`schemas/export-manifest.schema.json`):** Cryptographic verification schema tracking individual file SHA-256 hashes and safety statuses.
+- **Import Readiness Schema (`schemas/import-readiness.schema.json`):** Feasibility schema evaluating scores, blockers, triggered lanes, and next steps.
+- **Human Review Checklist Schema (`schemas/human-review-checklist.schema.json`):** Explicit routing schema compiling lanes, required confirmations, questions, and signature flags.
+- **Pure Cryptographic Hash Builder (`src/export-pack/hash-artifact.mjs`):** Built-in SHA-256 helper ensuring hash determinism by standardizing indentation on disk JSON files.
+- **Sub-builders and Coordinated Pack Builder (`src/export-pack/export-pack-builder.mjs`):** Modular code framework constructing parent and nested objects.
+- **Recursive Folder & File Writer (`src/export-pack/write-export-pack.mjs`):** Disk manager writing all 7 JSON files and the Markdown reviewer report.
+- **Visual Auditor Report Generator (`src/report/export-pack-report.mjs`):** Produces premium compliance dashboard `REVIEW_SUMMARY.md` showing metadata, blockers list, and auditor sign-off checklist.
+- **Extended CLI parser:** Updated `src/cli.mjs` to support `--export-pack <directory>` argument.
+- **End-to-End Pack Audit Script (`scripts/validate-export-pack.mjs`):** Comprehensive validation asserting schema versioning, file presence, hash consistency, draft isolation bounds, automated import block, and credential exposures.
+
 ## [0.3.0] - 20 May 2026
 
 ### Added

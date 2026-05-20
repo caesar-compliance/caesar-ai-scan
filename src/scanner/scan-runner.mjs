@@ -46,10 +46,10 @@ export function runScan(targetDir, options = {}) {
   const vectorCount = findings.filter(f => f.detector === 'vector-db-detector').length;
 
   const result = {
-    schema_version: '0.2.0',
+    schema_version: '0.4.0',
     scanner: {
       name: 'caesar-ai-scan',
-      version: '0.2.0'
+      version: '0.4.0'
     },
     scanned_at: new Date().toISOString(),
     target: targetDir,

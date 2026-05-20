@@ -1,6 +1,6 @@
 {
   "name": "caesar-ai-scan",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Static-analysis CLI and CI/CD tool to inventory AI dependencies, framework usage, vector DBs, and credentials.",
   "type": "module",
   "main": "src/cli.mjs",
@@ -10,7 +10,9 @@
     "check:syntax": "node scripts/check-syntax.mjs",
     "review:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --review-report tmp/sample-review-workflow.md",
     "validate:review": "node scripts/validate-review-workflow.mjs",
-    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run review:sample && npm run validate:review"
+    "pack:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --review-report tmp/sample-review-workflow.md --export-pack tmp/sample-evidence-export-pack",
+    "validate:pack": "node scripts/validate-export-pack.mjs",
+    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run review:sample && npm run validate:review && npm run pack:sample && npm run validate:pack"
   },
   "keywords": [
     "ai",

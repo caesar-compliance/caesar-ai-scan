@@ -1,6 +1,6 @@
 # Specification — caesar-ai-scan
 
-This document outlines the technical specification, commands, and inputs/outputs for the codebase scanning tool `caesar-ai-scan` as of version `0.3.0`.
+This document outlines the technical specification, commands, and inputs/outputs for the codebase scanning tool `caesar-ai-scan` as of version `0.4.0`.
 
 ---
 
@@ -16,7 +16,7 @@ This document outlines the technical specification, commands, and inputs/outputs
 ### 3. Problem Solved
 Codebases increasingly consume third-party AI APIs and frameworks without proper logging, creating legal, security, and operational evidence gaps. `caesar-ai-scan` automates the discovery of these integrations, facilitating audit readiness.
 
-### 4. MVP Scope (v0.3.0 Offline Prototype)
+### 4. MVP Scope (v0.4.0 Offline Prototype)
 *   **Dependency Scanner:** Scan manifest files (`package.json`, `requirements.txt`) against a curated list of AI-related packages.
 *   **API Credential Detector:** Scan files line-by-line for plain-text AI service keys (e.g. `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`).
 *   **Prompt File Detector:** Scan file paths and folder structures for prompt-engineering files (e.g. `.prompt.md`, `system.prompt`).
@@ -24,6 +24,7 @@ Codebases increasingly consume third-party AI APIs and frameworks without proper
 *   **Evidence Candidate Exporter:** Transform findings into draft evidence export candidates enriched with T002 review metadata for downstream Governance OS integration.
 *   **Review Workflow Builder:** Construct a comprehensive review workflow mapping findings to assigned review lanes (Security, Legal, Privacy, etc.) and classifying missing evidence gaps.
 *   **Export Readiness Scorer:** Deterministically score each candidate's readiness and enforce a strict 70% capping safety rule if blocking gaps exist.
+*   **Evidence Export Pack Builder & Disk Writer (T003 / v0.4.0):** Compiles and packages scan results, evidence candidate drafts, review workflows, import readiness, checklist, and manifest into a self-contained local package directory.
 *   **Zero External Dependencies:** Built purely using Node.js standard libraries.
 
 ### 5. Future Scope
@@ -53,16 +54,21 @@ node src/cli.mjs <target> [flags]
 - `--export-evidence-candidates <path>`: Exports standard `CaesarEvidenceExportCandidate` records as JSON, enriched with review metadata.
 - `--review-out <path>`: Output destination for the structured JSON Review Workflow containing assigned lanes, gaps, and scores.
 - `--review-report <path>`: Output destination for the premium Markdown compliance summary review report.
+- `--export-pack <directory>`: Packages the full offline audit package, exporting 7 JSON schemas and the `REVIEW_SUMMARY.md` auditor report to the designated folder.
 
 ---
 
 ## 📝 Schemas & Contracts
 
-All outputs conform to JSON draft contracts version `0.3.0` located under `schemas/`:
+All outputs conform to JSON draft contracts version `0.4.0` located under `schemas/`:
 1. **`schemas/scan-result.schema.json`**: Master scan run report.
 2. **`schemas/evidence-export-candidate.schema.json`**: Reviewable evidence draft.
 3. **`schemas/review-workflow.schema.json`**: Enriched compliance review workflow.
 4. **`schemas/evidence-gap.schema.json`**: Individual classified evidence gap model.
+5. **`schemas/evidence-export-pack.schema.json`**: Parent export pack index schema compiling all artifacts.
+6. **`schemas/export-manifest.schema.json`**: Package checksum manifest validating SHA-256 hashes and safety statuses.
+7. **`schemas/import-readiness.schema.json`**: Assessment of import compatibility, score, and unresolved gaps.
+8. **`schemas/human-review-checklist.schema.json`**: Auditor routing checklist compiling review lanes, questions, and signature flags.
 
 ---
 

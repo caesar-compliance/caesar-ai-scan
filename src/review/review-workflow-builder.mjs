@@ -68,7 +68,7 @@ export function buildReviewWorkflow(scanResult) {
   const readyItems = reviewItems.filter(item => !item.evidence_gaps.some(g => g.blocks_export)).length;
 
   return {
-    schema_version: '0.3.0',
+    schema_version: '0.4.0',
     generated_at: new Date().toISOString(),
     source_scan: {
       target: scanResult.target,
