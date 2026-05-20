@@ -18,9 +18,10 @@ function runValidation() {
   const result = runScan(targetDir);
   
   // Assertions on scan result schema
-  assert(result.schema_version === '0.4.0', 'Schema version should be 0.4.0');
+  assert(result.schema_version === '0.5.0', 'Schema version should be 0.5.0');
   assert(result.scanner && result.scanner.name === 'caesar-ai-scan', 'Scanner name matches');
-  assert(result.scanner.version === '0.4.0', 'Scanner version matches');
+  assert(result.scanner.version === '0.5.0', 'Scanner version matches');
+
   assert(result.scanned_at, 'scanned_at timestamp exists');
   assert(result.target === targetDir, 'target matches scanned path');
   assert(result.summary, 'summary object exists');

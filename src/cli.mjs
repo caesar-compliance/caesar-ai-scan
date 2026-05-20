@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { dirname, resolve } from 'path';
 import { runScan } from './scanner/scan-runner.mjs';
 import { exportEvidenceCandidates } from './export/evidence-candidate-exporter.mjs';
@@ -9,6 +9,8 @@ import { buildReviewWorkflow } from './review/review-workflow-builder.mjs';
 import { generateReviewReport } from './report/review-workflow-report.mjs';
 import { buildExportPack } from './export-pack/export-pack-builder.mjs';
 import { writeExportPack } from './export-pack/write-export-pack.mjs';
+import { parseConfig } from './scanner/scope-resolver.mjs';
+import { generateScopeReport } from './report/scope-report.mjs';
 
 function parseArgs(args) {
   const options = {
@@ -18,7 +20,11 @@ function parseArgs(args) {
     exportEvidenceCandidates: null,
     reviewOut: null,
     reviewReport: null,
-    exportPack: null
+    exportPack: null,
+    config: null,
+    scopeOut: null,
+    scopeReport: null,
+    exclude: []
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -36,14 +42,20 @@ function parseArgs(args) {
       options.reviewReport = args[++i];
     } else if (arg === '--export-pack') {
       options.exportPack = args[++i];
+    } else if (arg === '--config') {
+      options.config = args[++i];
+    } else if (arg === '--scope-out') {
+      options.scopeOut = args[++i];
+    } else if (arg === '--scope-report') {
+      options.scopeReport = args[++i];
+    } else if (arg === '--exclude') {
+      const patterns = args[++i];
+      if (patterns) {
+        options.exclude = patterns.split(',').map(p => p.trim());
+      }
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }
-  }
-
-  // Default target is current working directory
-  if (!options.target) {
-    options.target = '.';
   }
 
   return options;
@@ -58,80 +70,139 @@ function writeOutput(filePath, content) {
 
 async function main() {
   const args = process.argv.slice(2);
-  const options = parseArgs(args);
+  const cliOptions = parseArgs(args);
 
   try {
-    const targetPath = resolve(options.target);
-    console.log(`🔍 Starting Caesar AI Static Scan on target: ${targetPath}...`);
+    // 1. Resolve configuration files and CLI overrides
+    const targetDir = resolve(cliOptions.target || '.');
+
+    let configPath = cliOptions.config;
+    if (!configPath) {
+      const targetConfig = resolve(targetDir, 'caesar-scan.config.json');
+      const localConfig = resolve('./caesar-scan.config.json');
+      if (existsSync(targetConfig)) {
+        configPath = targetConfig;
+      } else if (existsSync(localConfig)) {
+        configPath = localConfig;
+      }
+    }
+
+    const fileConfig = parseConfig(configPath);
+    if (configPath && existsSync(configPath)) {
+      console.log(`⚙️ Loaded scan configuration from: ${configPath}`);
+    }
+
+    // CLI overrides take absolute priority, falls back to config file
+    const mergedOptions = {
+      target: cliOptions.target || fileConfig.target || '.',
+      format: cliOptions.format !== 'markdown' ? cliOptions.format : (fileConfig.format || 'markdown'),
+      out: cliOptions.out || (fileConfig.outputs && fileConfig.outputs.scan_result) || null,
+      exportEvidenceCandidates: cliOptions.exportEvidenceCandidates || (fileConfig.outputs && fileConfig.outputs.evidence_candidates) || null,
+      reviewOut: cliOptions.reviewOut || (fileConfig.outputs && fileConfig.outputs.review_out) || null,
+      reviewReport: cliOptions.reviewReport || (fileConfig.outputs && fileConfig.outputs.review_report) || null,
+      exportPack: cliOptions.exportPack || (fileConfig.outputs && fileConfig.outputs.export_pack) || null,
+      scopeOut: cliOptions.scopeOut || (fileConfig.outputs && fileConfig.outputs.scope_out) || null,
+      scopeReport: cliOptions.scopeReport || (fileConfig.outputs && fileConfig.outputs.scope_report) || null,
+      exclude: [...(cliOptions.exclude || []), ...(fileConfig.exclude || [])],
+      rulesPath: fileConfig.rulesPath || null
+    };
+
+    const finalTargetPath = resolve(mergedOptions.target);
+    console.log(`🔍 Starting Caesar AI Static Scan on target: ${finalTargetPath}...`);
     
-    const scanResult = runScan(targetPath);
-    const { summary, findings } = scanResult;
+    // 2. Perform the static scan (this resolves scope internally and scans only included files)
+    const scanResult = runScan(finalTargetPath, mergedOptions);
+    const { summary, findings, scope } = scanResult;
 
     console.log(`✅ Scan completed. Found ${summary.total_findings} AI usage signals.`);
 
-    // 1. Produce scan results output
+    // 3. Write scope files if configured
+    if (scope) {
+      const scopeData = {
+        schema_version: scanResult.schema_version,
+        target: scanResult.target,
+        resolved_at: scanResult.scanned_at,
+        summary: {
+          total_found: scope.included_count + scope.excluded_count + scope.skipped_count,
+          included_count: scope.included_count,
+          excluded_count: scope.excluded_count,
+          skipped_count: scope.skipped_count
+        },
+        files: scope.files
+      };
+
+      if (mergedOptions.scopeOut) {
+        writeOutput(mergedOptions.scopeOut, JSON.stringify(scopeData, null, 2));
+        console.log(`📁 Scope JSON report written to: ${mergedOptions.scopeOut}`);
+      }
+
+      if (mergedOptions.scopeReport) {
+        const scopeMd = generateScopeReport(scopeData);
+        writeOutput(mergedOptions.scopeReport, scopeMd);
+        console.log(`📁 Scope Markdown report written to: ${mergedOptions.scopeReport}`);
+      }
+    }
+
+    // 4. Produce scan results output
     let outputContent = '';
-    if (options.format === 'json') {
+    if (mergedOptions.format === 'json') {
       outputContent = JSON.stringify(scanResult, null, 2);
     } else {
       outputContent = generateMarkdownReport(scanResult);
     }
 
-    if (options.out) {
-      writeOutput(options.out, outputContent);
-      console.log(`📁 Scan report written to: ${options.out}`);
+    if (mergedOptions.out) {
+      writeOutput(mergedOptions.out, outputContent);
+      console.log(`📁 Scan report written to: ${mergedOptions.out}`);
     } else {
-      // Print to stdout if no output file is provided
       console.log('\n--- SCAN REPORT ---');
       console.log(outputContent);
       console.log('-------------------\n');
     }
 
-    // 2. Build review workflow if requested or if candidates/packs are being exported
+    // 5. Build review workflow if requested
     let reviewWorkflow = null;
-    if (options.reviewOut || options.reviewReport || options.exportEvidenceCandidates || options.exportPack) {
+    if (mergedOptions.reviewOut || mergedOptions.reviewReport || mergedOptions.exportEvidenceCandidates || mergedOptions.exportPack) {
       reviewWorkflow = buildReviewWorkflow(scanResult);
     }
 
-    // 3. Write review JSON and MD report if requested
-    if (options.reviewOut && reviewWorkflow) {
+    // 6. Write review JSON and MD report if requested
+    if (mergedOptions.reviewOut && reviewWorkflow) {
       const reviewContent = JSON.stringify(reviewWorkflow, null, 2);
-      writeOutput(options.reviewOut, reviewContent);
-      console.log(`📁 Review workflow written to: ${options.reviewOut}`);
+      writeOutput(mergedOptions.reviewOut, reviewContent);
+      console.log(`📁 Review workflow written to: ${mergedOptions.reviewOut}`);
     }
 
-    if (options.reviewReport && reviewWorkflow) {
+    if (mergedOptions.reviewReport && reviewWorkflow) {
       const reviewReportContent = generateReviewReport(reviewWorkflow);
-      writeOutput(options.reviewReport, reviewReportContent);
-      console.log(`📁 Review report written to: ${options.reviewReport}`);
+      writeOutput(mergedOptions.reviewReport, reviewReportContent);
+      console.log(`📁 Review report written to: ${mergedOptions.reviewReport}`);
     }
 
-    // 4. Export evidence candidates if requested or if export pack is requested
+    // 7. Export evidence candidates if requested
     let candidates = null;
-    if (options.exportEvidenceCandidates || options.exportPack) {
+    if (mergedOptions.exportEvidenceCandidates || mergedOptions.exportPack) {
       candidates = exportEvidenceCandidates(findings, reviewWorkflow);
     }
 
-    if (options.exportEvidenceCandidates && candidates) {
+    if (mergedOptions.exportEvidenceCandidates && candidates) {
       const candidatesContent = JSON.stringify(candidates, null, 2);
-      writeOutput(options.exportEvidenceCandidates, candidatesContent);
-      console.log(`📁 Evidence export candidates written to: ${options.exportEvidenceCandidates}`);
+      writeOutput(mergedOptions.exportEvidenceCandidates, candidatesContent);
+      console.log(`📁 Evidence export candidates written to: ${mergedOptions.exportEvidenceCandidates}`);
     }
 
-    // 5. Build and write export pack if requested
-    if (options.exportPack) {
-      const targetProjectPath = targetPath;
+    // 8. Build and write export pack if requested
+    if (mergedOptions.exportPack) {
       const exportPack = buildExportPack({
-        targetProjectPath,
+        targetProjectPath: finalTargetPath,
         scanResult,
         evidenceCandidates: candidates,
         reviewWorkflow
       });
-      await writeExportPack(exportPack, resolve(options.exportPack));
-      console.log(`📁 Evidence export pack written to: ${options.exportPack}`);
+      await writeExportPack(exportPack, resolve(mergedOptions.exportPack));
+      console.log(`📁 Evidence export pack written to: ${mergedOptions.exportPack}`);
     }
 
-    // Fail-safe exit
     process.exit(0);
   } catch (error) {
     console.error('❌ Critical Error during scan execution:', error.stack || error.message);
@@ -140,4 +211,3 @@ async function main() {
 }
 
 main();
-

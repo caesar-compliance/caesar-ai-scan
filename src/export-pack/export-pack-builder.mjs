@@ -38,11 +38,11 @@ export function buildExportPack({
 
   // 5. Construct the parent export pack
   return {
-    schema_version: '0.4.0',
+    schema_version: '0.5.0',
     pack_id: `pack_${Math.random().toString(36).substring(2, 10)}${Math.random().toString(36).substring(2, 10)}`,
     generated_at: new Date().toISOString(),
     source_tool: 'caesar-ai-scan',
-    source_tool_version: '0.4.0',
+    source_tool_version: '0.5.0',
     target_project: targetProjectPath,
     manifest,
     scan_result: scanResult,

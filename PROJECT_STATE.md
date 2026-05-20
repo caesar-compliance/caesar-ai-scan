@@ -7,13 +7,13 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.4.0`
-*   **Current Phase:** `v0.4.0 — Evidence Export Pack + Governance OS / Caesar AI Evidence Contract`
-*   **Status:** `closed`
-*   **Latest Known Commit:** `97340cf4f8625f9063b635f47978aacdc9c1635a` (Pre-audit base commit)
+*   **Current Version:** `0.5.0`
+*   **Current Phase:** `T004 / v0.5.0 — Scan Configuration + .caesarignore + Scope Control`
+*   **Status:** `in_progress`
+*   **Latest Known Commit:** `f9366ee87bfaef4124d98fdbeb1c7c07c915c609` (Pre-T004 starting commit)
 *   **Latest Completed Task:** `T003 closeout audit passed and verified.`
-*   **Active Work Item:** `none`
-*   **Next Recommended Step:** `implement custom exclusions ignore list parser (.caesarignore)`
+*   **Active Work Item:** `T004 scan configuration and scope control implementation.`
+*   **Next Recommended Step:** `complete offline validation suite`
 
 ---
 

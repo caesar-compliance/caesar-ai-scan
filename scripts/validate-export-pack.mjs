@@ -138,11 +138,11 @@ async function validateExportPack(packDir) {
   };
 
   for (const [file, version] of Object.entries(versionsToVerify)) {
-    if (version !== '0.4.0') {
-      console.error(`  [❌] ${RED}Version Constraint Violated in ${file}:${RESET} expected '0.4.0', got '${version}'`);
+    if (version !== '0.5.0') {
+      console.error(`  [❌] ${RED}Version Constraint Violated in ${file}:${RESET} expected '0.5.0', got '${version}'`);
       process.exit(1);
     }
-    console.log(`  [✅] ${file} is compliant with schema version 0.4.0.`);
+    console.log(`  [✅] ${file} is compliant with schema version 0.5.0.`);
   }
 
   // 6. Hard-locked Boundaries & Policies Enforcements

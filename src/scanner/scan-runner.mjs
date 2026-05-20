@@ -1,9 +1,10 @@
-import { walkFiles } from './file-walker.mjs';
+import { resolveScanScope } from './scope-resolver.mjs';
 import { loadRules } from '../rules/load-rules.mjs';
 import { detectDependencies } from '../detectors/dependency-detector.mjs';
 import { detectEnvVars } from '../detectors/env-var-detector.mjs';
 import { detectPromptFiles } from '../detectors/prompt-file-detector.mjs';
 import { detectVectorDBs } from '../detectors/vector-db-detector.mjs';
+import { resolve } from 'path';
 
 /**
  * Orchestrates the full static-analysis scan over the target directory.
@@ -16,8 +17,15 @@ export function runScan(targetDir, options = {}) {
   // Load clean-room rules
   const rules = loadRules(options.rulesPath);
 
-  // Traverse filesystem
-  const files = walkFiles(targetDir);
+  // Resolve scope (which parses .caesarignore and config options)
+  const scope = resolveScanScope(targetDir, options);
+
+  // Re-map included file paths to the walker structure expected by detectors
+  const files = scope.files.included.map(relativePath => ({
+    fullPath: resolve(targetDir, relativePath),
+    relativePath,
+    name: relativePath.split('/').pop()
+  }));
 
   const findings = [];
 
@@ -46,21 +54,27 @@ export function runScan(targetDir, options = {}) {
   const vectorCount = findings.filter(f => f.detector === 'vector-db-detector').length;
 
   const result = {
-    schema_version: '0.4.0',
+    schema_version: '0.5.0',
     scanner: {
       name: 'caesar-ai-scan',
-      version: '0.4.0'
+      version: '0.5.0'
     },
     scanned_at: new Date().toISOString(),
     target: targetDir,
     summary: {
-      total_files: files.length,
-      scanned_files: files.length, // Offline walks currently process all found files
+      total_files: scope.summary.included_count + scope.summary.excluded_count + scope.summary.skipped_count,
+      scanned_files: files.length,
       total_findings: findings.length,
       dependency_findings: depCount,
       env_var_findings: envCount,
       prompt_findings: promptCount,
       vector_db_findings: vectorCount
+    },
+    scope: {
+      included_count: scope.summary.included_count,
+      excluded_count: scope.summary.excluded_count,
+      skipped_count: scope.summary.skipped_count,
+      files: scope.files
     },
     findings
   };
