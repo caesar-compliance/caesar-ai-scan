@@ -7,6 +7,8 @@ import { exportEvidenceCandidates } from './export/evidence-candidate-exporter.m
 import { generateMarkdownReport } from './report/markdown-report.mjs';
 import { buildReviewWorkflow } from './review/review-workflow-builder.mjs';
 import { generateReviewReport } from './report/review-workflow-report.mjs';
+import { buildExportPack } from './export-pack/export-pack-builder.mjs';
+import { writeExportPack } from './export-pack/write-export-pack.mjs';
 
 function parseArgs(args) {
   const options = {
@@ -15,7 +17,8 @@ function parseArgs(args) {
     out: null,
     exportEvidenceCandidates: null,
     reviewOut: null,
-    reviewReport: null
+    reviewReport: null,
+    exportPack: null
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -31,6 +34,8 @@ function parseArgs(args) {
       options.reviewOut = args[++i];
     } else if (arg === '--review-report') {
       options.reviewReport = args[++i];
+    } else if (arg === '--export-pack') {
+      options.exportPack = args[++i];
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }
@@ -51,7 +56,7 @@ function writeOutput(filePath, content) {
   writeFileSync(resolvedPath, content, 'utf8');
 }
 
-function main() {
+async function main() {
   const args = process.argv.slice(2);
   const options = parseArgs(args);
 
@@ -82,9 +87,9 @@ function main() {
       console.log('-------------------\n');
     }
 
-    // 2. Build review workflow if requested or if candidates are being exported
+    // 2. Build review workflow if requested or if candidates/packs are being exported
     let reviewWorkflow = null;
-    if (options.reviewOut || options.reviewReport || options.exportEvidenceCandidates) {
+    if (options.reviewOut || options.reviewReport || options.exportEvidenceCandidates || options.exportPack) {
       reviewWorkflow = buildReviewWorkflow(scanResult);
     }
 
@@ -101,12 +106,29 @@ function main() {
       console.log(`📁 Review report written to: ${options.reviewReport}`);
     }
 
-    // 4. Export evidence candidates if requested
-    if (options.exportEvidenceCandidates) {
-      const candidates = exportEvidenceCandidates(findings, reviewWorkflow);
+    // 4. Export evidence candidates if requested or if export pack is requested
+    let candidates = null;
+    if (options.exportEvidenceCandidates || options.exportPack) {
+      candidates = exportEvidenceCandidates(findings, reviewWorkflow);
+    }
+
+    if (options.exportEvidenceCandidates && candidates) {
       const candidatesContent = JSON.stringify(candidates, null, 2);
       writeOutput(options.exportEvidenceCandidates, candidatesContent);
       console.log(`📁 Evidence export candidates written to: ${options.exportEvidenceCandidates}`);
+    }
+
+    // 5. Build and write export pack if requested
+    if (options.exportPack) {
+      const targetProjectPath = targetPath;
+      const exportPack = buildExportPack({
+        targetProjectPath,
+        scanResult,
+        evidenceCandidates: candidates,
+        reviewWorkflow
+      });
+      await writeExportPack(exportPack, resolve(options.exportPack));
+      console.log(`📁 Evidence export pack written to: ${options.exportPack}`);
     }
 
     // Fail-safe exit

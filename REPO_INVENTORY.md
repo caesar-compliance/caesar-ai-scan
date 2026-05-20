@@ -34,6 +34,13 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 🧮 **`src/review/export-readiness-scorer.mjs`** | Scorer Engine | Computes candidate readiness scores, enforcing a strict 70% capping safety rule. |
 | ❓ **`src/review/recommended-questions.mjs`** | Question Provider | Generates context-aware reviewer questions and actionable resolution tasks. |
 | 📝 **`src/report/review-workflow-report.mjs`** | Review Formatter | Generates highly readable and premium Markdown compliance dashboards. |
+| 🔐 **`src/export-pack/hash-artifact.mjs`** | SHA-256 Hasher | Pure cryptographic helper calculating deterministic hashes for package integrity. |
+| 📋 **`src/export-pack/export-manifest-builder.mjs`** | Manifest Builder | Builds JSON manifest with record counts, safety checks, and secure SHA-256 hashes. |
+| 📈 **`src/export-pack/import-readiness-builder.mjs`** | Readiness Assessor | Analyzes project gaps and scores readiness, locking automated ingestion. |
+| 🕵️‍♂️ **`src/export-pack/human-review-checklist-builder.mjs`** | Checklist Builder | Generates lane checklists, required confirmations, and audit questions. |
+| 🎛️ **`src/export-pack/export-pack-builder.mjs`** | Pack Coordinator | Master coordinating builder constructing the full index-level memory pack object. |
+| 💾 **`src/export-pack/write-export-pack.mjs`** | Disk Writer | Recursively creates output folders and writes all 7 JSON files and Markdown report. |
+| 📝 **`src/report/export-pack-report.mjs`** | Visual Pack Formatter | Formats visual Markdown `REVIEW_SUMMARY.md` compliance dashboard. |
 | 💾 **`data/detection-rules.ai-usage.json`** | Rules Database | Clean-room regexes catalog matching AI usage components. |
 | 🏷️ **`data/review-taxonomy.ai-governance.json`** | Lane Taxonomy | Defines standard governance review lanes and readiness statuses. |
 | 📋 **`data/evidence-requirements.ai-usage.json`** | Requirement Maps | Maps specific AI detection signals to required compliance evidence types. |
@@ -41,9 +48,14 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📑 **`schemas/evidence-export-candidate.schema.json`** | Export Schema | Draft schema for reviewable evidence export candidates. |
 | 📑 **`schemas/review-workflow.schema.json`** | Workflow Schema | Contract schema for the consolidated review workflow object. |
 | 📑 **`schemas/evidence-gap.schema.json`** | Gap Schema | Contract schema for individual evidence gap payloads. |
+| 📑 **`schemas/evidence-export-pack.schema.json`** | Pack Master Schema | Parent JSON schema for the entire offline compiled audit bundle. |
+| 📑 **`schemas/export-manifest.schema.json`** | Manifest Schema | Verification schema tracking file hash checksums and safety flags. |
+| 📑 **`schemas/import-readiness.schema.json`** | Readiness Schema | Evaluates feasibility, scoring metrics, and blockers for ingestion. |
+| 📑 **`schemas/human-review-checklist.schema.json`** | Checklist Schema | Guides routing tasks, questions, and signature certifications. |
 | 🛠️ **`scripts/check-syntax.mjs`** | Syntax Validator | Standalone checker running syntax validation offline. |
 | 🧪 **`scripts/validate-samples.mjs`** | Validation Assertions | Automatic suite verifying scanner outcomes. |
 | 🧪 **`scripts/validate-review-workflow.mjs`** | Review Validator | Suite asserting schema-compliance and mathematical rules for workflows. |
+| 🧪 **`scripts/validate-export-pack.mjs`** | Pack Auditor | Verification script validating integrity, hashes, schemas, and policy boundaries. |
 | 🧬 **`fixtures/sample-ai-project/`** | Fixture Directory | Harmless mock AI project used to test scanner functionalities. |
 | 📊 **`docs/RESEARCH_CONTEXT.md`** | Domain Research | Ingests strategic requirements, user personas, and target scopes. |
 | ⚖️ **`docs/DECISION_LOG.md`** | Decision Log | Records chronological technical, strategic, and governance decisions. |

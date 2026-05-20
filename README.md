@@ -12,11 +12,11 @@ This tool acts as a scanner within the Caesar AI Governance Hub ecosystem at [ca
 
 ### 🚦 Project Status
 > [!NOTE]
-> This repository is in the **v0.3.0 — Review Workflow + Evidence Gap Classification** stage. It is an offline prototype capable of scanning local files, detecting AI dependencies, credentials, vector databases, and prompt configurations, generating review workflow items with assigned lanes, classifying evidence gaps, calculating export readiness, and generating markdown reports.
+> This repository is in the **v0.4.0 — Evidence Export Pack + Governance OS / Caesar AI Evidence Contract** stage. It is an offline prototype capable of scanning local files, detecting AI dependencies, credentials, vector databases, and prompt configurations, generating review workflow items with assigned lanes, classifying evidence gaps, calculating export readiness, and compiling all artifacts into a self-contained offline evidence export pack directory.
 
 ---
 
-## 🚀 Quick Start (v0.3.0 Offline Prototype)
+## 🚀 Quick Start (v0.4.0 Offline Prototype)
 
 No external production dependencies are required. Ensure you have Node.js (v18+) installed.
 
@@ -26,10 +26,10 @@ Clone the repository and install the development workspace:
 npm install
 ```
 
-### 2. Running a Scan & Compliance Review
-Run the scanner against a local target directory, output results as JSON, export evidence candidates, and generate the review workflow and markdown report:
+### 2. Running a Scan, Review, & Pack Export
+Run the scanner against a local target directory, output results as JSON, export evidence candidates, generate the review workflow, and write the complete self-contained evidence export pack to a directory:
 ```bash
-node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --review-report tmp/sample-review-workflow.md
+node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --review-report tmp/sample-review-workflow.md --export-pack tmp/sample-evidence-export-pack
 ```
 
 Or run the predefined sample scan npm scripts:
@@ -39,16 +39,22 @@ npm run scan:sample
 
 # Run compliance review generator
 npm run review:sample
+
+# Run the complete self-contained evidence export pack generator
+npm run pack:sample
 ```
 
 ### 3. Running Programmatic Validation Tests
-Execute the offline scan and review validation suite:
+Execute the offline scan, review, and export pack validation suite:
 ```bash
 # Programmatically validate scan outputs
 npm run validate:samples
 
 # Programmatically validate review workflow & evidence gaps
 npm run validate:review
+
+# Programmatically validate export pack integrity, hashes, schemas, and policy boundaries
+npm run validate:pack
 ```
 
 Check code syntax across all modules:
@@ -56,7 +62,7 @@ Check code syntax across all modules:
 npm run check:syntax
 ```
 
-Run the full end-to-end syntax, scan, and review validation pipeline:
+Run the full end-to-end syntax, scan, review, and pack validation pipeline:
 ```bash
 npm run check:all-offline
 ```
@@ -69,9 +75,10 @@ The static analysis CLI supports the following configuration commands:
 - **`node src/cli.mjs <target>`**: Directory to scan (defaults to `.`).
 - **`--format <json|markdown>`**: Set scan report serialization style (defaults to `markdown`).
 - **`--out <path>`**: Output destination for the formatted scan report.
-- **`--export-evidence-candidates <path>`**: Output path to export candidate JSON records for Caesar AI Evidence integration (enriched with T002 review metadata in v0.3.0).
+- **`--export-evidence-candidates <path>`**: Output path to export candidate JSON records for Caesar AI Evidence integration (enriched with review metadata).
 - **`--review-out <path>`**: Output destination for the structured JSON Review Workflow containing assigned lanes, gaps, and scores.
 - **`--review-report <path>`**: Output destination for the premium Markdown compliance summary review report.
+- **`--export-pack <directory>`**: Compiles and writes the complete self-contained evidence export pack folder (contains 7 JSON files and `REVIEW_SUMMARY.md` auditor report).
 
 ---
 
@@ -123,4 +130,5 @@ Scan results are compiled and exported strictly matching the standardized schema
 *   **[docs/EVIDENCE_EXPORT_CONTRACT.md](docs/EVIDENCE_EXPORT_CONTRACT.md)** — Ingestion schemas and contract specifications.
 *   **[docs/TAXONOMY_AND_REVIEW_WORKFLOW.md](docs/TAXONOMY_AND_REVIEW_WORKFLOW.md)** — AI asset categorization and manual sign-off loops.
 *   **[docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md](docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md)** — Licensing compliance rules.
+
 

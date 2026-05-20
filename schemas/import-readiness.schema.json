@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarImportReadiness",
+  "type": "OBJECT",
+  "required": [
+    "readiness_status",
+    "readiness_score",
+    "blockers",
+    "warnings",
+    "required_human_reviews",
+    "required_resolutions",
+    "can_import_automatically",
+    "recommended_next_action"
+  ],
+  "properties": {
+    "readiness_status": { "type": "STRING" },
+    "readiness_score": { "type": "INTEGER", "minimum": 0, "maximum": 100 },
+    "blockers": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "warnings": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "required_human_reviews": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "required_resolutions": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "can_import_automatically": {
+      "type": "BOOLEAN",
+      "const": false
+    },
+    "recommended_next_action": { "type": "STRING" }
+  }
+}
