@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.0] - 20 May 2026
+
+### Added
+- **Public Static Site + GitHub Pages Deployment (T005 / v0.6.0):** Created a public static site in `site/` with full architectural deployment configs for GitHub Pages at `https://ai-scan.caesar.no/`, built-in site builders, programmatic site validators, and deployed artifact CNAME mapping.
+
+## [0.5.0] - 20 May 2026
+
+### Added
+- **Scan Configuration & Scope Control (T004 / v0.5.0):** Zero-dependency `.caesarignore` custom glob ignore matching engine, ancestor segment path validation, local scanner parameters overrides, config JSON schemas, and programmatic scope validations.
+
 ## [0.4.0] - 20 May 2026
 
 ### Added

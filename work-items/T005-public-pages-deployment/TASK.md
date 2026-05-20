@@ -1,0 +1,34 @@
+# T005 Task Checklist
+
+- [x] Create static public site directory structure
+  - [x] site/index.html
+  - [x] site/assets/site.css
+  - [x] site/assets/site.js
+  - [x] site/CNAME containing ai-scan.caesar.no
+- [x] Create automated build and validation scripts
+  - [x] scripts/build-site.mjs (copies mock artifacts, generates site-build.json)
+  - [x] scripts/validate-site.mjs (validates zero CDNs, no fonts/analytics, zero secrets)
+- [x] Update package.json scripts
+  - [x] npm run build:site
+  - [x] npm run validate:site
+  - [x] Update npm run check:all-offline
+- [x] Implement GitHub Pages deployment workflow
+  - [x] .github/workflows/deploy-pages.yml with official actions
+  - [x] Strict pages contents/id-token write permissions
+- [x] Add deployment and compliance documentation
+  - [x] docs/PUBLIC_DEPLOYMENT.md
+  - [x] docs/GITHUB_PAGES_DEPLOYMENT.md
+  - [x] docs/PUBLIC_SITE_CONTENT_POLICY.md
+- [ ] Update root ecosystem documentation
+  - [ ] README.md
+  - [ ] SPEC.md
+  - [ ] ARCHITECTURE.md
+  - [ ] ROADMAP.md
+  - [ ] NEXT_ACTIONS.md
+  - [ ] PROJECT_STATE.md
+  - [ ] CHANGELOG.md
+  - [ ] REPO_INVENTORY.md
+  - [ ] docs/DECISION_LOG.md
+- [ ] Execute programmatic validation suite
+- [ ] Merge feat/T005-public-pages-deployment to main
+- [ ] Perform post-merge checks

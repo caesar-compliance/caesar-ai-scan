@@ -83,10 +83,21 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📚 **`docs/SCAN_CONFIGURATION.md`** | Config Guide | Documents scan settings, merged priority sequence and parameters. |
 | 📚 **`docs/CAESARIGNORE_REFERENCE.md`** | Ignore Guide | Explains .caesarignore syntax and glob rules. |
 | 📚 **`docs/SCOPE_CONTROL_POLICY.md`** | Scope Guide | Details file categorization policies and directory tree crawlers. |
+| 📚 **`docs/PUBLIC_DEPLOYMENT.md`** | Public Deployment | Architecture guide for public website. |
+| 📚 **`docs/GITHUB_PAGES_DEPLOYMENT.md`** | Pages Deployment | Triggers and configurations for GitHub Pages deployment. |
+| 📚 **`docs/PUBLIC_SITE_CONTENT_POLICY.md`** | Content Policy | Anonymization rules, no tracking, and static isolation constraints. |
+| 🖥️ **`site/index.html`** | Public Dashboard Shell | Static SPA HTML layout presenting scan pipeline sample metrics. |
+| 🎨 **`site/assets/site.css`** | Dashboard Stylesheet | Custom responsive dark Slate/Indigo theme vanilla CSS. |
+| 🧠 **`site/assets/site.js`** | Dashboard Logic | Vanilla client-side JS fetching demo logs dynamically. |
+| 🌐 **`site/CNAME`** | Domain Mapping | Tells GitHub Pages to route traffic from `ai-scan.caesar.no` to the site. |
+| ⚙️ **`scripts/build-site.mjs`** | Site Generator | Builds public data assets and writes `site-build.json` metadata. |
+| 🧪 **`scripts/validate-site.mjs`** | Site Auditor | Asserts no CDNs, tracking engines, or credentials exist in the bundle. |
+| 🛠️ **`.github/workflows/deploy-pages.yml`** | Pages Pipeline | Official Actions workflow compiling and deploying the public site. |
 | 📂 **`work-items/T001-evidence-export-candidate-pipeline/`** | T001 Sandbox | Sandboxed trackers containing T001 tasks, logs, and reports. |
 | 📂 **`work-items/T002-review-workflow-evidence-gaps/`** | T002 Sandbox | Sandboxed trackers containing T002 tasks, logs, and reports. |
 | 📂 **`work-items/T003-evidence-export-pack/`** | T003 Sandbox | Sandboxed trackers containing T003 tasks, decisions, logs, and reports. |
 | 📂 **`work-items/T004-scan-configuration-scope-control/`** | T004 Sandbox | Sandboxed trackers containing T004 tasks, decisions, logs, validation logs, and implementation reports. |
+| 📂 **`work-items/T005-public-pages-deployment/`** | T005 Sandbox | Sandboxed trackers containing T005 tasks, decisions, validation guidelines, and implementation reports. |
 
 ---
 

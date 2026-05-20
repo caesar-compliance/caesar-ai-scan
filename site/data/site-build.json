@@ -1,0 +1,19 @@
+{
+  "version": "0.6.0",
+  "generated_at": "2026-05-20T12:46:09.202Z",
+  "source_commit": "2c869830c904f6c0d8ab206bff073bd414ef7c75",
+  "source_tool": "caesar-ai-site-builder",
+  "public_domain": "ai-scan.caesar.no",
+  "included_data_files": [
+    "sample-scan-result.json",
+    "sample-evidence-candidates.json",
+    "sample-review-workflow.json",
+    "sample-export-pack-manifest.json",
+    "sample-import-readiness.json"
+  ],
+  "safety_notes": [
+    "This data represents synthetically generated compliance static test results.",
+    "No real production secrets, API credentials, or customer code details were published.",
+    "All evidence candidates are static drafts requiring active human auditor certifications."
+  ]
+}

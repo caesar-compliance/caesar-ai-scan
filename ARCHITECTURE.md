@@ -1,6 +1,6 @@
 # Architecture — caesar-ai-scan
 
-This document outlines the high-level architecture, module layers, and data-flow pipelines for the `caesar-ai-scan` static-analysis tool as of version `0.3.0`.
+This document outlines the high-level architecture, module layers, and data-flow pipelines for the `caesar-ai-scan` static-analysis tool as of version `0.6.0`.
 
 ---
 
@@ -39,14 +39,25 @@ This document outlines the high-level architecture, module layers, and data-flow
 └──────────────────────────┬──────────────────────────────┘
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│                     Output Formatter                    │
-│   ┌──────────────────────────┬──────────────────────┐   │
-│   │     Markdown Formatter   │  Evidence Exporter   │   │
-│   │ (report/markdown-report) │ (export/evidence-ec) │   │
-│   ├──────────────────────────┼──────────────────────┤   │
-│   │   Review Report Formatter│                      │   │
-│   │ (report/review-report)   │                      │   │
-│   └──────────────────────────┴──────────────────────┘   │
+│              Output Formatter & Packaging               │
+│  ┌───────────────────────────┬───────────────────────┐  │
+│  │    Markdown Formatter     │   Evidence Exporter   │  │
+│  │ (report/markdown-report)  │ (export/evidence-ec)  │  │
+│  ├───────────────────────────┼───────────────────────┤  │
+│  │    Review Formatter       │   Export Pack Writer  │  │
+│  │ (report/review-report)    │ (export/pack-writer)  │  │
+│  └───────────────────────────┴───────────────────────┘  │
+└──────────────────────────┬──────────────────────────────┘
+                           ▼
+┌─────────────────────────────────────────────────────────┐
+│             Presentation & Deployment Layer             │
+│  ┌───────────────────────────┬───────────────────────┐  │
+│  │     Site Generator        │   Anti-Leak Validator │  │
+│  │ (scripts/build-site.mjs)  │(scripts/validate-site)│  │
+│  ├───────────────────────────┼───────────────────────┤  │
+│  │    Static Dashboard       │  CI/CD Actions Deploy │  │
+│  │      (site/index.html)    │(deploy-pages.yml)     │  │
+│  └───────────────────────────┴───────────────────────┘  │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -73,11 +84,17 @@ Formats findings into developer-ready layouts:
 - **Review Report (`src/report/review-workflow-report.mjs`):** Compiles visual summaries of review lanes, evidence gaps, detailed reviews, and recommended actions.
 - **Evidence Exporter (`src/export/evidence-candidate-exporter.mjs`):** Maps raw engine findings and compliance review items into standard `CaesarEvidenceExportCandidate` records.
 
+### 5. Presentation and Deployment Layer
+Builds, verifies, and hosts the visual representation of the tool:
+- **Site Builder (`scripts/build-site.mjs`):** Sources generated mock scan outputs and copies them to the public static directory (`site/data/`), while generating `site-build.json` metadata.
+- **Site Validator (`scripts/validate-site.mjs`):** Programmatically asserts file presence, CNAME constraints, and audits files to verify that zero external CDNs, tracking services, Google Fonts, or secret credentials exist.
+- **GitHub Actions Workflows (`.github/workflows/deploy-pages.yml`):** Runs the comprehensive syntax and mock scan pipeline in an isolated runner on push to `main`, and deploys the static dashboard to the public hosting domain.
+
 ---
 
 ## 🔄 Data Flow
 
-The operational life cycle of a single scan run proceeds as follows:
+The operational life cycle of a single scan run and site build proceeds as follows:
 
 ```
 [Target Codebase] ──> (File Walker) ──> [File Queue]
@@ -101,6 +118,27 @@ The operational life cycle of a single scan run proceeds as follows:
                ┌────────────────────────────┼────────────────────────────┐
                ▼                            ▼                            ▼
       [Markdown Reports]            [Review JSONs]           [Candidates JSONs]
+               │                            │                            │
+               └────────────────────────────┼────────────────────────────┘
+                                            │ (Compilation into export pack)
+                                            ▼
+                                   [Export Pack JSONs]
+                                            │
+                                            ▼
+                               ┌────────────────────────┐
+                               │  scripts/build-site    │
+                               └────────────┬───────────┘
+                                            │ (Programmatic site copying)
+                                            ▼
+                               [Public Static Site Bundle]
+                                            │
+                                            ▼
+                               ┌────────────────────────┐
+                               │ scripts/validate-site  │
+                               └────────────┬───────────┘
+                                            │ (Checks zero external CDNs & secrets)
+                                            ▼
+                                  [Deployment Artifact]
 ```
 
 1. **Walking:** Filesystem crawler maps files, ignoring common package/build folders.
@@ -108,6 +146,8 @@ The operational life cycle of a single scan run proceeds as follows:
 3. **Compliance Reviewing:** Raw findings are passed through the review compliance engine to assign review lanes, classify evidence gaps, generate reviewer questions, and compute readiness scores.
 4. **Synthesis:** Findings and review items are consolidated, generating summaries.
 5. **Serialization:** Reports and candidates are printed to console or written to JSON/markdown targets.
+6. **Presentation Packaging**: The site builder copies selected anonymized mock outputs into the site data bundle, generating build logs.
+7. **Anti-Leak Validation**: The programmatic validator parses indices, checking domains, validating asset mappings, and asserting absolute exclusion of analytics or tracker connections.
 
 ---
 
@@ -119,5 +159,6 @@ The operational life cycle of a single scan run proceeds as follows:
 > - **It identifies governance review needs, not final legal conclusions.**
 > - **Findings are signals, not proof of non-compliance.**
 > - **All exports are Candidates:** Every evidence export candidate starts as a `draft` and strictly requires developer/compliance human review and sign-off before official Governance OS ingestion. Status is locked with `review_required: true`.
-> - **No live integrations:** No network calls, GitHub Actions, deployment, monitoring, or real database ingestion are included in this offline prototype.
+> - **Simulated Presentation Site**: The public site deployed at `ai-scan.caesar.no` presents static mock data only. It does not perform live repo scanning or network integration.
+> - **No live integrations:** No workspace scanning, pull request scanning, active monitoring, or live database ingestion are supported by this prototype.
 
