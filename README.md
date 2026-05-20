@@ -1,144 +1,111 @@
-# Caesar AI Scan (`caesar-ai-scan`)
+# Caesar AI Scan
 
-> AI usage static analysis scanner for codebases and CI/CD pipelines, part of the [Caesar AI Governance Hub](https://github.com/caesar-compliance/caesar-ai-governance-hub) ecosystem.
+> Offline-first AI governance scan toolkit for evidence-ready checks, local validation, scan history, and diff-ready compliance workflows.
+
+**Live site:** [ai-scan.caesar.no](https://ai-scan.caesar.no/) — static demo with sample data only (see [docs/PUBLIC_SITE_CONTENT_POLICY.md](docs/PUBLIC_SITE_CONTENT_POLICY.md)).
+
+| | |
+|---|---|
+| **Status** | v0.7.0 — offline scan, review, export pack, history/diff, public static site |
+| **Mode** | Offline CLI — no live API calls, no remote ingestion |
+| **Scope** | Local static analysis, review workflow, evidence export candidates |
+| **Safety** | Draft-only exports; human review required — not legal advice |
+
+Part of the [Caesar AI Governance Hub](https://github.com/caesar-compliance/caesar-ai-governance-hub) ecosystem.
 
 ---
 
-## 📖 Overview
+## What it does
 
-**`caesar-ai-scan`** is a fast static-analysis CLI and CI/CD tool designed to scan local codebases and configuration files. It identifies dependencies on external AI APIs, LLM software packages, model prompts, and vector databases, helping teams map and validate active AI integrations against corporate policies.
+- **Static scan** — Detects AI API usage, dependencies, prompts, vector DBs, and credential signals in local codebases.
+- **Review workflow** — Assigns review lanes, classifies evidence gaps, and scores export readiness offline.
+- **Evidence export pack** — Builds a self-contained offline pack for [caesar-ai-evidence](https://github.com/caesar-compliance/caesar-ai-evidence) integration (draft, review-required).
+- **Scope control** — `caesar-scan.config.json` and `.caesarignore` for bounded scan targets.
+- **Scan history & diff** — Records offline scan runs and produces diff reports between runs (no cloud sync).
+- **Public static demo** — GitHub Pages site at [ai-scan.caesar.no](https://ai-scan.caesar.no/) with synthetic sample outputs only.
 
-This tool acts as a scanner within the Caesar AI Governance Hub ecosystem at [caesar.no](https://caesar.no), feeding code audit findings directly into structured governance pipelines.
+## What it is not
 
-### 🚦 Project Status
-> [!NOTE]
-> This repository is in the **v0.6.0 — Public Static Site + GitHub Pages Deployment** stage. It is an offline prototype capable of scanning local files, detecting AI dependencies, credentials, vector databases, and prompt configurations, generating review workflow items with assigned lanes, classifying evidence gaps, calculating export readiness, compiling all artifacts into a self-contained offline evidence export pack directory, and deploying a self-contained, responsive client-side static presentation site to the custom domain: [https://ai-scan.caesar.no/](https://ai-scan.caesar.no/).
+- **Not legal advice** — findings are signals for governance review, not compliance proof.
+- **Not automated compliance** — all export candidates stay `draft` with `review_required: true`.
+- **Not connected to live systems** — no network ingestion, no user-repo CI scanning in this repo version.
+- **Not publishing real client data** — the public site uses sample/fixture data only.
 
 ---
 
-## 🚀 Quick Start (v0.6.0 Public Deployment)
+## Quick start
 
-No external production dependencies are required. Ensure you have Node.js (v18+) installed.
+Requires Node.js 18+.
 
-### 1. Installation
-Clone the repository and install the development workspace:
 ```bash
 npm install
-```
-
-### 2. Running a Scan, Review, & Pack Export
-Run the scanner against a local target directory, output results as JSON, export evidence candidates, generate the review workflow, and write the complete self-contained evidence export pack to a directory:
-```bash
-node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --review-report tmp/sample-review-workflow.md --export-pack tmp/sample-evidence-export-pack
-```
-
-Or run the predefined sample scan npm scripts:
-```bash
-# Run basic scanner
 npm run scan:sample
-
-# Run compliance review generator
 npm run review:sample
-
-# Run the complete self-contained evidence export pack generator
 npm run pack:sample
-```
-
-### 3. Running Programmatic Validation Tests
-Execute the offline scan, review, and export pack validation suite:
-```bash
-# Programmatically validate scan outputs
-npm run validate:samples
-
-# Programmatically validate review workflow & evidence gaps
-npm run validate:review
-
-# Programmatically validate export pack integrity, hashes, schemas, and policy boundaries
-npm run validate:pack
-
-# Programmatically build the public static website dashboard
-npm run build:site
-
-# Programmatically validate public website for secrets leak, CDN leaks, or tracker inclusion
-npm run validate:site
-```
-
-Check code syntax across all modules:
-```bash
-npm run check:syntax
-```
-
-Run the full end-to-end syntax, scan, review, pack, build, and website validation pipeline:
-```bash
+npm run history:sample
 npm run check:all-offline
 ```
 
----
+Individual validators: `validate:samples`, `validate:review`, `validate:pack`, `validate:scope`, `validate:history`, `validate:site`, `check:syntax`.
 
-## 🛠️ CLI Specifications & Arguments
+Full CLI example:
 
-The static analysis CLI supports the following configuration commands:
-- **`node src/cli.mjs <target>`**: Directory to scan (defaults to `.`).
-- **`--format <json|markdown>`**: Set scan report serialization style (defaults to `markdown`).
-- **`--out <path>`**: Output destination for the formatted scan report.
-- **`--export-evidence-candidates <path>`**: Output path to export candidate JSON records for Caesar AI Evidence integration (enriched with review metadata).
-- **`--review-out <path>`**: Output destination for the structured JSON Review Workflow containing assigned lanes, gaps, and scores.
-- **`--review-report <path>`**: Output destination for the premium Markdown compliance summary review report.
-- **`--export-pack <directory>`**: Compiles and writes the complete self-contained evidence export pack folder (contains 7 JSON files and `REVIEW_SUMMARY.md` auditor report).
-
----
-
-## 👥 Who It Is For
-
-*   **Developers & DevOps Engineers:** To identify active AI software dependencies and run static compliance checks locally or during CI/CD steps.
-*   **CTOs & Security Teams:** To maintain a continuous, automated inventory of AI tools, API integrations, and vector stores without manual auditing.
-*   **Compliance & Audit Leads:** To discover evidence gaps and map source code usage directly to documented controls.
+```bash
+node src/cli.mjs fixtures/sample-ai-project \
+  --format json \
+  --out tmp/sample-scan-result.json \
+  --export-evidence-candidates tmp/sample-evidence-candidates.json \
+  --review-out tmp/sample-review-workflow.json \
+  --review-report tmp/sample-review-workflow.md \
+  --export-pack tmp/sample-evidence-export-pack
+```
 
 ---
 
-## 🛠️ How It Connects
+## CLI overview
 
-### 1. Caesar AI Governance Hub Connection
-`caesar-ai-scan` is a core utility of the parent ecosystem. It translates raw source code states into verified evidence layers to validate that systems comply with global governance guidelines.
-
-### 2. Connection to `caesar-ai-evidence`
-Scan results are compiled and exported strictly matching the standardized schemas defined in [caesar-ai-evidence](https://github.com/caesar-compliance/caesar-ai-evidence). This ensures that codebase scan logs are perfectly interoperable with the rest of the ecosystem.
-
----
-
-## ⚖️ Important Disclaimer & Policy Boundary
-
-> [!IMPORTANT]
-> **Offline Scanner Prototype:**
-> `caesar-ai-scan` is an offline technical static-analysis utility that helps identify, map, and document AI dependencies and potential API exposures in codebases. 
-> - **It identifies governance review needs, not final legal conclusions.**
-> - **Findings are signals, not proof of non-compliance.**
-> - **No automated compliance:** All evidence export candidates generated by the scanner require manual human reviewer validation and authorization before central Governance OS ingestion. Status remains locked in `draft` with `review_required: true`.
-> - **No live integrations:** This version implements the review workflow and evidence gap classifier offline. It does not add network requests, GitHub Actions workspace scans of user code, or real database ingestion.
-> - **Public Static Pages Only**: The deployed site is completely static and hosts simulated, synthetically generated sample data only. No real corporate data or secret materials are ever published.
-> - Regulatory compliance remains a holistic legal, operational, and organizational state determined by accredited auditors, legal experts, and competent authorities.
+| Flag | Purpose |
+|---|---|
+| `<target>` | Directory to scan (default `.`) |
+| `--format json\|markdown` | Report format |
+| `--out <path>` | Scan report output |
+| `--export-evidence-candidates <path>` | Evidence candidate JSON |
+| `--review-out` / `--review-report` | Review workflow JSON and Markdown |
+| `--export-pack <dir>` | Full offline evidence export pack |
+| `--scope-out` / `--scope-report` | Scope resolution outputs |
+| `--history-dir` / `--record-history` / `--diff-previous` | Offline history and diff |
 
 ---
 
-## 📂 Repository Directory
+## Who it is for
 
-*   **[SPEC.md](SPEC.md)** — Core scan specifications, CLI command flags, and detection models.
-*   **[ARCHITECTURE.md](ARCHITECTURE.md)** — Scan engine flow, dependency matching rules, and modules layout.
-*   **[ROADMAP.md](ROADMAP.md)** — Multi-phase project development roadmap.
-*   **[CHANGELOG.md](CHANGELOG.md)** — Chronological release history.
-*   **[REPO_INVENTORY.md](REPO_INVENTORY.md)** — Structural file index of this codebase.
-*   **[PROJECT_STATE.md](PROJECT_STATE.md)** — Project phase, metadata tracker, and boundaries.
-*   **[NEXT_ACTIONS.md](NEXT_ACTIONS.md)** — Task execution lists and autonomous boundaries.
-*   **[docs/PUBLIC_DEPLOYMENT.md](docs/PUBLIC_DEPLOYMENT.md)** — Architecture reference guide for public website.
-*   **[docs/GITHUB_PAGES_DEPLOYMENT.md](docs/GITHUB_PAGES_DEPLOYMENT.md)** — Triggers and configuration settings for GitHub Pages deployment.
-*   **[docs/PUBLIC_SITE_CONTENT_POLICY.md](docs/PUBLIC_SITE_CONTENT_POLICY.md)** — Anonymization rules, no tracking, and static isolation constraints.
-*   **[docs/REVIEW_WORKFLOW_AND_EVIDENCE_GAPS.md](docs/REVIEW_WORKFLOW_AND_EVIDENCE_GAPS.md)** — Core review workflow engine design and architecture.
-*   **[docs/EVIDENCE_GAP_TAXONOMY.md](docs/EVIDENCE_GAP_TAXONOMY.md)** — Assigned compliance review lanes and evidence gaps taxonomy.
-*   **[docs/EXPORT_READINESS_MODEL.md](docs/EXPORT_READINESS_MODEL.md)** — Mathematical readiness score model and safety guardrails.
-*   **[docs/RESEARCH_CONTEXT.md](docs/RESEARCH_CONTEXT.md)** — Functional domain research and strategic context.
-*   **[docs/DECISION_LOG.md](docs/DECISION_LOG.md)** — Architectural decision log history.
-*   **[docs/EVIDENCE_EXPORT_CONTRACT.md](docs/EVIDENCE_EXPORT_CONTRACT.md)** — Ingestion schemas and contract specifications.
-*   **[docs/TAXONOMY_AND_REVIEW_WORKFLOW.md](docs/TAXONOMY_AND_REVIEW_WORKFLOW.md)** — AI asset categorization and manual sign-off loops.
-*   **[docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md](docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md)** — Licensing compliance rules.
+- **Developers & DevOps** — inventory AI dependencies locally or in CI prep.
+- **Security teams** — map AI integrations and credential exposure signals.
+- **Compliance & audit leads** — surface evidence gaps and review lanes before export.
 
+---
 
+## Ecosystem
+
+`caesar-ai-scan` feeds structured scan and review artifacts into the Caesar AI Governance Hub pipeline, aligned with [caesar-ai-evidence](https://github.com/caesar-compliance/caesar-ai-evidence) schemas.
+
+---
+
+## Important disclaimer
+
+> `caesar-ai-scan` is an offline technical static-analysis utility. It identifies governance review needs, not final legal conclusions. Regulatory compliance is determined by qualified experts and competent authorities. The public site hosts synthetic sample data only.
+
+---
+
+## Repository documentation
+
+| File | Role |
+|---|---|
+| [SPEC.md](SPEC.md) | Scan specifications and detection model |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Engine flow and modules |
+| [PROJECT_STATE.md](PROJECT_STATE.md) | Phase, version, boundaries |
+| [NEXT_ACTIONS.md](NEXT_ACTIONS.md) | Prioritized next steps |
+| [CHANGELOG.md](CHANGELOG.md) | Release history |
+| [docs/PUBLIC_DEPLOYMENT.md](docs/PUBLIC_DEPLOYMENT.md) | Public site architecture |
+| [docs/GITHUB_PAGES_DEPLOYMENT.md](docs/GITHUB_PAGES_DEPLOYMENT.md) | Pages deployment notes |
+| [docs/REPOSITORY_PRESENTATION_POLISH.md](docs/REPOSITORY_PRESENTATION_POLISH.md) | Repository presentation polish record |

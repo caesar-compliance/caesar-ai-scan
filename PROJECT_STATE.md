@@ -7,13 +7,13 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.6.0`
-*   **Current Phase:** `T005 / v0.6.0 — Public Static Site + GitHub Pages Deployment`
+*   **Current Version:** `0.7.0`
+*   **Current Phase:** `T006 / v0.7.0 — Offline Scan History and Diff Model`
 *   **Status:** `completed`
-*   **Latest Known Commit:** `2c869830c904f6c0d8ab206bff073bd414ef7c75` (Post-T004 closeout)
-*   **Latest Completed Task:** `T005 Public static presentation dashboard and GitHub Pages CI/CD pipeline integrated and verified.`
+*   **Latest Completed Task:** `T006 Offline scan history, diff model, and public static site at ai-scan.caesar.no.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `Transition to T006 / v0.7.0 — Dynamic CI Gates and PR Scanner Annotations.`
+*   **Next Recommended Step:** `T006-A monitoring run model planning (docs only) or next governance integration milestone per ROADMAP.md.`
+*   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---
 

@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - Repository presentation polish (20 May 2026)
 
+### Changed
+
+- README: concise product-facing layout, v0.7.0 status, offline/history/diff boundaries.
+- `PROJECT_STATE.md`: version and phase aligned to v0.7.0 / T006.
+- GitHub repository About: description, homepage `https://ai-scan.caesar.no`, topics.
+
+### Added
+
+- `docs/REPOSITORY_PRESENTATION_POLISH.md`
+- `work-items/repository-presentation-polish/TASK.md`
+
+---
 
 ## [0.7.0] - 20 May 2026
 ### Added
