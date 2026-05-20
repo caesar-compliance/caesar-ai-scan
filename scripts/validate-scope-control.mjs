@@ -58,14 +58,20 @@ function runScopeValidation() {
   const gitDir = join(targetDir, '.git');
   const nodeModulesDir = join(targetDir, 'node_modules');
   const dummyTmpDir = join(targetDir, 'venv'); // use venv since it is standard ignore
+  const testTmpDir = join(targetDir, 'tmp');
+  const testGeneratedDir = join(targetDir, 'generated');
 
   if (!existsSync(gitDir)) mkdirSync(gitDir, { recursive: true });
   if (!existsSync(nodeModulesDir)) mkdirSync(nodeModulesDir, { recursive: true });
   if (!existsSync(dummyTmpDir)) mkdirSync(dummyTmpDir, { recursive: true });
+  if (!existsSync(testTmpDir)) mkdirSync(testTmpDir, { recursive: true });
+  if (!existsSync(testGeneratedDir)) mkdirSync(testGeneratedDir, { recursive: true });
 
   writeFileSync(join(gitDir, 'HEAD'), 'ref: refs/heads/main', 'utf8');
   writeFileSync(join(nodeModulesDir, 'dummy.js'), '// dummy package file', 'utf8');
   writeFileSync(join(dummyTmpDir, 'dummy.json'), '{}', 'utf8');
+  writeFileSync(join(testTmpDir, 'ignored-output.json'), '{}', 'utf8');
+  writeFileSync(join(testGeneratedDir, 'ignored-ai-noise.js'), '// noise', 'utf8');
 
   // ==========================================
   // 4. Resolve Scope & Exclusions Assertions
@@ -124,6 +130,8 @@ function runScopeValidation() {
     rmSync(gitDir, { recursive: true, force: true });
     rmSync(nodeModulesDir, { recursive: true, force: true });
     rmSync(dummyTmpDir, { recursive: true, force: true });
+    rmSync(testTmpDir, { recursive: true, force: true });
+    rmSync(testGeneratedDir, { recursive: true, force: true });
   }
 
   // ==========================================
