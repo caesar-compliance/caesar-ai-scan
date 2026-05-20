@@ -17,8 +17,14 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 🚦 **`PROJECT_STATE.md`** | Project State | Tracks active developmental phase, metadata, boundaries, active tasks, and milestones. |
 | 🤖 **`NEXT_ACTIONS.md`** | Next Actions | Prioritizes upcoming tasks and establishes boundaries for autonomous agent executions. |
 | 📦 **`package.json`** | Dependencies & Scripts | Node.js ESM configuration with pipeline scan scripts. |
+| ⚙️ **`caesar-scan.config.json`** | Config Template | Default template configuration file in project root. |
 | 🚀 **`src/cli.mjs`** | CLI Entry Point | CLI controller coordinating scan runs and file writes. |
+| ⚙️ **`src/config/default-scan-config.mjs`** | Default Settings | Standard built-in JS scanner configurations. |
+| ⚙️ **`src/config/load-scan-config.mjs`** | Config Loader | Merges local settings files with defaults and overrides. |
+| ⚙️ **`src/config/parse-caesarignore.mjs`** | Ignore Parser | Binds to root `.caesarignore` patterns parser. |
 | 👣 **`src/scanner/file-walker.mjs`** | Filesystem Crawler | Traverses codebase files while excluding node_modules/git configurations. |
+| 🔄 **`src/scanner/path-matcher.mjs`** | Glob Matcher | Performs pure glob-to-regex conversions and segments checking. |
+| 🔄 **`src/scanner/scope-resolver.mjs`** | Scope Engine | Orchestrates traversals, mapping files into scan scopes. |
 | 🔄 **`src/scanner/scan-runner.mjs`** | Scan Orchestrator | Coordinates parsing and matching logic across all four detectors. |
 | 📖 **`src/rules/load-rules.mjs`** | Rules Loader | Helper resolving and parsing json rules databases safely. |
 | 🛡️ **`src/detectors/dependency-detector.mjs`** | Dependency Parser | Parses package.json and requirements.txt for AI libraries. |
@@ -27,6 +33,7 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📊 **`src/detectors/vector-db-detector.mjs`** | Vector DB Matcher | Scans code file lines for high-dimensional DB imports and usages. |
 | 📁 **`src/export/evidence-candidate-exporter.mjs`** | Evidence Exporter | Maps raw findings to CaesarEvidenceExportCandidate schemas. |
 | 📝 **`src/report/markdown-report.mjs`** | Markdown Formatter | Generates formatted terminal reports with compliance guidance. |
+| 📊 **`src/report/scope-report.mjs`** | Scope Report | Formats scope analysis into a premium dashboard markdown. |
 | ⚙️ **`src/utils/read-json-safe.mjs`** | Safe JSON Reader | Zero-dependency file parser returning null on failure. |
 | 🗃️ **`src/review/load-review-taxonomy.mjs`** | Taxonomy Loader | Safely resolves and parses taxonomy catalogs via relative ESM imports. |
 | 🕵️‍♂️ **`src/review/evidence-gap-classifier.mjs`** | Gap Classifier | Assesses findings against compliance controls to log missing evidence elements. |
@@ -44,6 +51,7 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 💾 **`data/detection-rules.ai-usage.json`** | Rules Database | Clean-room regexes catalog matching AI usage components. |
 | 🏷️ **`data/review-taxonomy.ai-governance.json`** | Lane Taxonomy | Defines standard governance review lanes and readiness statuses. |
 | 📋 **`data/evidence-requirements.ai-usage.json`** | Requirement Maps | Maps specific AI detection signals to required compliance evidence types. |
+| 💾 **`data/default-scan-config.json`** | Default Settings | JSON template containing core scanner outputs locations and options. |
 | 📑 **`schemas/scan-result.schema.json`** | Ingest Schema | Draft schema for full scan result documents. |
 | 📑 **`schemas/evidence-export-candidate.schema.json`** | Export Schema | Draft schema for reviewable evidence export candidates. |
 | 📑 **`schemas/review-workflow.schema.json`** | Workflow Schema | Contract schema for the consolidated review workflow object. |
@@ -52,10 +60,13 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📑 **`schemas/export-manifest.schema.json`** | Manifest Schema | Verification schema tracking file hash checksums and safety flags. |
 | 📑 **`schemas/import-readiness.schema.json`** | Readiness Schema | Evaluates feasibility, scoring metrics, and blockers for ingestion. |
 | 📑 **`schemas/human-review-checklist.schema.json`** | Checklist Schema | Guides routing tasks, questions, and signature certifications. |
+| 📑 **`schemas/scan-config.schema.json`** | Config Schema | Validates JSON scan settings files formats. |
+| 📑 **`schemas/scan-scope.schema.json`** | Scope Schema | Validates scope resolutions output format properties. |
 | 🛠️ **`scripts/check-syntax.mjs`** | Syntax Validator | Standalone checker running syntax validation offline. |
 | 🧪 **`scripts/validate-samples.mjs`** | Validation Assertions | Automatic suite verifying scanner outcomes. |
 | 🧪 **`scripts/validate-review-workflow.mjs`** | Review Validator | Suite asserting schema-compliance and mathematical rules for workflows. |
 | 🧪 **`scripts/validate-export-pack.mjs`** | Pack Auditor | Verification script validating integrity, hashes, schemas, and policy boundaries. |
+| 🧪 **`scripts/validate-scope-control.mjs`** | Scope Auditor | Asserts globbing translation engines and ignore directories policies. |
 | 🧬 **`fixtures/sample-ai-project/`** | Fixture Directory | Harmless mock AI project used to test scanner functionalities. |
 | 📊 **`docs/RESEARCH_CONTEXT.md`** | Domain Research | Ingests strategic requirements, user personas, and target scopes. |
 | ⚖️ **`docs/DECISION_LOG.md`** | Decision Log | Records chronological technical, strategic, and governance decisions. |
@@ -69,9 +80,13 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📜 **`docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md`** | OS Contract | Specifications for importing export packages into Governance OS. |
 | 🤝 **`docs/CAESAR_AI_EVIDENCE_HANDOFF.md`** | Handoff Contract | Specifies data model and mappings from scanner to caesar-ai-evidence. |
 | 👣 **`docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md`** | Sign-off Workflow | Manual sign-off procedures and verification checklist. |
+| 📚 **`docs/SCAN_CONFIGURATION.md`** | Config Guide | Documents scan settings, merged priority sequence and parameters. |
+| 📚 **`docs/CAESARIGNORE_REFERENCE.md`** | Ignore Guide | Explains .caesarignore syntax and glob rules. |
+| 📚 **`docs/SCOPE_CONTROL_POLICY.md`** | Scope Guide | Details file categorization policies and directory tree crawlers. |
 | 📂 **`work-items/T001-evidence-export-candidate-pipeline/`** | T001 Sandbox | Sandboxed trackers containing T001 tasks, logs, and reports. |
 | 📂 **`work-items/T002-review-workflow-evidence-gaps/`** | T002 Sandbox | Sandboxed trackers containing T002 tasks, logs, and reports. |
 | 📂 **`work-items/T003-evidence-export-pack/`** | T003 Sandbox | Sandboxed trackers containing T003 tasks, decisions, logs, and reports. |
+| 📂 **`work-items/T004-scan-configuration-scope-control/`** | T004 Sandbox | Sandboxed trackers containing T004 tasks, decisions, logs, validation logs, and implementation reports. |
 
 ---
 

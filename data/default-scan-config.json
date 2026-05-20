@@ -1,0 +1,14 @@
+{
+  "target": ".",
+  "exclude": [],
+  "rulesPath": null,
+  "outputs": {
+    "scan_result": "tmp/sample-scan-result.json",
+    "evidence_candidates": "tmp/sample-evidence-candidates.json",
+    "review_out": "tmp/sample-review-workflow.json",
+    "review_report": "tmp/sample-review-workflow.md",
+    "export_pack": "tmp/sample-evidence-export-pack",
+    "scope_out": "tmp/sample-scope.json",
+    "scope_report": "tmp/sample-scope.md"
+  }
+}

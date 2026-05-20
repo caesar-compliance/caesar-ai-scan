@@ -8,7 +8,6 @@ const STANDARD_IGNORES = new Set([
   '.venv',
   'dist',
   'build',
-  'tmp',
   '.DS_Store'
 ]);
 

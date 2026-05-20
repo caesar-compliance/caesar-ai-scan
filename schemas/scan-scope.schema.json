@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarScanScope",
+  "type": "object",
+  "required": ["schema_version", "target", "resolved_at", "summary", "files"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.5.0" },
+    "target": { "type": "string" },
+    "resolved_at": { "type": "string", "format": "date-time" },
+    "summary": {
+      "type": "object",
+      "required": ["total_found", "included_count", "excluded_count", "skipped_count"],
+      "properties": {
+        "total_found": { "type": "integer", "minimum": 0 },
+        "included_count": { "type": "integer", "minimum": 0 },
+        "excluded_count": { "type": "integer", "minimum": 0 },
+        "skipped_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "object",
+      "required": ["included", "excluded", "skipped"],
+      "properties": {
+        "included": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "excluded": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["relativePath", "reason"],
+            "properties": {
+              "relativePath": { "type": "string" },
+              "reason": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "skipped": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["relativePath", "reason"],
+            "properties": {
+              "relativePath": { "type": "string" },
+              "reason": { "type": "string" },
+              "type": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

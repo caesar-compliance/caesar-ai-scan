@@ -1,6 +1,7 @@
 # Sample Caesar Ignore File
-# Ignore the mock noise file to prove exclusion rules work
-ignored-ai-noise.js
+# Ignore the mock noise folders to prove exclusion rules work
+generated/
+tmp/
 
 # Ignore any log files
 **/*.log

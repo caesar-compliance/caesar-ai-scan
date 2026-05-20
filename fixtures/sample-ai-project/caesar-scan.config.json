@@ -1,0 +1,7 @@
+{
+  "target": ".",
+  "exclude": [
+    "generated/",
+    "tmp/"
+  ]
+}

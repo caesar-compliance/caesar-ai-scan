@@ -9,11 +9,11 @@ This document tracks the current active state, milestones, and boundaries for th
 *   **Repository Name:** `caesar-ai-scan`
 *   **Current Version:** `0.5.0`
 *   **Current Phase:** `T004 / v0.5.0 — Scan Configuration + .caesarignore + Scope Control`
-*   **Status:** `in_progress`
-*   **Latest Known Commit:** `f9366ee87bfaef4124d98fdbeb1c7c07c915c609` (Pre-T004 starting commit)
-*   **Latest Completed Task:** `T003 closeout audit passed and verified.`
-*   **Active Work Item:** `T004 scan configuration and scope control implementation.`
-*   **Next Recommended Step:** `complete offline validation suite`
+*   **Status:** `completed`
+*   **Latest Known Commit:** `c9e5032f736ff14bc790befad4652900291a721d` (Post-T004 merge commit)
+*   **Latest Completed Task:** `T004 closeout audit passed and verified with full canonical file coverage.`
+*   **Active Work Item:** `None.`
+*   **Next Recommended Step:** `Transition to Phase v0.4 CI/CD Integration & HTML Reporting.`
 
 ---
 
@@ -45,6 +45,9 @@ This document tracks the current active state, milestones, and boundaries for th
     *   [ROADMAP.md](ROADMAP.md) — Lifecycle Phases
     *   [CHANGELOG.md](CHANGELOG.md) — Historical Updates
     *   [REPO_INVENTORY.md](REPO_INVENTORY.md) — Workspace Registry
+    *   [docs/SCAN_CONFIGURATION.md](docs/SCAN_CONFIGURATION.md) — JSON Configuration options reference guide
+    *   [docs/CAESARIGNORE_REFERENCE.md](docs/CAESARIGNORE_REFERENCE.md) — Ignore glob syntax and regex mappings
+    *   [docs/SCOPE_CONTROL_POLICY.md](docs/SCOPE_CONTROL_POLICY.md) — Traversal and skip policy rules
     *   [docs/REVIEW_WORKFLOW_AND_EVIDENCE_GAPS.md](docs/REVIEW_WORKFLOW_AND_EVIDENCE_GAPS.md) — Review workflow engine architecture
     *   [docs/EVIDENCE_GAP_TAXONOMY.md](docs/EVIDENCE_GAP_TAXONOMY.md) — Assigned compliance lanes and gaps taxonomy
     *   [docs/EXPORT_READINESS_MODEL.md](docs/EXPORT_READINESS_MODEL.md) — Readiness score math and guardrails
@@ -57,4 +60,3 @@ This document tracks the current active state, milestones, and boundaries for th
     *   [docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md](docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md) — Governance OS Ingestion specifications
     *   [docs/CAESAR_AI_EVIDENCE_HANDOFF.md](docs/CAESAR_AI_EVIDENCE_HANDOFF.md) — Relational mappings to caesar-ai-evidence
     *   [docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md](docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md) — Manual review procedures and checklist
-
