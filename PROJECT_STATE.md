@@ -64,3 +64,5 @@ This document tracks the current active state, milestones, and boundaries for th
     *   [docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md](docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md) — Governance OS Ingestion specifications
     *   [docs/CAESAR_AI_EVIDENCE_HANDOFF.md](docs/CAESAR_AI_EVIDENCE_HANDOFF.md) — Relational mappings to caesar-ai-evidence
     *   [docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md](docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md) — Manual review procedures and checklist
+
+- T006-A: Monitoring Run Model Planning Pack (Completed)
