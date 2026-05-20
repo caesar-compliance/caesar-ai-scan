@@ -9,9 +9,9 @@ This document tracks the current active state, milestones, and boundaries for th
 *   **Repository Name:** `caesar-ai-scan`
 *   **Current Version:** `0.4.0`
 *   **Current Phase:** `v0.4.0 — Evidence Export Pack + Governance OS / Caesar AI Evidence Contract`
-*   **Status:** `active`
-*   **Latest Known Commit:** `433b64b2c8b6538c457481bd687e01d52f8b7a7e` (Pre-T003 base commit)
-*   **Latest Completed Task:** `Implemented T003 / v0.4.0 — Evidence Export Pack + Governance OS / Caesar AI Evidence Contract.`
+*   **Status:** `closed`
+*   **Latest Known Commit:** `97340cf4f8625f9063b635f47978aacdc9c1635a` (Pre-audit base commit)
+*   **Latest Completed Task:** `T003 closeout audit passed and verified.`
 *   **Active Work Item:** `none`
 *   **Next Recommended Step:** `implement custom exclusions ignore list parser (.caesarignore)`
 
@@ -53,4 +53,8 @@ This document tracks the current active state, milestones, and boundaries for th
     *   [docs/EVIDENCE_EXPORT_CONTRACT.md](docs/EVIDENCE_EXPORT_CONTRACT.md) — Downstream schemas contract specs
     *   [docs/TAXONOMY_AND_REVIEW_WORKFLOW.md](docs/TAXONOMY_AND_REVIEW_WORKFLOW.md) — Classification taxonomy and human approval steps
     *   [docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md](docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md) — Code copy clean-room boundary terms
+    *   [docs/EVIDENCE_EXPORT_PACK.md](docs/EVIDENCE_EXPORT_PACK.md) — Evidence Export Pack reference guide
+    *   [docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md](docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md) — Governance OS Ingestion specifications
+    *   [docs/CAESAR_AI_EVIDENCE_HANDOFF.md](docs/CAESAR_AI_EVIDENCE_HANDOFF.md) — Relational mappings to caesar-ai-evidence
+    *   [docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md](docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md) — Manual review procedures and checklist
 

@@ -65,8 +65,13 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📖 **`docs/REVIEW_WORKFLOW_AND_EVIDENCE_GAPS.md`** | Workflow Design | Explains conceptual routing architecture and workflow schemas. |
 | 📚 **`docs/EVIDENCE_GAP_TAXONOMY.md`** | Gap Taxonomy | Specification cataloging all possible governance evidence gaps. |
 | 📈 **`docs/EXPORT_READINESS_MODEL.md`** | Scoring Math | Details weights, penalties, and the 70% readiness capping rule. |
+| 📦 **`docs/EVIDENCE_EXPORT_PACK.md`** | Export Pack Guide | Describes the design, structure, and usage of the offline Evidence Export Pack. |
+| 📜 **`docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md`** | OS Contract | Specifications for importing export packages into Governance OS. |
+| 🤝 **`docs/CAESAR_AI_EVIDENCE_HANDOFF.md`** | Handoff Contract | Specifies data model and mappings from scanner to caesar-ai-evidence. |
+| 👣 **`docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md`** | Sign-off Workflow | Manual sign-off procedures and verification checklist. |
 | 📂 **`work-items/T001-evidence-export-candidate-pipeline/`** | T001 Sandbox | Sandboxed trackers containing T001 tasks, logs, and reports. |
 | 📂 **`work-items/T002-review-workflow-evidence-gaps/`** | T002 Sandbox | Sandboxed trackers containing T002 tasks, logs, and reports. |
+| 📂 **`work-items/T003-evidence-export-pack/`** | T003 Sandbox | Sandboxed trackers containing T003 tasks, decisions, logs, and reports. |
 
 ---
 
