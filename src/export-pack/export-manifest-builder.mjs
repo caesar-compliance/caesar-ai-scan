@@ -36,7 +36,7 @@ export function buildExportManifest(targetProjectPath, artifactPayloads) {
     manifest_id: `man_${Math.random().toString(36).substring(2, 10)}${Math.random().toString(36).substring(2, 10)}`,
     generated_at: new Date().toISOString(),
     source_tool: 'caesar-ai-scan',
-    source_tool_version: '0.4.0',
+    source_tool_version: '0.5.0',
     target_project_path: targetProjectPath,
     included_artifacts: includedArtifacts,
     artifact_counts: {
@@ -52,7 +52,7 @@ export function buildExportManifest(targetProjectPath, artifactPayloads) {
     },
     hash_summary: hashSummary,
     compatibility: {
-      schema_version: '0.4.0',
+      schema_version: '0.5.0',
       minimum_governance_os_version: '1.0.0'
     }
   };
