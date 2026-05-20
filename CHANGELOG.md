@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 20 May 2026
+
+### Added
+- **AI Governance Review Taxonomy:** Created `data/review-taxonomy.ai-governance.json` and `data/evidence-requirements.ai-usage.json` specifying governance review lanes and evidence gaps.
+- **Review Workflow Schemas:** Added standard validation schemas `schemas/review-workflow.schema.json` and `schemas/evidence-gap.schema.json`.
+- **Evidence Gap Classifier:** Built zero-dependency classification engine `src/review/evidence-gap-classifier.mjs` mapping raw scan findings to missing evidence structures and reviewer context.
+- **Auditor Recommendations:** Implemented dynamic questions and actions catalog `src/review/recommended-questions.mjs` to guide human code-reviewers and security auditors.
+- **Deterministic Readiness Scorer:** Developed analytical readiness scoring `src/review/export-readiness-scorer.mjs` incorporating a strict 70% capping rule when blocking evidence gaps are unresolved.
+- **Integrated Exporter Enrichment:** Extended `src/export/evidence-candidate-exporter.mjs` to automatically enrich exported evidence candidates with readiness scores, gap profiles, and review lanes while preserving draft isolation.
+- **Enhanced CLI interface:** Updated `src/cli.mjs` with `--review-out <path>` and `--review-report <path>` parameters.
+- **Premium Markdown Reporting:** Added `src/report/review-workflow-report.mjs` to generate visual, GitHub-alert-friendly review dashboards.
+- **Programmatic Validation Engine:** Created robust assertion suite `scripts/validate-review-workflow.mjs` to verify pipeline behavior, schema compliance, and draft bounds.
+
 ## [0.2.0] - 20 May 2026
 
 ### Added

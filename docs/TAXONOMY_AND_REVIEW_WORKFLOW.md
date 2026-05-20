@@ -33,10 +33,18 @@ Findings are categorized under four pillars of the Caesar AI Asset Taxonomy:
 ## 🔄 Human Review Workflow
 
 ```
-[Automated CLI Scan] ──> [Evidence Export Candidate (Draft)]
+[Automated CLI Scan] ──> [Evidence Gap & Review Lane Router (v0.3.0)]
                                      │
                                      ▼
-                        [Security & Developer Review]
+                    [Enriched Export Candidate (Draft)]
+                                     │
+                                     ▼
+                  ┌─────────────────────────────────────┐
+                  │      Targeted Multi-lane Review     │
+                  │  - Technical Owner  - Security      │
+                  │  - Legal Compliance - Privacy       │
+                  │  - Vendor           - Risk          │
+                  └──────────────────┬──────────────────┘
                                      │
                   ┌──────────────────┴──────────────────┐
                   ▼                                     ▼
@@ -46,7 +54,7 @@ Findings are categorized under four pillars of the Caesar AI Asset Taxonomy:
      [Ingest into Governance OS]              [Mark as Excluded]
 ```
 
-1. **Draft Creation:** The offline scan generates draft evidence candidates.
-2. **Technical Verification:** A developer verifies that the matched package or file is utilized for authorized functions.
-3. **Compliance Review:** Security managers confirm that the data protection agreements (DPAs) for the target models are compliant with current legal frameworks.
-4. **Official Ingestion:** Approved candidates are signed and ingested into Caesar AI Governance registers.
+1. **Draft Creation & Context Enrichment:** The offline scan runs and automatically classifies missing evidence gaps and routes findings to designated review lanes inside the generated candidates.
+2. **Targeted Multi-lane Audit:** Relevant departments (e.g. Security for credentials, Legal/Vendor for SDK terms, Privacy for Vector DBs) address their designated review items.
+3. **Evidence Readiness Scoring:** As reviewers resolve evidence gaps, the export readiness score moves up. Unresolved "blocking" gaps hard-cap readiness at `70%`.
+4. **Compliance Verification & Ingestion:** When all lanes approve the candidate, the record is signed and ingested into Caesar AI Governance OS.

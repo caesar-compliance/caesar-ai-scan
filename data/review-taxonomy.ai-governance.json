@@ -1,0 +1,70 @@
+{
+  "review_lanes": {
+    "technical_owner_review": {
+      "name": "Technical Owner Review",
+      "description": "Validation of the code implementation, target system architectural boundaries, and operational dependencies."
+    },
+    "security_review": {
+      "name": "Security Review",
+      "description": "Assessment of secret key exposures, data path security, encryption in transit, and vulnerability vectors."
+    },
+    "legal_compliance_review": {
+      "name": "Legal Compliance Review",
+      "description": "Audit of third-party model licensing agreements, trademark policies, and regulatory alignment (e.g. EU AI Act)."
+    },
+    "privacy_review": {
+      "name": "Privacy Review",
+      "description": "Review of personally identifiable information (PII) leakage risk, data retention, and consent workflows."
+    },
+    "vendor_review": {
+      "name": "Vendor Review",
+      "description": "Evaluation of third-party SaaS SLAs, data storage jurisdictions, and model provider data privacy agreements."
+    },
+    "model_inventory_review": {
+      "name": "Model Inventory Review",
+      "description": "Assessment of cataloged model details, model sizes, weights provenance, and fine-tuning histories."
+    },
+    "risk_classification_review": {
+      "name": "Risk Classification Review",
+      "description": "Determination of AI system risk levels under policy guidelines (e.g. Minimal, Limited, High, Unacceptable risk)."
+    },
+    "human_oversight_review": {
+      "name": "Human Oversight Review",
+      "description": "Validation of human-in-the-loop interfaces, override systems, and fallback procedures."
+    },
+    "retention_and_logging_review": {
+      "name": "Retention & Logging Review",
+      "description": "Audit of model prompt/completion retention terms and trace logger setups."
+    }
+  },
+  "readiness_statuses": {
+    "draft_detected": {
+      "label": "Draft Detected",
+      "description": "Initial scanner discovery state. No review context has been attached."
+    },
+    "blocked_missing_context": {
+      "label": "Blocked — Missing Context",
+      "description": "The item cannot be approved because critical evidence gap metrics remain unresolved."
+    },
+    "needs_human_review": {
+      "label": "Needs Human Review",
+      "description": "Basic technical parameters are verified. A general review action is required."
+    },
+    "needs_security_review": {
+      "label": "Needs Security Review",
+      "description": "Specific potential API key, injection vector, or credential exposure requires expert security assessment."
+    },
+    "needs_legal_review": {
+      "label": "Needs Legal Review",
+      "description": "High-risk SDK usage or vendor terms require official compliance approval."
+    },
+    "evidence_candidate_ready": {
+      "label": "Evidence Candidate Ready",
+      "description": "All evidence gaps are resolved. The candidate is prepared for manual sign-off and ingestion."
+    },
+    "rejected_not_relevant": {
+      "label": "Rejected — Not Relevant",
+      "description": "The finding was manually reviewed and marked as a false positive or irrelevant artifact."
+    }
+  }
+}

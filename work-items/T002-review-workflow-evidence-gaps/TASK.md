@@ -1,0 +1,22 @@
+# Task Checklist: T002 — Review Workflow + Evidence Gap Classification
+
+- `[x]` 1. Bump version from 0.2.0 to 0.3.0 in `package.json`
+- `[x]` 2. Create review taxonomy configuration files:
+  - `[x]` `data/review-taxonomy.ai-governance.json` (assigned statuses and lanes)
+  - `[x]` `data/evidence-requirements.ai-usage.json` (required evidence maps)
+- `[x]` 3. Create JSON validation contracts:
+  - `[x]` `schemas/review-workflow.schema.json`
+  - `[x]` `schemas/evidence-gap.schema.json`
+- `[x]` 4. Create review engine modules under `src/review/`:
+  - `[x]` `src/review/load-review-taxonomy.mjs` (loads and standardizes rules/gaps)
+  - `[x]` `src/review/evidence-gap-classifier.mjs` (identifies missing compliance controls)
+  - `[x]` `src/review/recommended-questions.mjs` (provides targeted auditor questions)
+  - `[x]` `src/review/export-readiness-scorer.mjs` (scores candidates based on remaining gaps)
+  - `[x]` `src/review/review-workflow-builder.mjs` (orchestrates finding reviews)
+- `[x]` 5. Update `src/export/evidence-candidate-exporter.mjs` to include optional review metadata
+- `[x]` 6. Update `src/cli.mjs` to support `--review-out <path>` and `--review-report <path>`
+- `[x]` 7. Create Markdown review report generator `src/report/review-workflow-report.mjs`
+- `[x]` 8. Create validation script `scripts/validate-review-workflow.mjs`
+- `[x]` 9. Create/Update project and taxonomy documentation files under `docs/`
+- `[x]` 10. Run all syntax, scan, and review tests offline
+- `[/]` 11. Switch, merge, and verify on `main` branch

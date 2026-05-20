@@ -7,7 +7,7 @@ This document outlines the core developmental milestones and phases planned for 
 ## 🚦 Project Phases
 
 ```
-v0.1 Foundation ──> v0.2 Offline Prototype [COMPLETE] ──> v0.3 CI/CD & HTML ──> v1.0 Stable
+v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review Workflow [COMPLETE] ──> v0.4 CI/CD & HTML ──> v1.0 Stable
 ```
 
 ### Phase v0.1 — Repository Foundation
@@ -26,7 +26,17 @@ v0.1 Foundation ──> v0.2 Offline Prototype [COMPLETE] ──> v0.3 CI/CD & H
     *   Dependency, Env Var, Prompt File, and Vector DB detectors.
     *   Verification assertions script (`validate-samples.mjs`).
 
-### Phase v0.3 — CI/CD Integration & HTML Reporting
+### Phase v0.3 — Review Workflow & Evidence Gaps (v0.3.0)
+*   **Goal:** Build corporate governance taxonomy rules, map codebase signals to cross-functional review lanes, classify missing evidence gaps, score export readiness, and output beautiful review reports.
+*   **Status:** **Completed** (20 May 2026)
+*   **Key Deliverables:**
+    *   Taxonomy rules mapping codebase targets to domains (Security, Legal, Privacy, etc.).
+    *   Categorized missing evidence requirements (blocking and non-blocking gaps).
+    *   Deterministic Export Readiness Scorer (0-100%) with a strict 70% capping safety rule for blocking gaps.
+    *   CLI integration supporting `--review-out <path>` and `--review-report <path>`.
+    *   Programmatic validation script (`validate-review-workflow.mjs`).
+
+### Phase v0.4 — CI/CD Integration & HTML Reporting
 *   **Goal:** Establish pre-built GitHub actions, ignore-configs, and rich interactive visual reports.
 *   **Status:** **Planned**
 *   **Key Deliverables:**
@@ -48,5 +58,8 @@ v0.1 Foundation ──> v0.2 Offline Prototype [COMPLETE] ──> v0.3 CI/CD & H
 > [!IMPORTANT]
 > **Prototype Isolation:**
 > This tool is an offline prototype scanner designed to discover codebase asset evidence.
-> - **It does not guarantee legal compliance.**
-> - **All exports are Candidates:** Every evidence export candidate starts as a `draft` and strictly requires developer/compliance human review and sign-off before official Governance OS ingestion.
+> - **It identifies governance review needs, not final legal conclusions.**
+> - **Findings are signals, not proof of non-compliance.**
+> - **All exports are Candidates:** Every evidence export candidate starts as a `draft` and strictly requires developer/compliance human review and sign-off before official Governance OS ingestion. Status remains locked in `draft` with `review_required: true`.
+> - **No live integrations:** No network calls, GitHub Actions, deployment, monitoring, or real database ingestion are included in this offline prototype.
+
