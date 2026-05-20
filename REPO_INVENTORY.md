@@ -28,18 +28,33 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📁 **`src/export/evidence-candidate-exporter.mjs`** | Evidence Exporter | Maps raw findings to CaesarEvidenceExportCandidate schemas. |
 | 📝 **`src/report/markdown-report.mjs`** | Markdown Formatter | Generates formatted terminal reports with compliance guidance. |
 | ⚙️ **`src/utils/read-json-safe.mjs`** | Safe JSON Reader | Zero-dependency file parser returning null on failure. |
+| 🗃️ **`src/review/load-review-taxonomy.mjs`** | Taxonomy Loader | Safely resolves and parses taxonomy catalogs via relative ESM imports. |
+| 🕵️‍♂️ **`src/review/evidence-gap-classifier.mjs`** | Gap Classifier | Assesses findings against compliance controls to log missing evidence elements. |
+| 🎛️ **`src/review/review-workflow-builder.mjs`** | Review Orchestrator | Main controller orchestrating finding analysis, scoring, and workflow manifests. |
+| 🧮 **`src/review/export-readiness-scorer.mjs`** | Scorer Engine | Computes candidate readiness scores, enforcing a strict 70% capping safety rule. |
+| ❓ **`src/review/recommended-questions.mjs`** | Question Provider | Generates context-aware reviewer questions and actionable resolution tasks. |
+| 📝 **`src/report/review-workflow-report.mjs`** | Review Formatter | Generates highly readable and premium Markdown compliance dashboards. |
 | 💾 **`data/detection-rules.ai-usage.json`** | Rules Database | Clean-room regexes catalog matching AI usage components. |
+| 🏷️ **`data/review-taxonomy.ai-governance.json`** | Lane Taxonomy | Defines standard governance review lanes and readiness statuses. |
+| 📋 **`data/evidence-requirements.ai-usage.json`** | Requirement Maps | Maps specific AI detection signals to required compliance evidence types. |
 | 📑 **`schemas/scan-result.schema.json`** | Ingest Schema | Draft schema for full scan result documents. |
 | 📑 **`schemas/evidence-export-candidate.schema.json`** | Export Schema | Draft schema for reviewable evidence export candidates. |
+| 📑 **`schemas/review-workflow.schema.json`** | Workflow Schema | Contract schema for the consolidated review workflow object. |
+| 📑 **`schemas/evidence-gap.schema.json`** | Gap Schema | Contract schema for individual evidence gap payloads. |
 | 🛠️ **`scripts/check-syntax.mjs`** | Syntax Validator | Standalone checker running syntax validation offline. |
 | 🧪 **`scripts/validate-samples.mjs`** | Validation Assertions | Automatic suite verifying scanner outcomes. |
+| 🧪 **`scripts/validate-review-workflow.mjs`** | Review Validator | Suite asserting schema-compliance and mathematical rules for workflows. |
 | 🧬 **`fixtures/sample-ai-project/`** | Fixture Directory | Harmless mock AI project used to test scanner functionalities. |
 | 📊 **`docs/RESEARCH_CONTEXT.md`** | Domain Research | Ingests strategic requirements, user personas, and target scopes. |
 | ⚖️ **`docs/DECISION_LOG.md`** | Decision Log | Records chronological technical, strategic, and governance decisions. |
 | 📑 **`docs/EVIDENCE_EXPORT_CONTRACT.md`** | Ingestion Contract | Ingestion schemas and contract specifications. |
 | 🔄 **`docs/TAXONOMY_AND_REVIEW_WORKFLOW.md`** | Review Taxonomy | Asset taxonomy structures and manual verification pipelines. |
 | 🛡️ **`docs/THIRD_PARTY_CODE_AND_DATA_POLICY.md`** | License Terms | Zero-copy clean-room boundary definitions. |
-| 📂 **`work-items/T001-evidence-export-candidate-pipeline/`** | Work Sandbox | Sandboxed trackers containing TASK.md, VALIDATION.md, DECISIONS.md, and reports. |
+| 📖 **`docs/REVIEW_WORKFLOW_AND_EVIDENCE_GAPS.md`** | Workflow Design | Explains conceptual routing architecture and workflow schemas. |
+| 📚 **`docs/EVIDENCE_GAP_TAXONOMY.md`** | Gap Taxonomy | Specification cataloging all possible governance evidence gaps. |
+| 📈 **`docs/EXPORT_READINESS_MODEL.md`** | Scoring Math | Details weights, penalties, and the 70% readiness capping rule. |
+| 📂 **`work-items/T001-evidence-export-candidate-pipeline/`** | T001 Sandbox | Sandboxed trackers containing T001 tasks, logs, and reports. |
+| 📂 **`work-items/T002-review-workflow-evidence-gaps/`** | T002 Sandbox | Sandboxed trackers containing T002 tasks, logs, and reports. |
 
 ---
 

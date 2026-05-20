@@ -5,13 +5,17 @@ import { dirname, resolve } from 'path';
 import { runScan } from './scanner/scan-runner.mjs';
 import { exportEvidenceCandidates } from './export/evidence-candidate-exporter.mjs';
 import { generateMarkdownReport } from './report/markdown-report.mjs';
+import { buildReviewWorkflow } from './review/review-workflow-builder.mjs';
+import { generateReviewReport } from './report/review-workflow-report.mjs';
 
 function parseArgs(args) {
   const options = {
     target: null,
     format: 'markdown',
     out: null,
-    exportEvidenceCandidates: null
+    exportEvidenceCandidates: null,
+    reviewOut: null,
+    reviewReport: null
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -23,6 +27,10 @@ function parseArgs(args) {
       options.out = args[++i];
     } else if (arg === '--export-evidence-candidates') {
       options.exportEvidenceCandidates = args[++i];
+    } else if (arg === '--review-out') {
+      options.reviewOut = args[++i];
+    } else if (arg === '--review-report') {
+      options.reviewReport = args[++i];
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }
@@ -74,9 +82,28 @@ function main() {
       console.log('-------------------\n');
     }
 
-    // 2. Export evidence candidates if requested
+    // 2. Build review workflow if requested or if candidates are being exported
+    let reviewWorkflow = null;
+    if (options.reviewOut || options.reviewReport || options.exportEvidenceCandidates) {
+      reviewWorkflow = buildReviewWorkflow(scanResult);
+    }
+
+    // 3. Write review JSON and MD report if requested
+    if (options.reviewOut && reviewWorkflow) {
+      const reviewContent = JSON.stringify(reviewWorkflow, null, 2);
+      writeOutput(options.reviewOut, reviewContent);
+      console.log(`📁 Review workflow written to: ${options.reviewOut}`);
+    }
+
+    if (options.reviewReport && reviewWorkflow) {
+      const reviewReportContent = generateReviewReport(reviewWorkflow);
+      writeOutput(options.reviewReport, reviewReportContent);
+      console.log(`📁 Review report written to: ${options.reviewReport}`);
+    }
+
+    // 4. Export evidence candidates if requested
     if (options.exportEvidenceCandidates) {
-      const candidates = exportEvidenceCandidates(findings);
+      const candidates = exportEvidenceCandidates(findings, reviewWorkflow);
       const candidatesContent = JSON.stringify(candidates, null, 2);
       writeOutput(options.exportEvidenceCandidates, candidatesContent);
       console.log(`📁 Evidence export candidates written to: ${options.exportEvidenceCandidates}`);
@@ -85,9 +112,10 @@ function main() {
     // Fail-safe exit
     process.exit(0);
   } catch (error) {
-    console.error('❌ Critical Error during scan execution:', error.message);
+    console.error('❌ Critical Error during scan execution:', error.stack || error.message);
     process.exit(1);
   }
 }
 
 main();
+

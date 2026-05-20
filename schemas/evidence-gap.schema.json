@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarEvidenceGap",
+  "type": "OBJECT",
+  "required": [
+    "gap_id",
+    "gap_type",
+    "severity",
+    "reason",
+    "required_for",
+    "recommended_resolution",
+    "blocks_export"
+  ],
+  "properties": {
+    "gap_id": {
+      "type": "STRING"
+    },
+    "gap_type": {
+      "type": "STRING"
+    },
+    "severity": {
+      "type": "STRING",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "reason": {
+      "type": "STRING"
+    },
+    "required_for": {
+      "type": "STRING"
+    },
+    "recommended_resolution": {
+      "type": "STRING"
+    },
+    "blocks_export": {
+      "type": "BOOLEAN"
+    }
+  }
+}

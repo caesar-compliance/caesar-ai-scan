@@ -1,6 +1,6 @@
 {
   "name": "caesar-ai-scan",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Static-analysis CLI and CI/CD tool to inventory AI dependencies, framework usage, vector DBs, and credentials.",
   "type": "module",
   "main": "src/cli.mjs",
@@ -8,7 +8,9 @@
     "scan:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json",
     "validate:samples": "node scripts/validate-samples.mjs",
     "check:syntax": "node scripts/check-syntax.mjs",
-    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples"
+    "review:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --review-report tmp/sample-review-workflow.md",
+    "validate:review": "node scripts/validate-review-workflow.mjs",
+    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run review:sample && npm run validate:review"
   },
   "keywords": [
     "ai",

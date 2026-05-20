@@ -7,13 +7,13 @@ This document outlines the schema design and contract rules for exporting compli
 > This contract defines an offline candidate pipeline foundation. It helps identify AI usage and codebase evidence gaps but does not guarantee legal compliance. All candidates require human review before ingestion.
 
 ## Schema Version
-Current Active Contract Version: `0.2.0`
+Current Active Contract Version: `0.3.0`
 
 ## Structure Rules
 
 ### 1. Scan Result Payload (`schemas/scan-result.schema.json`)
 The complete static analysis run output, tracking all analyzed codebase assets.
-- `schema_version`: Must be `"0.2.0"`.
+- `schema_version`: Must be `"0.3.0"`.
 - `scanner`: Emitting application identification.
 - `scanned_at`: ISO 8601 UTC timestamp.
 - `target`: Target absolute or relative workspace folder.
@@ -34,3 +34,7 @@ A structured draft record mapping a specific codebase finding to the Caesar AI E
 - **`review_required`**: Always `true` for automated scans.
 - **`proposed_payload`**: Extracted data containing files, matches, and suggested reviews.
 - **`integration_notes`**: Ingestion-ready developer context.
+- **`review_status`**: Enriched candidate review phase indicator (e.g. `draft_detected`, `blocked_missing_context`, `needs_human_review`, etc.).
+- **`evidence_gaps`**: Array of identified compliance requirements that are missing for the specific finding.
+- **`export_readiness`**: Deterministic readiness percentage (0-100%) incorporating strict penalties and a 70% capping safety rule for unresolved blocking gaps.
+- **`required_review_lanes`**: Array of corporate departments triggered for auditing the candidate (e.g. `technical_owner_review`, `security_review`, `legal_compliance_review`, `privacy_review`).

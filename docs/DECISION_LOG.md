@@ -6,6 +6,16 @@ This document maps all high-level technical, strategic, and governance decisions
 
 ## 🏛️ Decision History
 
+### [DEC-003] — 20 May 2026 — Review Workflow & Evidence Gap Classification
+
+*   **Status:** Approved
+*   **Decisions:**
+    1. **Taxonomy Separation:** Established separate static catalogs for review taxonomy configurations (`data/review-taxonomy.ai-governance.json`) and specific codebase governance requirements (`data/evidence-requirements.ai-usage.json`).
+    2. **Multi-lane Review Assignment:** Designed a system to map findings to one or more review lanes (Technical Owner, Security, Legal, Privacy, etc.) dynamically based on matched signature context.
+    3. **Deterministic Readiness Math & Strict 70% Capping Safety Rule:** Formulated a transparent export readiness scorer subtracting penalties for missing evidence, with an iron-clad capping rule at 70% if any "blocking" evidence requirements remain unresolved.
+    4. **Enriched Candidate Schema Compatibility:** Designed candidate exporter updates to dynamically inject review lanes, gap IDs, and readiness scores while strictly retaining backwards compatibility and keeping all candidate statuses hard-locked to `draft` and `review_required: true`.
+*   **Rationale:** Establishes a highly granular, context-aware auditing workflow offline that ensures developers and security reviewers have an actionable checklist of governance gaps before candidates are pushed upstream.
+
 ### [DEC-002] — 20 May 2026 — Zero-Dependency ESM Architecture & Candidate Pipeline
 
 *   **Status:** Approved

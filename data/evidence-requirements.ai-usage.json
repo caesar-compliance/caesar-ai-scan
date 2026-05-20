@@ -1,0 +1,112 @@
+{
+  "gap_types": {
+    "missing_system_owner": {
+      "gap_id": "gap_missing_system_owner",
+      "gap_type": "missing_system_owner",
+      "severity": "medium",
+      "reason": "No technical or business owner is assigned to this codebase AI component.",
+      "required_for": "technical_owner_review",
+      "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+      "blocks_export": true
+    },
+    "missing_processing_purpose": {
+      "gap_id": "gap_missing_processing_purpose",
+      "gap_type": "missing_processing_purpose",
+      "severity": "medium",
+      "reason": "The operational purpose of processing data via this AI signal is undefined.",
+      "required_for": "legal_compliance_review",
+      "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+      "blocks_export": true
+    },
+    "missing_ai_use_case_description": {
+      "gap_id": "gap_missing_ai_use_case_description",
+      "gap_type": "missing_ai_use_case_description",
+      "severity": "low",
+      "reason": "No high-level usage description is associated with this AI dependency.",
+      "required_for": "model_inventory_review",
+      "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+      "blocks_export": false
+    },
+    "missing_model_or_provider_identification": {
+      "gap_id": "gap_missing_model_or_provider_identification",
+      "gap_type": "missing_model_or_provider_identification",
+      "severity": "high",
+      "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+      "required_for": "model_inventory_review",
+      "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+      "blocks_export": true
+    },
+    "missing_vendor_terms_review": {
+      "gap_id": "gap_missing_vendor_terms_review",
+      "gap_type": "missing_vendor_terms_review",
+      "severity": "high",
+      "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+      "required_for": "vendor_review",
+      "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+      "blocks_export": true
+    },
+    "missing_data_processing_assessment": {
+      "gap_id": "gap_missing_data_processing_assessment",
+      "gap_type": "missing_data_processing_assessment",
+      "severity": "high",
+      "reason": "No data protection impact assessment (DPIA) has been completed for transfer of data to this service.",
+      "required_for": "privacy_review",
+      "recommended_resolution": "Conduct a DPIA to evaluate potential risks of transferring user identifiers to third-party endpoints.",
+      "blocks_export": true
+    },
+    "missing_risk_classification": {
+      "gap_id": "gap_missing_risk_classification",
+      "gap_type": "missing_risk_classification",
+      "severity": "high",
+      "reason": "This AI integration lacks a formal risk tier classification.",
+      "required_for": "risk_classification_review",
+      "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+      "blocks_export": true
+    },
+    "missing_human_oversight_description": {
+      "gap_id": "gap_missing_human_oversight_description",
+      "gap_type": "missing_human_oversight_description",
+      "severity": "medium",
+      "reason": "The codebase contains no documented human-in-the-loop validation or prompt guardrails safety layer description.",
+      "required_for": "human_oversight_review",
+      "recommended_resolution": "Document human oversight procedures and validation gates implemented for LLM outputs.",
+      "blocks_export": false
+    },
+    "missing_logging_or_retention_policy": {
+      "gap_id": "gap_missing_logging_or_retention_policy",
+      "gap_type": "missing_logging_or_retention_policy",
+      "severity": "medium",
+      "reason": "Model prompt and completion logs lack a clear retention and audit policy.",
+      "required_for": "retention_and_logging_review",
+      "recommended_resolution": "Define log aggregation constraints and specify standard data purging intervals.",
+      "blocks_export": false
+    },
+    "missing_user_disclosure_assessment": {
+      "gap_id": "gap_missing_user_disclosure_assessment",
+      "gap_type": "missing_user_disclosure_assessment",
+      "severity": "low",
+      "reason": "The system lacks user-facing disclosures indicating interaction with generative AI systems.",
+      "required_for": "legal_compliance_review",
+      "recommended_resolution": "Verify if user disclosures are required and ensure notices are present on front-end components.",
+      "blocks_export": false
+    },
+    "missing_security_review": {
+      "gap_id": "gap_missing_security_review",
+      "gap_type": "missing_security_review",
+      "severity": "high",
+      "reason": "The code exposes potentially un-hashed keys or plaintext credentials in development configurations.",
+      "required_for": "security_review",
+      "recommended_resolution": "Migrate development environment credentials to verified secrets managers immediately.",
+      "blocks_export": true
+    },
+    "missing_export_authorization": {
+      "gap_id": "gap_missing_export_authorization",
+      "gap_type": "missing_export_authorization",
+      "severity": "medium",
+      "reason": "This candidate record lacks authorized digital sign-off signatures.",
+      "required_for": "technical_owner_review",
+      "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+      "blocks_export": true
+    }
+  }
+}

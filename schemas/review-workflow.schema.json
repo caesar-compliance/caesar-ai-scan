@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarReviewWorkflow",
+  "type": "OBJECT",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "source_scan",
+    "summary",
+    "review_items"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "STRING",
+      "const": "0.3.0"
+    },
+    "generated_at": {
+      "type": "STRING",
+      "format": "date-time"
+    },
+    "source_scan": {
+      "type": "OBJECT",
+      "required": ["target", "scanned_at"],
+      "properties": {
+        "target": { "type": "STRING" },
+        "scanned_at": { "type": "STRING" }
+      }
+    },
+    "summary": {
+      "type": "OBJECT",
+      "required": [
+        "total_findings",
+        "total_review_items",
+        "blocked_items",
+        "ready_items",
+        "triggered_lanes"
+      ],
+      "properties": {
+        "total_findings": { "type": "INTEGER", "minimum": 0 },
+        "total_review_items": { "type": "INTEGER", "minimum": 0 },
+        "blocked_items": { "type": "INTEGER", "minimum": 0 },
+        "ready_items": { "type": "INTEGER", "minimum": 0 },
+        "triggered_lanes": {
+          "type": "ARRAY",
+          "items": { "type": "STRING" }
+        }
+      }
+    },
+    "review_items": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "required": [
+          "review_item_id",
+          "finding_ref",
+          "matched_name",
+          "category",
+          "severity",
+          "review_status",
+          "assigned_review_lanes",
+          "evidence_gaps",
+          "recommended_questions",
+          "recommended_actions",
+          "export_readiness",
+          "integration_notes"
+        ],
+        "properties": {
+          "review_item_id": { "type": "STRING" },
+          "finding_ref": { "type": "STRING" },
+          "matched_name": { "type": "STRING" },
+          "category": { "type": "STRING" },
+          "severity": { "type": "STRING", "enum": ["low", "medium", "high", "critical"] },
+          "review_status": { "type": "STRING" },
+          "assigned_review_lanes": {
+            "type": "ARRAY",
+            "items": { "type": "STRING" }
+          },
+          "evidence_gaps": {
+            "type": "ARRAY",
+            "items": {
+              "type": "OBJECT",
+              "required": [
+                "gap_id",
+                "gap_type",
+                "severity",
+                "reason",
+                "required_for",
+                "recommended_resolution",
+                "blocks_export"
+              ],
+              "properties": {
+                "gap_id": { "type": "STRING" },
+                "gap_type": { "type": "STRING" },
+                "severity": { "type": "STRING", "enum": ["low", "medium", "high", "critical"] },
+                "reason": { "type": "STRING" },
+                "required_for": { "type": "STRING" },
+                "recommended_resolution": { "type": "STRING" },
+                "blocks_export": { "type": "BOOLEAN" }
+              }
+            }
+          },
+          "recommended_questions": {
+            "type": "ARRAY",
+            "items": { "type": "STRING" }
+          },
+          "recommended_actions": {
+            "type": "ARRAY",
+            "items": { "type": "STRING" }
+          },
+          "export_readiness": {
+            "type": "INTEGER",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "integration_notes": { "type": "STRING" }
+        }
+      }
+    }
+  }
+}
