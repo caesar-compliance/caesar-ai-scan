@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarScanResult",
+  "type": "OBJECT",
+  "required": [
+    "schema_version",
+    "scanner",
+    "scanned_at",
+    "target",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "STRING",
+      "const": "0.2.0"
+    },
+    "scanner": {
+      "type": "OBJECT",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "STRING" },
+        "version": { "type": "STRING" }
+      }
+    },
+    "scanned_at": {
+      "type": "STRING",
+      "format": "date-time"
+    },
+    "target": {
+      "type": "STRING"
+    },
+    "summary": {
+      "type": "OBJECT",
+      "required": [
+        "total_files",
+        "scanned_files",
+        "total_findings",
+        "dependency_findings",
+        "env_var_findings",
+        "prompt_findings",
+        "vector_db_findings"
+      ],
+      "properties": {
+        "total_files": { "type": "INTEGER", "minimum": 0 },
+        "scanned_files": { "type": "INTEGER", "minimum": 0 },
+        "total_findings": { "type": "INTEGER", "minimum": 0 },
+        "dependency_findings": { "type": "INTEGER", "minimum": 0 },
+        "env_var_findings": { "type": "INTEGER", "minimum": 0 },
+        "prompt_findings": { "type": "INTEGER", "minimum": 0 },
+        "vector_db_findings": { "type": "INTEGER", "minimum": 0 }
+      }
+    },
+    "findings": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "required": [
+          "finding_id",
+          "category",
+          "severity",
+          "detector",
+          "rule_id",
+          "matched_name",
+          "file_path",
+          "evidence_hint",
+          "recommended_review"
+        ],
+        "properties": {
+          "finding_id": { "type": "STRING" },
+          "category": { "type": "STRING" },
+          "severity": { "type": "STRING", "enum": ["low", "medium", "high", "critical"] },
+          "detector": { "type": "STRING" },
+          "rule_id": { "type": "STRING" },
+          "matched_name": { "type": "STRING" },
+          "file_path": { "type": "STRING" },
+          "evidence_hint": { "type": "STRING" },
+          "recommended_review": { "type": "STRING" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaesarEvidenceExportCandidate",
+  "type": "OBJECT",
+  "required": [
+    "candidate_id",
+    "source_tool",
+    "generated_at",
+    "evidence_type",
+    "status",
+    "finding_ref",
+    "proposed_payload",
+    "review_required",
+    "integration_notes"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "STRING"
+    },
+    "source_tool": {
+      "type": "OBJECT",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "STRING" },
+        "version": { "type": "STRING" }
+      }
+    },
+    "generated_at": {
+      "type": "STRING",
+      "format": "date-time"
+    },
+    "evidence_type": {
+      "type": "STRING"
+    },
+    "status": {
+      "type": "STRING",
+      "enum": ["draft", "pending_review", "approved", "rejected"]
+    },
+    "finding_ref": {
+      "type": "STRING"
+    },
+    "proposed_payload": {
+      "type": "OBJECT"
+    },
+    "review_required": {
+      "type": "BOOLEAN"
+    },
+    "integration_notes": {
+      "type": "STRING"
+    }
+  }
+}

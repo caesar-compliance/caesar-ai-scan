@@ -1,0 +1,24 @@
+{
+  "name": "caesar-ai-scan",
+  "version": "0.2.0",
+  "description": "Static-analysis CLI and CI/CD tool to inventory AI dependencies, framework usage, vector DBs, and credentials.",
+  "type": "module",
+  "main": "src/cli.mjs",
+  "scripts": {
+    "scan:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json",
+    "validate:samples": "node scripts/validate-samples.mjs",
+    "check:syntax": "node scripts/check-syntax.mjs",
+    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples"
+  },
+  "keywords": [
+    "ai",
+    "governance",
+    "compliance",
+    "static-analysis",
+    "scanner"
+  ],
+  "author": "Caesar AI Governance Ecosystem",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {}
+}
