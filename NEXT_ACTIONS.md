@@ -26,3 +26,6 @@ This document prioritizes upcoming development tasks and establishes execution b
 > **Prototype Execution:**
 > `caesar-ai-scan` is an offline static-analysis helper tool. It helps identify AI usage and codebase evidence gaps but does not guarantee legal compliance. Findings are signals, not proof of non-compliance. All generated evidence candidates require manual human verification and approval before central Governance OS ingestion. Status remains locked in `draft` with `review_required: true`. No active workspace scanning of user code or dynamic ingestion is supported. The deployed public site at `ai-scan.caesar.no` represents a static sandbox mockup using simulated mock assets only. No actual user code is ever parsed online.
 
+
+- [x] T006: Offline Scan History & Diff Model
+- [ ] T007: (TBD — next planned task)

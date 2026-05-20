@@ -112,3 +112,15 @@ When modifying this repository:
 - `docs/OFFLINE_SCAN_HISTORY_MODEL.md`
 - `docs/T006_IMPLEMENTATION_BRIEF.md`
 - `work-items/T006A-monitoring-run-model-planning/`
+
+- `schemas/scan-run.schema.json`
+- `schemas/scan-history-index.schema.json`
+- `schemas/scan-diff.schema.json`
+- `src/history/scan-history-writer.mjs`
+- `src/history/scan-history-reader.mjs`
+- `src/history/scan-diff-builder.mjs`
+- `src/report/scan-diff-report.mjs`
+- `scripts/validate-scan-history.mjs`
+- `docs/OFFLINE_SCAN_HISTORY_USAGE.md`
+- `docs/SCAN_DIFF_MODEL.md`
+- `work-items/T006-offline-scan-history-diff/`

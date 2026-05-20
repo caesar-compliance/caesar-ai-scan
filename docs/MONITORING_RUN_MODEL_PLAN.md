@@ -16,3 +16,6 @@ Define the structure for maintaining a local, offline history of repeated static
 - No database.
 - No real Governance OS ingestion.
 - No public data publication of real repo scans.
+
+## Status
+Implemented in T006 / v0.7.0.

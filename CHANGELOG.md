@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 
+
+## [0.7.0] - 20 May 2026
+### Added
+- Offline local scan history model (T006).
+- schemas/scan-run.schema.json, scan-history-index.schema.json, scan-diff.schema.json.
+- src/history/scan-history-writer.mjs, scan-history-reader.mjs, scan-diff-builder.mjs.
+- src/report/scan-diff-report.mjs.
+- scripts/validate-scan-history.mjs.
+- CLI flags: --history-dir, --record-history, --diff-previous, --history-report.
+- npm scripts: history:sample, validate:history.
+- docs/OFFLINE_SCAN_HISTORY_USAGE.md, docs/SCAN_DIFF_MODEL.md.
+
 ## [0.6.1] - T006-A Monitoring Run Model Planning Pack
 ### Added
 - Created offline scan history models and planning docs (T006-A).

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-import { writeFileSync, mkdirSync, existsSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync, rmSync } from 'fs';
 import { dirname, resolve } from 'path';
+import crypto from 'crypto';
 import { runScan } from './scanner/scan-runner.mjs';
 import { exportEvidenceCandidates } from './export/evidence-candidate-exporter.mjs';
 import { generateMarkdownReport } from './report/markdown-report.mjs';
@@ -11,6 +12,10 @@ import { buildExportPack } from './export-pack/export-pack-builder.mjs';
 import { writeExportPack } from './export-pack/write-export-pack.mjs';
 import { parseConfig } from './scanner/scope-resolver.mjs';
 import { generateScopeReport } from './report/scope-report.mjs';
+import { writeScanHistory } from './history/scan-history-writer.mjs';
+import { readHistoryIndex, getPreviousRun } from './history/scan-history-reader.mjs';
+import { buildScanDiff } from './history/scan-diff-builder.mjs';
+import { writeDiffReport } from './report/scan-diff-report.mjs';
 
 function parseArgs(args) {
   const options = {
@@ -24,7 +29,11 @@ function parseArgs(args) {
     config: null,
     scopeOut: null,
     scopeReport: null,
-    exclude: []
+    exclude: [],
+    historyDir: null,
+    recordHistory: false,
+    diffPrevious: false,
+    historyReport: null
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -53,6 +62,14 @@ function parseArgs(args) {
       if (patterns) {
         options.exclude = patterns.split(',').map(p => p.trim());
       }
+    } else if (arg === '--history-dir') {
+      options.historyDir = args[++i];
+    } else if (arg === '--record-history') {
+      options.recordHistory = true;
+    } else if (arg === '--diff-previous') {
+      options.diffPrevious = true;
+    } else if (arg === '--history-report') {
+      options.historyReport = args[++i];
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }
@@ -201,6 +218,36 @@ async function main() {
       });
       await writeExportPack(exportPack, resolve(mergedOptions.exportPack));
       console.log(`📁 Evidence export pack written to: ${mergedOptions.exportPack}`);
+    }
+
+    // 9. Record scan history and compute diff if requested
+    if (cliOptions.recordHistory && cliOptions.historyDir) {
+      const historyDir = resolve(cliOptions.historyDir);
+      const runId = `run_${new Date().toISOString().replace(/[:.]/g, '-')}_${crypto.randomBytes(2).toString('hex')}`;
+
+      const { historyIndex } = writeScanHistory(historyDir, runId, {
+        scanResultPath: resolve(mergedOptions.out || 'tmp/scan-result.json'),
+        evidenceCandidatesPath: mergedOptions.exportEvidenceCandidates ? resolve(mergedOptions.exportEvidenceCandidates) : null,
+        reviewWorkflowPath: mergedOptions.reviewOut ? resolve(mergedOptions.reviewOut) : null,
+        exportPackPath: mergedOptions.exportPack ? resolve(mergedOptions.exportPack) : null,
+        targetProject: finalTargetPath
+      });
+      console.log(`📂 Scan run recorded to history: ${historyDir}/runs/${runId}`);
+
+      if (cliOptions.diffPrevious) {
+        const prevRun = getPreviousRun(historyDir, runId);
+        const baselineResult = prevRun ? prevRun.scanResult : null;
+        const baselineRunId = prevRun ? prevRun.scanRun.run_id : null;
+        const diff = buildScanDiff(baselineRunId, runId, baselineResult, scanResult);
+
+        const diffJsonPath = resolve(historyDir, 'latest-diff.json');
+        writeFileSync(diffJsonPath, JSON.stringify(diff, null, 2), 'utf8');
+        console.log(`📁 Scan diff JSON written to: ${diffJsonPath}`);
+
+        const diffMdPath = cliOptions.historyReport ? resolve(cliOptions.historyReport) : resolve(historyDir, 'latest-diff.md');
+        writeDiffReport(diff, diffMdPath);
+        console.log(`📁 Scan diff report written to: ${diffMdPath}`);
+      }
     }
 
     process.exit(0);
