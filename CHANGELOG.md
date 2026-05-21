@@ -124,3 +124,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Milestones Plan:** Created [ROADMAP.md](ROADMAP.md) plotting the roadmap toward stable release.
 - **Workspace Inventory:** Added [REPO_INVENTORY.md](REPO_INVENTORY.md) cataloging tracked file roles.
 - **Ecosystem Context Beacons:** Integrated [PROJECT_STATE.md](PROJECT_STATE.md), [NEXT_ACTIONS.md](NEXT_ACTIONS.md), and [docs/DECISION_LOG.md](docs/DECISION_LOG.md) to facilitate agent alignment.
+T012: Added controlled offline import dry-run mechanism.

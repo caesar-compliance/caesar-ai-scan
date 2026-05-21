@@ -1,9 +1,9 @@
 {
-  "manifest_id": "man_8qvnoppuk36y2ta3",
-  "generated_at": "2026-05-21T16:41:11.823Z",
+  "manifest_id": "man_scgjjea6jemmgui4",
+  "generated_at": "2026-05-21T16:47:00.891Z",
   "source_tool": "caesar-ai-scan",
   "source_tool_version": "0.10.0",
-  "target_project_path": "./fixtures/sample-ai-frameworks-project",
+  "target_project_path": "./fixtures/sample-ai-project",
   "included_artifacts": [
     "scan-result.json",
     "evidence-candidates.json",
@@ -12,10 +12,10 @@
     "human-review-checklist.json"
   ],
   "artifact_counts": {
-    "findings_count": 21,
-    "candidates_count": 21,
-    "review_items_count": 21,
-    "gaps_count": 125
+    "findings_count": 11,
+    "candidates_count": 11,
+    "review_items_count": 11,
+    "gaps_count": 57
   },
   "safety_flags": {
     "no_plaintext_credentials_exposed": false,
@@ -23,11 +23,11 @@
     "no_competitor_licenses_flagged": true
   },
   "hash_summary": {
-    "scan-result.json": "d1d5a213275278ce3cdf50ed652559f9bd0189036c9f568849637efb8826f891",
-    "evidence-candidates.json": "49e82a817ccbf9041ac0ac9dbd35413432b0b4b683570f5c5f065d859f39d966",
-    "review-workflow.json": "2b4af5464b3b34c0d41753a83d9f3e3c47661044c767103f5e76206b89b9f8a9",
-    "import-readiness.json": "f885352d08d082f6933c28d943049c493ec7230f40c406ea12bff9d8c25e9f4d",
-    "human-review-checklist.json": "149285f1d9bd1260f51336924712e6fc1dc0dc0809ffa8b74723f66fac4c924d"
+    "scan-result.json": "75c9a6849ed9602ee328a6687c53229629a436d707fe4e6d332b93709212aff7",
+    "evidence-candidates.json": "03f11a64febe20f548484a2b8f5c655ecc955c282d4b4f88ad6efc21ff6e2b6d",
+    "review-workflow.json": "866ff9e16cc082338b1c69d661ff5598bc447d8c67bcfc1c0bb1ddb14394cc15",
+    "import-readiness.json": "f503a790c3324c10968333b6838306ebb1dc56e8ac9edf42dd5dc43499643d7e",
+    "human-review-checklist.json": "32bcfa78ee5eb846bb1fa583d8bd753f3ba6079100876850395f43762b49f88a"
   },
   "compatibility": {
     "schema_version": "0.5.0",
