@@ -1,0 +1,2 @@
+# Decisions
+T015 introduces a read-only static dashboard prototype over sample API projection data to demonstrate the future product UI without adding a real backend, server, database, scheduler, SARIF, GitHub Actions scanner mode, PR annotations, real customer ingestion, external fetching, analytics, CDNs, or external fonts.

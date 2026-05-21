@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 ## [Unreleased] - Repository presentation polish (20 May 2026)
+## [0.15.0] - 21 May 2026
+- **T015 — Read-Only Static Dashboard Prototype.** Added a static, read-only dashboard prototype in `site/` that visualizes sample scan artifacts from local API projections (T014). Added `scripts/build-static-dashboard-demo.mjs` and validation, zero-dependency static JS/CSS only, no backend/server/database. Bumped version.
+
 
 ### Changed
 
