@@ -41,9 +41,5 @@
     "scanner"
   ],
   "author": "Caesar AI Governance Ecosystem",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "uuid": "^11.0.5"
-  },
-  "devDependencies": {}
+  "license": "Apache-2.0"
 }

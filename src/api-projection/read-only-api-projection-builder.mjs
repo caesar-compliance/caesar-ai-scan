@@ -1,11 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 
 export async function buildApiProjection(storeDir) {
   const storeManifest = JSON.parse(await fs.readFile(path.join(storeDir, 'manifest.json'), 'utf8'));
   
-  const projectionId = uuidv4();
+  const projectionId = randomUUID();
   const generatedAt = new Date().toISOString();
   
   const projection = {
