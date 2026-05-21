@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.19.0",
+  "contract_type": "caesar-ai-scan-cloudflare-worker-boundary",
+  "contract_status": "draft_not_deployed",
+  "runtime_status": "local_mock_only",
+  "api_mode": "read_only_get",
+  "data_source": "local_api_projection",
+  "routes": [
+    "GET /health",
+    "GET /dashboard-summary",
+    "GET /scan-runs",
+    "GET /findings",
+    "GET /inventory-components",
+    "GET /review-items",
+    "GET /import-ledger",
+    "GET /manifest"
+  ],
+  "cors_policy": {
+    "allowed_origins_placeholder": "REPLACE_ME",
+    "methods": ["GET", "OPTIONS"],
+    "credentials": false
+  },
+  "safety": {
+    "no_worker_deployment": true,
+    "no_wrangler_publish": true,
+    "no_cloudflare_api_calls": true,
+    "no_live_supabase_connection": true,
+    "no_database_writes": true,
+    "no_external_fetching": true,
+    "no_secrets_in_repo": true,
+    "local_mock_only": true
+  },
+  "disallowed_in_t019": [
+    "wrangler_deploy",
+    "cloudflare_api",
+    "live_database_connection",
+    "database_writes",
+    "scheduler",
+    "github_actions_scanner_mode",
+    "pr_annotations",
+    "sarif",
+    "real_customer_ingestion",
+    "external_fetching",
+    "production_deployment"
+  ],
+  "warnings": [
+    "Worker routes are mocked locally from static API projection files only.",
+    "No Cloudflare account IDs, Worker URLs, or API tokens belong in tracked files."
+  ]
+}

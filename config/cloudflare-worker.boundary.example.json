@@ -1,0 +1,12 @@
+{
+  "worker_name": "REPLACE_ME",
+  "cloudflare_account_id": "REPLACE_ME",
+  "allowed_origin": "REPLACE_ME",
+  "api_mode": "read_only_get",
+  "projection_source": "local_api_projection",
+  "deployment_enabled": false,
+  "wrangler_publish_enabled": false,
+  "external_fetching_enabled": false,
+  "ingestion_enabled": false,
+  "scheduler_enabled": false
+}

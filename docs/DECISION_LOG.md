@@ -75,3 +75,8 @@ This document maps all high-level technical, strategic, and governance decisions
 **Date:** 2026-05-21
 **Context:** Need to expand scanner coverage for the modern AI framework and ML stack.
 **Decision:** Implemented **Rule Pack v1** covering 6 major AI detection categories (Provider SDKs, Orchestration Frameworks, RAG/Vector Stack, ML Artifacts, Prompt Assets, Config Signals). Mandated Rule Pack v1 metadata for all findings. Implemented local path sanitization in all generated outputs to prevent leaking host system information.
+
+## DECISION-T019: Cloudflare Worker API Boundary
+**Date:** 2026-05-21
+**Context:** Prepare hosted read-only API delivery without deploying Workers or connecting to live backends.
+**Decision:** T019 defines a Cloudflare Worker API boundary and local Worker route mock contract for future hosted read-only API delivery while intentionally avoiding Worker deployment, Wrangler publish, Cloudflare API calls, live Supabase connections, database writes, deployment, scheduler, GitHub Actions scanner mode, PR annotations, SARIF, real customer ingestion, external fetching, secrets, account emails, account IDs, real Worker URLs, and real project refs in tracked files.

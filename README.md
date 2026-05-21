@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Status** | v0.9.0 — Rule Pack v1 (expanded AI framework detection), offline scan, review, export pack, history/diff, public static site demo |
+| **Status** | v0.19.0 — offline scan pipeline through local API projection, Supabase storage draft, Cloudflare Worker boundary (local mock only) |
 | **Mode** | Offline CLI — no live API calls, no remote ingestion |
 | **Scope** | Local static analysis, review workflow, evidence export candidates |
 | **Safety** | Draft-only exports; human review required — not legal advice |

@@ -1,16 +1,19 @@
-# Cloudflare Worker API Boundary
+# Cloudflare Worker API Boundary (v0.19.0)
 
-This document defines the boundary for the future Cloudflare Worker implementation in Caesar AI Scan.
+Defines the future Cloudflare Worker read-only API surface and the local route mock contract used in T019.
 
 ## Overview
-The Cloudflare Worker will serve as the read-only API layer, projecting data from the backend/storage.
+- Hosted Worker (future): GET-only routes over Supabase-backed storage.
+- Local mock (now): `src/cloudflare-worker/local-worker-route-mock.mjs` serves static API projection JSON from `tmp/sample-api-projection/`.
+- No Wrangler deploy, Cloudflare API calls, or live Supabase connections in this repository version.
 
-## Contract
-- The worker operates in read-only mode.
-- All routes are GET-based.
-- No database writes, no live ingestion, and no external fetching are permitted.
+## Artifacts
+- `schemas/cloudflare-worker-boundary.schema.json`
+- `config/cloudflare-worker.boundary.example.json`
+- `.env.cloudflare-worker.example`
+- `docs/backend/cloudflare/WORKER_ROUTE_CONTRACT.md`
+- `docs/backend/cloudflare/CORS_AND_SECURITY_BOUNDARY.md`
 
-## Boundary Security
-- No secrets (API tokens, database credentials) are tracked in the repository.
-- All configurations use placeholder patterns.
-- CORS policy is enforced to allow only authorized origins (drafted).
+## Validation
+- `npm run worker:route-sample`
+- `npm run validate:worker-boundary`
