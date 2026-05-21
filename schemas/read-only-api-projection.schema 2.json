@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Caesar AI Scan Read-Only API Projection",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.14.0" },
+    "projection_type": { "type": "string", "const": "caesar-ai-scan-read-only-api-projection" },
+    "projection_id": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_store": {
+      "type": "object",
+      "properties": {
+        "store_id": { "type": "string" },
+        "store_type": { "type": "string" },
+        "schema_version": { "type": "string" }
+      }
+    },
+    "api_contract": {
+      "type": "object",
+      "properties": {
+        "mode": { "type": "string", "const": "offline_static_json" },
+        "read_only": { "type": "boolean", "const": true },
+        "no_server": { "type": "boolean", "const": true },
+        "no_database": { "type": "boolean", "const": true }
+      }
+    },
+    "endpoints": {
+      "type": "object",
+      "properties": {
+        "health": { "type": "string" },
+        "dashboard_summary": { "type": "string" },
+        "scan_runs": { "type": "string" },
+        "findings": { "type": "string" },
+        "inventory_components": { "type": "string" },
+        "review_items": { "type": "string" },
+        "import_ledger": { "type": "string" }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "scan_run_count": { "type": "integer" },
+        "finding_count": { "type": "integer" },
+        "inventory_component_count": { "type": "integer" },
+        "review_item_count": { "type": "integer" },
+        "ledger_entry_count": { "type": "integer" }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "properties": {
+        "no_database_writes": { "type": "boolean", "const": true },
+        "no_live_ingestion": { "type": "boolean", "const": true },
+        "no_external_fetching": { "type": "boolean", "const": true },
+        "local_filesystem_only": { "type": "boolean", "const": true },
+        "static_json_only": { "type": "boolean", "const": true },
+        "secrets_redacted": { "type": "boolean", "const": true }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  }
+}

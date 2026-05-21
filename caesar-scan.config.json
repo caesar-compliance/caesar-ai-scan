@@ -1,5 +1,6 @@
 {
   "target": "fixtures/sample-ai-project",
+  "format": "json",
   "exclude": [],
   "rulesPath": null,
   "outputs": {

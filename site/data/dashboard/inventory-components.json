@@ -1,0 +1,14 @@
+[
+  {
+    "type": "Provider SDK",
+    "count": 3
+  },
+  {
+    "type": "Orchestration Framework",
+    "count": 4
+  },
+  {
+    "type": "RAG/Vector Stack",
+    "count": 5
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.14.0",
+  "projection_type": "caesar-ai-scan-read-only-api-projection",
+  "projection_id": "a6cc2374-41af-49a3-8655-a171b7d6ea79",
+  "generated_at": "2026-05-21T19:11:36.861Z",
+  "source_store": {
+    "store_id": "store_1779390696858",
+    "store_type": "caesar-ai-scan-local-json-store",
+    "schema_version": "0.13.0"
+  },
+  "api_contract": {
+    "mode": "offline_static_json",
+    "read_only": true,
+    "no_server": true,
+    "no_database": true
+  },
+  "endpoints": {
+    "health": "/health.json",
+    "dashboard_summary": "/dashboard-summary.json",
+    "scan_runs": "/scan-runs.json",
+    "findings": "/findings.json",
+    "inventory_components": "/inventory-components.json",
+    "review_items": "/review-items.json",
+    "import_ledger": "/import-ledger.json"
+  },
+  "counts": {
+    "scan_run_count": 0,
+    "finding_count": 0,
+    "inventory_component_count": 0,
+    "review_item_count": 0,
+    "ledger_entry_count": 0
+  },
+  "safety": {
+    "no_database_writes": true,
+    "no_live_ingestion": true,
+    "no_external_fetching": true,
+    "local_filesystem_only": true,
+    "static_json_only": true,
+    "secrets_redacted": true
+  },
+  "warnings": []
+}

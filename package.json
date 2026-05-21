@@ -26,7 +26,8 @@
     "validate:inventory": "node scripts/validate-ai-usage-inventory.mjs",
     "validate:rule-pack-v1": "node scripts/validate-rule-pack-v1.mjs",
     "reference:scan:setup": "node scripts/setup-ai-scan-reference-lab.mjs",
-    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run validate:rule-pack-v1 && npm run review:sample && npm run validate:review && npm run pack:sample && npm run validate:pack && npm run scope:sample && npm run validate:scope && npm run validate:history && npm run inventory:sample && npm run validate:inventory && npm run bundle:sample && npm run validate:bundle && npm run import:sample && npm run validate:import && npm run build:site && npm run validate:site && npm run dashboard:sample && npm run validate:dashboard",
+    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run validate:rule-pack-v1 && npm run review:sample && npm run validate:review && npm run pack:sample && npm run validate:pack && npm run scope:sample && npm run validate:scope && npm run validate:history && npm run inventory:sample && npm run validate:inventory && npm run bundle:sample && npm run validate:bundle && npm run import:sample && npm run validate:import && npm run build:site && npm run validate:site && npm run api:sample && npm run dashboard:sample && npm run validate:dashboard",
+    "api:sample": "node scripts/generate-api-projection.mjs",
     "dashboard:sample": "node scripts/build-static-dashboard-demo.mjs",
     "validate:dashboard": "node scripts/validate-static-dashboard.mjs"
   },
@@ -39,6 +40,8 @@
   ],
   "author": "Caesar AI Governance Ecosystem",
   "license": "Apache-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "uuid": "^11.0.5"
+  },
   "devDependencies": {}
 }
