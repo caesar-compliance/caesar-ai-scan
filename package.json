@@ -1,6 +1,6 @@
 {
   "name": "caesar-ai-scan",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Static-analysis CLI and CI/CD tool to inventory AI dependencies, framework usage, vector DBs, and credentials.",
   "type": "module",
   "main": "src/cli.mjs",
@@ -14,6 +14,8 @@
     "validate:pack": "node scripts/validate-export-pack.mjs",
     "scope:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --scope-out tmp/sample-scope.json --scope-report tmp/sample-scope.md",
     "validate:scope": "node scripts/validate-scope-control.mjs",
+    "bundle:sample": "node src/cli.mjs fixtures/sample-ai-frameworks-project --format json --out tmp/sample-scan-result.json --bundle-dir tmp/sample-scan-export-bundle",
+    "validate:bundle": "node scripts/validate-scan-export-bundle.mjs",
     "build:site": "node scripts/build-site.mjs",
     "validate:site": "node scripts/validate-site.mjs",
     "history:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --export-pack tmp/sample-evidence-export-pack --history-dir tmp/sample-history --record-history --diff-previous --history-report tmp/sample-history/latest-diff.md",
@@ -22,7 +24,7 @@
     "validate:inventory": "node scripts/validate-ai-usage-inventory.mjs",
     "validate:rule-pack-v1": "node scripts/validate-rule-pack-v1.mjs",
     "reference:scan:setup": "node scripts/setup-ai-scan-reference-lab.mjs",
-    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run validate:rule-pack-v1 && npm run review:sample && npm run validate:review && npm run pack:sample && npm run validate:pack && npm run scope:sample && npm run validate:scope && npm run validate:history && npm run inventory:sample && npm run validate:inventory && npm run build:site && npm run validate:site"
+    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run validate:rule-pack-v1 && npm run review:sample && npm run validate:review && npm run pack:sample && npm run validate:pack && npm run scope:sample && npm run validate:scope && npm run validate:history && npm run inventory:sample && npm run validate:inventory && npm run bundle:sample && npm run validate:bundle && npm run build:site && npm run validate:site"
   },
   "keywords": [
     "ai",

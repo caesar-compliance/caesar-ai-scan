@@ -16,6 +16,9 @@ import { writeScanHistory } from './history/scan-history-writer.mjs';
 import { readHistoryIndex, getPreviousRun } from './history/scan-history-reader.mjs';
 import { buildScanDiff } from './history/scan-diff-builder.mjs';
 import { writeDiffReport } from './report/scan-diff-report.mjs';
+import { buildExportBundleMetadata } from './export-bundle/scan-export-bundle-builder.mjs';
+import { writeExportBundle } from './export-bundle/scan-export-bundle-writer.mjs';
+import { generateBundleReport } from './report/scan-export-bundle-report.mjs';
 
 function parseArgs(args) {
   const options = {
@@ -35,7 +38,8 @@ function parseArgs(args) {
     diffPrevious: false,
     historyReport: null,
     inventoryOut: null,
-    inventoryReport: null
+    inventoryReport: null,
+    bundleDir: null
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -76,6 +80,8 @@ function parseArgs(args) {
       options.inventoryOut = args[++i];
     } else if (arg === '--inventory-report') {
       options.inventoryReport = args[++i];
+    } else if (arg === '--bundle-dir') {
+      options.bundleDir = args[++i];
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }
@@ -256,6 +262,30 @@ async function main() {
         writeDiffReport(diff, diffMdPath);
         console.log(`📁 Scan diff report written to: ${diffMdPath}`);
       }
+    }
+
+    // 10. Build and write export bundle if requested
+    if (cliOptions.bundleDir) {
+      const bundleDir = resolve(cliOptions.bundleDir);
+      
+      const scanResultCopy = JSON.parse(JSON.stringify(scanResult));
+      
+      const bundleMetadata = buildExportBundleMetadata(scanResultCopy, null, {
+        targetPath: finalTargetPath,
+        isFixture: true,
+        evidenceCandidatesCount: candidates?.length || 0
+      });
+
+      const bundleData = {
+        'manifest.json': bundleMetadata,
+        'scan-result.json': scanResultCopy,
+        'review-summary.md': generateBundleReport(bundleMetadata)
+      };
+
+      if (candidates) bundleData['evidence-candidates.json'] = JSON.parse(JSON.stringify(candidates));
+      
+      await writeExportBundle(bundleDir, bundleData);
+      console.log(`📁 Backend-ready scan export bundle written to: ${bundleDir}`);
     }
 
     process.exit(0);
