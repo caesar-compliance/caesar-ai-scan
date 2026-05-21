@@ -19,6 +19,9 @@ import { writeDiffReport } from './report/scan-diff-report.mjs';
 import { buildExportBundleMetadata } from './export-bundle/scan-export-bundle-builder.mjs';
 import { writeExportBundle } from './export-bundle/scan-export-bundle-writer.mjs';
 import { generateBundleReport } from './report/scan-export-bundle-report.mjs';
+import { runImportDryRun } from './import-dry-run/import-dry-run-builder.mjs';
+import { writeImportLedger } from './import-dry-run/import-ledger-writer.mjs';
+import { generateImportReport } from './report/import-dry-run-report.mjs';
 
 function parseArgs(args) {
   const options = {
@@ -39,7 +42,11 @@ function parseArgs(args) {
     historyReport: null,
     inventoryOut: null,
     inventoryReport: null,
-    bundleDir: null
+    bundleDir: null,
+    importFromBundle: null,
+    importDryRunOut: null,
+    importLedgerOut: null,
+    importReportOut: null
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -82,6 +89,14 @@ function parseArgs(args) {
       options.inventoryReport = args[++i];
     } else if (arg === '--bundle-dir') {
       options.bundleDir = args[++i];
+    } else if (arg === '--import-from-bundle') {
+      options.importFromBundle = args[++i];
+    } else if (arg === '--import-dry-run-out') {
+      options.importDryRunOut = args[++i];
+    } else if (arg === '--import-ledger-out') {
+      options.importLedgerOut = args[++i];
+    } else if (arg === '--import-report') {
+      options.importReportOut = args[++i];
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }
@@ -286,6 +301,28 @@ async function main() {
       
       await writeExportBundle(bundleDir, bundleData);
       console.log(`📁 Backend-ready scan export bundle written to: ${bundleDir}`);
+    }
+
+    // 11. Controlled offline import dry-run if requested
+    if (cliOptions.importFromBundle) {
+      const bundleDir = resolve(cliOptions.importFromBundle);
+      const dryRunOut = cliOptions.importDryRunOut ? resolve(cliOptions.importDryRunOut) : null;
+      const ledgerOut = cliOptions.importLedgerOut ? resolve(cliOptions.importLedgerOut) : null;
+      const reportOut = cliOptions.importReportOut ? resolve(cliOptions.importReportOut) : null;
+
+      const dryRunResult = runImportDryRun(bundleDir, dryRunOut || 'tmp/dry-run.json');
+      console.log(`✅ Import dry-run completed. Status: ${dryRunResult.import_status.status}`);
+
+      if (ledgerOut) {
+        writeImportLedger(dryRunResult, ledgerOut);
+        console.log(`📁 Import ledger entry written to: ${ledgerOut}`);
+      }
+
+      if (reportOut) {
+        const reportMd = generateImportReport(dryRunResult);
+        writeOutput(reportOut, reportMd);
+        console.log(`📁 Import dry-run report written to: ${reportOut}`);
+      }
     }
 
     process.exit(0);

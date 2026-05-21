@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Caesar AI Scan Offline Import Dry Run Schema",
+  "version": "0.12.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "import_type",
+    "import_id",
+    "generated_at",
+    "source_bundle",
+    "tool",
+    "import_status",
+    "normalized_records",
+    "counts",
+    "safety"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "0.12.0" },
+    "import_type": { "type": "string", "const": "caesar-ai-scan-offline-import-dry-run" },
+    "import_id": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_bundle": {
+      "type": "object",
+      "required": ["bundle_id", "bundle_type", "schema_version", "manifest_path", "checksums_verified"],
+      "properties": {
+        "bundle_id": { "type": "string" },
+        "bundle_type": { "type": "string" },
+        "schema_version": { "type": "string" },
+        "manifest_path": { "type": "string" },
+        "checksums_verified": { "type": "boolean" }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "import_status": {
+      "type": "object",
+      "required": ["status", "backend_ready_candidate", "requires_human_review", "allowed_ingestion_mode"],
+      "properties": {
+        "status": { "type": "string", "enum": ["dry_run_passed", "dry_run_failed"] },
+        "backend_ready_candidate": { "type": "boolean" },
+        "requires_human_review": { "type": "boolean" },
+        "allowed_ingestion_mode": { "type": "string", "const": "offline_review_only" }
+      }
+    },
+    "normalized_records": {
+      "type": "object",
+      "required": ["scan_summary", "findings", "inventory_components", "review_items"],
+      "properties": {
+        "scan_summary": { "type": "object" },
+        "findings": { "type": "array", "items": { "type": "object" } },
+        "inventory_components": { "type": "array", "items": { "type": "object" } },
+        "evidence_candidates": { "type": "array", "items": { "type": "object" } },
+        "review_items": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["finding_count", "inventory_component_count", "evidence_candidate_count", "review_item_count"],
+      "properties": {
+        "finding_count": { "type": "integer" },
+        "inventory_component_count": { "type": "integer" },
+        "evidence_candidate_count": { "type": "integer" },
+        "review_item_count": { "type": "integer" }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": ["no_live_ingestion", "no_database_writes", "no_external_fetching", "secrets_redacted", "customer_data_required"],
+      "properties": {
+        "no_live_ingestion": { "type": "boolean", "const": true },
+        "no_database_writes": { "type": "boolean", "const": true },
+        "no_external_fetching": { "type": "boolean", "const": true },
+        "secrets_redacted": { "type": "boolean", "const": true },
+        "customer_data_required": { "type": "boolean", "const": false }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "errors": { "type": "array", "items": { "type": "string" } }
+  }
+}
