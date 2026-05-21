@@ -4,7 +4,7 @@
     "name": "caesar-ai-scan",
     "version": "0.10.0"
   },
-  "scanned_at": "2026-05-21T16:30:21.795Z",
+  "scanned_at": "2026-05-21T16:33:14.249Z",
   "target": "./fixtures/sample-ai-frameworks-project",
   "summary": {
     "total_files": 7,
@@ -36,7 +36,7 @@
   },
   "findings": [
     {
-      "finding_id": "find_env_w4565j62",
+      "finding_id": "find_env_nq579v3b",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -54,7 +54,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     {
-      "finding_id": "find_env_yr5vrois",
+      "finding_id": "find_env_lq7fq9eo",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -72,7 +72,7 @@
       "recommended_review": "Ensure API key is removed from repository commits immediately."
     },
     {
-      "finding_id": "find_env_0dyt89tr",
+      "finding_id": "find_env_e98shph2",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -90,7 +90,7 @@
       "recommended_review": "Ensure Pinecone keys are managed securely."
     },
     {
-      "finding_id": "find_prompt_oi7000cc",
+      "finding_id": "find_prompt_f97jwsiz",
       "rule_pack_version": "v1",
       "category": "AI Config Artifact",
       "detection_category": "prompt_asset",
@@ -108,7 +108,7 @@
       "recommended_review": "Review AI system configuration for compliance with internal governance standards."
     },
     {
-      "finding_id": "find_dep_nr2goivy",
+      "finding_id": "find_dep_haj9o1p6",
       "rule_pack_version": "v1",
       "category": "AI SDK",
       "detection_category": "provider_sdk",
@@ -126,7 +126,7 @@
       "recommended_review": "Verify usage complies with company data privacy policy. Ensure no proprietary data is sent to external LLMs without explicit authorization."
     },
     {
-      "finding_id": "find_dep_jnnziy8d",
+      "finding_id": "find_dep_38hoh9i6",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -144,7 +144,7 @@
       "recommended_review": "LangChain pipelines dynamically construct chains. Trace all active prompts and integrations to ensure there are no un-monitored model connections."
     },
     {
-      "finding_id": "find_dep_o0vkx8rr",
+      "finding_id": "find_dep_8nxl0v2l",
       "rule_pack_version": "v1",
       "category": "AI SDK",
       "detection_category": "provider_sdk",
@@ -162,7 +162,7 @@
       "recommended_review": "Review terms of service for Anthropic models. Verify that data input is not used for model training."
     },
     {
-      "finding_id": "find_dep_4xtpqfj6",
+      "finding_id": "find_dep_0ey7318n",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -180,7 +180,7 @@
       "recommended_review": "Verify that vector payloads do not contain raw plaintext sensitive data. Confirm network connections use TLS."
     },
     {
-      "finding_id": "find_dep_avt4o73x",
+      "finding_id": "find_dep_5w0b4738",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -198,7 +198,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_prompt_msli9081",
+      "finding_id": "find_prompt_8qlz3amx",
       "rule_pack_version": "v1",
       "category": "AI Prompt Artifact",
       "detection_category": "prompt_asset",
@@ -216,7 +216,7 @@
       "recommended_review": "Review prompt content for bias, safety, and proprietary data."
     },
     {
-      "finding_id": "find_dep_n4ujuvs3",
+      "finding_id": "find_dep_zutb79ro",
       "rule_pack_version": "v1",
       "category": "AI SDK",
       "detection_category": "provider_sdk",
@@ -234,7 +234,7 @@
       "recommended_review": "Review Google Cloud AI core agreements and data storage parameters."
     },
     {
-      "finding_id": "find_dep_548s53w0",
+      "finding_id": "find_dep_vzanpk8k",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -252,7 +252,7 @@
       "recommended_review": "Audit agent graph cycles and tool access permissions to prevent infinite loops or unauthorized data modifications."
     },
     {
-      "finding_id": "find_dep_2qk96qjk",
+      "finding_id": "find_dep_t74q165x",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -270,7 +270,7 @@
       "recommended_review": "LlamaIndex connects files to LLMs. Audit all document parsing pipelines and local index stores to prevent leaking restricted intellectual property."
     },
     {
-      "finding_id": "find_dep_6n157v4e",
+      "finding_id": "find_dep_8f3g27wy",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -288,7 +288,7 @@
       "recommended_review": "Ensure autonomous agent tools do not run uncontrolled system actions or command executions."
     },
     {
-      "finding_id": "find_dep_17xx9twr",
+      "finding_id": "find_dep_b5wpml7y",
       "rule_pack_version": "v1",
       "category": "ML Library",
       "detection_category": "model_artifact",
@@ -306,7 +306,7 @@
       "recommended_review": "Ensure model training/inference scripts are audited for safe resource usage."
     },
     {
-      "finding_id": "find_dep_xddznue4",
+      "finding_id": "find_dep_6b4a1zh0",
       "rule_pack_version": "v1",
       "category": "ML Library",
       "detection_category": "model_artifact",
@@ -324,7 +324,7 @@
       "recommended_review": "Verify model sources and licenses. Be cautious of loading models from untrusted repositories (potential for remote code execution via pickle)."
     },
     {
-      "finding_id": "find_dep_32d8bc7x",
+      "finding_id": "find_dep_cv4h7fil",
       "rule_pack_version": "v1",
       "category": "ML Library",
       "detection_category": "model_artifact",
@@ -342,7 +342,7 @@
       "recommended_review": "Beware of .pkl files for model loading; use joblib with caution."
     },
     {
-      "finding_id": "find_dep_end7dojm",
+      "finding_id": "find_dep_8p07zknr",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -360,7 +360,7 @@
       "recommended_review": "Audit Milvus cluster access and data partition security."
     },
     {
-      "finding_id": "find_env_u3v7gbiy",
+      "finding_id": "find_env_z6wfdy3m",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -378,7 +378,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     {
-      "finding_id": "find_vector_i90s8jnn",
+      "finding_id": "find_vector_epnryflv",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -396,7 +396,7 @@
       "recommended_review": "Check storage parameters for high-dimensional vectors."
     },
     {
-      "finding_id": "find_vector_fix4182h",
+      "finding_id": "find_vector_iij5avng",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",

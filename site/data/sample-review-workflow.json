@@ -1,9 +1,9 @@
 {
   "schema_version": "0.5.0",
-  "generated_at": "2026-05-21T16:30:21.807Z",
+  "generated_at": "2026-05-21T16:33:14.262Z",
   "source_scan": {
     "target": "./fixtures/sample-ai-frameworks-project",
-    "scanned_at": "2026-05-21T16:30:21.795Z"
+    "scanned_at": "2026-05-21T16:33:14.249Z"
   },
   "summary": {
     "total_findings": 21,
@@ -24,8 +24,8 @@
   },
   "review_items": [
     {
-      "review_item_id": "ri_d_env_w4565j62",
-      "finding_ref": "find_env_w4565j62",
+      "review_item_id": "ri_d_env_nq579v3b",
+      "finding_ref": "find_env_nq579v3b",
       "matched_name": "OPENAI_API_KEY",
       "category": "AI Credential",
       "severity": "high",
@@ -84,11 +84,11 @@
         "Ensure key usage permissions follow the principle of least privilege."
       ],
       "export_readiness": 20,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_w4565j62. Blocked from export due to 4 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_nq579v3b. Blocked from export due to 4 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_env_yr5vrois",
-      "finding_ref": "find_env_yr5vrois",
+      "review_item_id": "ri_d_env_lq7fq9eo",
+      "finding_ref": "find_env_lq7fq9eo",
       "matched_name": "ANTHROPIC_API_KEY",
       "category": "AI Credential",
       "severity": "high",
@@ -147,11 +147,11 @@
         "Ensure key usage permissions follow the principle of least privilege."
       ],
       "export_readiness": 20,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_yr5vrois. Blocked from export due to 4 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_lq7fq9eo. Blocked from export due to 4 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_env_0dyt89tr",
-      "finding_ref": "find_env_0dyt89tr",
+      "review_item_id": "ri_d_env_e98shph2",
+      "finding_ref": "find_env_e98shph2",
       "matched_name": "PINECONE_API_KEY",
       "category": "AI Credential",
       "severity": "high",
@@ -210,11 +210,11 @@
         "Ensure key usage permissions follow the principle of least privilege."
       ],
       "export_readiness": 20,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_0dyt89tr. Blocked from export due to 4 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_e98shph2. Blocked from export due to 4 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_prompt_oi7000cc",
-      "finding_ref": "find_prompt_oi7000cc",
+      "review_item_id": "ri_d_prompt_f97jwsiz",
+      "finding_ref": "find_prompt_f97jwsiz",
       "matched_name": "model-card.md",
       "category": "AI Config Artifact",
       "severity": "low",
@@ -284,11 +284,11 @@
         "Define prompt/completion log aggregation constraints and specify standard data purging intervals."
       ],
       "export_readiness": 35,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_oi7000cc. Blocked from export due to 2 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_f97jwsiz. Blocked from export due to 2 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_nr2goivy",
-      "finding_ref": "find_dep_nr2goivy",
+      "review_item_id": "ri_d_dep_haj9o1p6",
+      "finding_ref": "find_dep_haj9o1p6",
       "matched_name": "openai",
       "category": "AI SDK",
       "severity": "medium",
@@ -377,11 +377,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_nr2goivy. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_haj9o1p6. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_jnnziy8d",
-      "finding_ref": "find_dep_jnnziy8d",
+      "review_item_id": "ri_d_dep_38hoh9i6",
+      "finding_ref": "find_dep_38hoh9i6",
       "matched_name": "langchain",
       "category": "AI Framework",
       "severity": "medium",
@@ -470,11 +470,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_jnnziy8d. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_38hoh9i6. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_o0vkx8rr",
-      "finding_ref": "find_dep_o0vkx8rr",
+      "review_item_id": "ri_d_dep_8nxl0v2l",
+      "finding_ref": "find_dep_8nxl0v2l",
       "matched_name": "@anthropic-ai/sdk",
       "category": "AI SDK",
       "severity": "medium",
@@ -563,11 +563,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_o0vkx8rr. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_8nxl0v2l. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_4xtpqfj6",
-      "finding_ref": "find_dep_4xtpqfj6",
+      "review_item_id": "ri_d_dep_0ey7318n",
+      "finding_ref": "find_dep_0ey7318n",
       "matched_name": "pinecone-client",
       "category": "Vector DB",
       "severity": "medium",
@@ -656,11 +656,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_4xtpqfj6. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_0ey7318n. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_avt4o73x",
-      "finding_ref": "find_dep_avt4o73x",
+      "review_item_id": "ri_d_dep_5w0b4738",
+      "finding_ref": "find_dep_5w0b4738",
       "matched_name": "chromadb",
       "category": "Vector DB",
       "severity": "medium",
@@ -749,11 +749,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_avt4o73x. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_5w0b4738. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_prompt_msli9081",
-      "finding_ref": "find_prompt_msli9081",
+      "review_item_id": "ri_d_prompt_8qlz3amx",
+      "finding_ref": "find_prompt_8qlz3amx",
       "matched_name": "system.prompt.md",
       "category": "AI Prompt Artifact",
       "severity": "low",
@@ -823,11 +823,11 @@
         "Define prompt/completion log aggregation constraints and specify standard data purging intervals."
       ],
       "export_readiness": 35,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_msli9081. Blocked from export due to 2 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_8qlz3amx. Blocked from export due to 2 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_n4ujuvs3",
-      "finding_ref": "find_dep_n4ujuvs3",
+      "review_item_id": "ri_d_dep_zutb79ro",
+      "finding_ref": "find_dep_zutb79ro",
       "matched_name": "google-generativeai",
       "category": "AI SDK",
       "severity": "medium",
@@ -916,11 +916,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_n4ujuvs3. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_zutb79ro. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_548s53w0",
-      "finding_ref": "find_dep_548s53w0",
+      "review_item_id": "ri_d_dep_vzanpk8k",
+      "finding_ref": "find_dep_vzanpk8k",
       "matched_name": "langgraph",
       "category": "AI Framework",
       "severity": "high",
@@ -1009,11 +1009,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_548s53w0. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_vzanpk8k. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_2qk96qjk",
-      "finding_ref": "find_dep_2qk96qjk",
+      "review_item_id": "ri_d_dep_t74q165x",
+      "finding_ref": "find_dep_t74q165x",
       "matched_name": "llama-index",
       "category": "AI Framework",
       "severity": "medium",
@@ -1102,11 +1102,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_2qk96qjk. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_t74q165x. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_6n157v4e",
-      "finding_ref": "find_dep_6n157v4e",
+      "review_item_id": "ri_d_dep_8f3g27wy",
+      "finding_ref": "find_dep_8f3g27wy",
       "matched_name": "crewai",
       "category": "AI Framework",
       "severity": "high",
@@ -1195,11 +1195,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_6n157v4e. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_8f3g27wy. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_17xx9twr",
-      "finding_ref": "find_dep_17xx9twr",
+      "review_item_id": "ri_d_dep_b5wpml7y",
+      "finding_ref": "find_dep_b5wpml7y",
       "matched_name": "torch",
       "category": "ML Library",
       "severity": "medium",
@@ -1288,11 +1288,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_17xx9twr. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_b5wpml7y. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_xddznue4",
-      "finding_ref": "find_dep_xddznue4",
+      "review_item_id": "ri_d_dep_6b4a1zh0",
+      "finding_ref": "find_dep_6b4a1zh0",
       "matched_name": "transformers",
       "category": "ML Library",
       "severity": "medium",
@@ -1381,11 +1381,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_xddznue4. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_6b4a1zh0. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_32d8bc7x",
-      "finding_ref": "find_dep_32d8bc7x",
+      "review_item_id": "ri_d_dep_cv4h7fil",
+      "finding_ref": "find_dep_cv4h7fil",
       "matched_name": "scikit-learn",
       "category": "ML Library",
       "severity": "medium",
@@ -1474,11 +1474,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_32d8bc7x. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_cv4h7fil. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_end7dojm",
-      "finding_ref": "find_dep_end7dojm",
+      "review_item_id": "ri_d_dep_8p07zknr",
+      "finding_ref": "find_dep_8p07zknr",
       "matched_name": "pymilvus",
       "category": "Vector DB",
       "severity": "medium",
@@ -1567,11 +1567,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_end7dojm. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_8p07zknr. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_env_u3v7gbiy",
-      "finding_ref": "find_env_u3v7gbiy",
+      "review_item_id": "ri_d_env_z6wfdy3m",
+      "finding_ref": "find_env_z6wfdy3m",
       "matched_name": "OPENAI_API_KEY",
       "category": "AI Credential",
       "severity": "high",
@@ -1630,11 +1630,11 @@
         "Ensure key usage permissions follow the principle of least privilege."
       ],
       "export_readiness": 20,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_u3v7gbiy. Blocked from export due to 4 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_z6wfdy3m. Blocked from export due to 4 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_vector_i90s8jnn",
-      "finding_ref": "find_vector_i90s8jnn",
+      "review_item_id": "ri_d_vector_epnryflv",
+      "finding_ref": "find_vector_epnryflv",
       "matched_name": "Qdrant",
       "category": "Vector DB",
       "severity": "medium",
@@ -1694,11 +1694,11 @@
         "Establish clear procedures for processing data subject deletion requests within vector indexes."
       ],
       "export_readiness": 30,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_i90s8jnn. Blocked from export due to 3 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_epnryflv. Blocked from export due to 3 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_vector_fix4182h",
-      "finding_ref": "find_vector_fix4182h",
+      "review_item_id": "ri_d_vector_iij5avng",
+      "finding_ref": "find_vector_iij5avng",
       "matched_name": "Qdrant",
       "category": "Vector DB",
       "severity": "medium",
@@ -1758,7 +1758,7 @@
         "Establish clear procedures for processing data subject deletion requests within vector indexes."
       ],
       "export_readiness": 30,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_fix4182h. Blocked from export due to 3 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_iij5avng. Blocked from export due to 3 unresolved blocking evidence gaps."
     }
   ]
 }
