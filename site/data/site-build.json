@@ -1,7 +1,7 @@
 {
-  "version": "0.6.0",
-  "generated_at": "2026-05-20T12:46:09.202Z",
-  "source_commit": "2c869830c904f6c0d8ab206bff073bd414ef7c75",
+  "version": "0.8.0",
+  "generated_at": "2026-05-21T15:00:02.727Z",
+  "source_commit": "75be1669d953767acbb03efda23cedb7565fb2dc",
   "source_tool": "caesar-ai-site-builder",
   "public_domain": "ai-scan.caesar.no",
   "included_data_files": [
@@ -9,7 +9,9 @@
     "sample-evidence-candidates.json",
     "sample-review-workflow.json",
     "sample-export-pack-manifest.json",
-    "sample-import-readiness.json"
+    "sample-import-readiness.json",
+    "sample-history-summary.json",
+    "sample-latest-diff.json"
   ],
   "safety_notes": [
     "This data represents synthetically generated compliance static test results.",

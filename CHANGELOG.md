@@ -22,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.0] - 21 May 2026
+- **T007 — Public Site Demo History + Diff Presentation.** Expose safe sample/demo scan history and diff information on public static site.
+- Fix scan diff accounting correctness.
+- Added safe public demo history and diff presentation files.
+- Improved site validation for data safety.
+
 ## [0.7.0] - 20 May 2026
 ### Added
 - Offline local scan history model (T006).

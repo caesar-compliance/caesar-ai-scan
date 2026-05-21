@@ -1,6 +1,6 @@
-# Public Site Content Policy
-
-This policy document governs what content, static data, scripts, and identifiers are permitted on the public website.
+4. **Sanitized History and Diff Data**:
+   - Any scan history or diff results included in the public build must be verified sanitized sample-only data (using `fixtures/sample-ai-project`).
+   - Absolutely no raw, real user scan data, local project history logs, or non-public paths may be included.
 
 ## Content Boundaries
 

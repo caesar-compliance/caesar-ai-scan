@@ -9,7 +9,7 @@ export function writeScanHistory(historyDir, runId, options) {
     reviewWorkflowPath,
     exportPackPath,
     targetProject,
-    toolVersion = "0.7.0"
+    toolVersion = "0.8.0"
   } = options;
 
   if (!fs.existsSync(historyDir)) {
@@ -44,7 +44,7 @@ export function writeScanHistory(historyDir, runId, options) {
 
   // Build scan-run.json
   const scanRun = {
-    schema_version: "0.7.0",
+    schema_version: "0.8.0",
     run_id: runId,
     generated_at: generatedAt,
     source_tool: "caesar-ai-scan",
@@ -64,7 +64,7 @@ export function writeScanHistory(historyDir, runId, options) {
   // Update history-index.json
   const indexPath = path.join(historyDir, 'history-index.json');
   let historyIndex = {
-    schema_version: "0.7.0",
+    schema_version: "0.8.0",
     generated_at: generatedAt,
     history_dir: historyDir,
     target_project: targetProject,

@@ -2,6 +2,7 @@ import crypto from 'crypto';
 
 function generateFindingKey(finding) {
   // Stable key definition: category + detector + rule_id + matched_name + file_path
+  // MUST NOT include finding_id because that changes per run for new discoveries
   const keyStr = [
     finding.category || '',
     finding.detector || '',
@@ -18,14 +19,27 @@ export function buildScanDiff(baselineRunId, currentRunId, baselineScanResult, c
   const baselineFindings = baselineScanResult ? baselineScanResult.findings || [] : [];
   const currentFindings = currentScanResult ? currentScanResult.findings || [] : [];
 
+  const normalize = (f) => {
+    const n = { ...f };
+    delete n.finding_id;
+    return n;
+  };
+
+  // Track findings by content-based key, supporting multiple identical findings per run
   const baselineMap = new Map();
   baselineFindings.forEach(f => {
-    baselineMap.set(generateFindingKey(f), f);
+    const nf = normalize(f);
+    const key = generateFindingKey(nf);
+    if (!baselineMap.has(key)) baselineMap.set(key, []);
+    baselineMap.get(key).push(f);
   });
 
   const currentMap = new Map();
   currentFindings.forEach(f => {
-    currentMap.set(generateFindingKey(f), f);
+    const nf = normalize(f);
+    const key = generateFindingKey(nf);
+    if (!currentMap.has(key)) currentMap.set(key, []);
+    currentMap.get(key).push(f);
   });
 
   const added = [];
@@ -33,34 +47,31 @@ export function buildScanDiff(baselineRunId, currentRunId, baselineScanResult, c
   const unchanged = [];
   const changed = [];
 
-  // Check what is in current
-  for (const [key, currF] of currentMap.entries()) {
-    const baseF = baselineMap.get(key);
-    if (!baseF) {
-      added.push(currF);
-    } else {
-      // Check for changes - for MVP we ignore timestamps, just compare severity/recommendation, etc.
-      // Easiest is stringify, but let's exclude generated fields like finding_id
-      const bObj = { ...baseF }; delete bObj.finding_id;
-      const cObj = { ...currF }; delete cObj.finding_id;
-      
-      if (JSON.stringify(bObj) === JSON.stringify(cObj)) {
-        unchanged.push(currF);
-      } else {
-        changed.push(currF);
-      }
-    }
-  }
+  const allKeys = new Set([...baselineMap.keys(), ...currentMap.keys()]);
 
-  // Check what was removed
-  for (const [key, baseF] of baselineMap.entries()) {
-    if (!currentMap.has(key)) {
-      removed.push(baseF);
+  for (const key of allKeys) {
+    const baseList = baselineMap.get(key) || [];
+    const currList = currentMap.get(key) || [];
+
+    const baseCount = baseList.length;
+    const currCount = currList.length;
+
+    if (baseCount === currCount) {
+      // Same count, assume unchanged for this MVP
+      unchanged.push(...currList);
+    } else if (currCount > baseCount) {
+      // More in current
+      unchanged.push(...baseList);
+      added.push(...currList.slice(baseCount));
+    } else {
+      // More in baseline (removed)
+      unchanged.push(...currList);
+      removed.push(...baseList.slice(currCount));
     }
   }
 
   const diff = {
-    schema_version: "0.7.0",
+    schema_version: "0.8.0",
     diff_id: diffId,
     generated_at: new Date().toISOString(),
     baseline_run_id: baselineRunId || null,

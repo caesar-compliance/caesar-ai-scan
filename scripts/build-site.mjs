@@ -18,7 +18,7 @@ async function buildSite() {
 
   const packageJsonPath = join(rootDir, 'package.json');
   const pkg = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
-  const version = pkg.version || '0.6.0';
+  const version = pkg.version || '0.8.0';
 
   const tmpDir = join(rootDir, 'tmp');
   const siteDataDir = join(rootDir, 'site', 'data');
@@ -34,7 +34,9 @@ async function buildSite() {
     'sample-evidence-candidates.json',
     'sample-review-workflow.json',
     join('sample-evidence-export-pack', 'manifest.json'),
-    join('sample-evidence-export-pack', 'import-readiness.json')
+    join('sample-evidence-export-pack', 'import-readiness.json'),
+    join('sample-history', 'history-index.json'),
+    join('sample-history', 'latest-diff.json')
   ];
 
   let missingFiles = requiredTmpFiles.some(f => !existsSync(join(tmpDir, f)));
@@ -59,7 +61,9 @@ async function buildSite() {
     { src: join(tmpDir, 'sample-evidence-candidates.json'), dest: join(siteDataDir, 'sample-evidence-candidates.json') },
     { src: join(tmpDir, 'sample-review-workflow.json'), dest: join(siteDataDir, 'sample-review-workflow.json') },
     { src: join(tmpDir, 'sample-evidence-export-pack', 'manifest.json'), dest: join(siteDataDir, 'sample-export-pack-manifest.json') },
-    { src: join(tmpDir, 'sample-evidence-export-pack', 'import-readiness.json'), dest: join(siteDataDir, 'sample-import-readiness.json') }
+    { src: join(tmpDir, 'sample-evidence-export-pack', 'import-readiness.json'), dest: join(siteDataDir, 'sample-import-readiness.json') },
+    { src: join(tmpDir, 'sample-history', 'history-index.json'), dest: join(siteDataDir, 'sample-history-summary.json') },
+    { src: join(tmpDir, 'sample-history', 'latest-diff.json'), dest: join(siteDataDir, 'sample-latest-diff.json') }
   ];
 
   // Perform copying

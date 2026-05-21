@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Status** | v0.7.0 — offline scan, review, export pack, history/diff, public static site |
+| **Status** | v0.8.0 — offline scan, review, export pack, history/diff, public static site demo including safe history/diff |
 | **Mode** | Offline CLI — no live API calls, no remote ingestion |
 | **Scope** | Local static analysis, review workflow, evidence export candidates |
 | **Safety** | Draft-only exports; human review required — not legal advice |

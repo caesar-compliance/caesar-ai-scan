@@ -28,4 +28,5 @@ This document prioritizes upcoming development tasks and establishes execution b
 
 
 - [x] T006: Offline Scan History & Diff Model
-- [ ] T007: (TBD — next planned task)
+- [x] T007: Public Site Demo History + Diff Presentation (v0.8.0)
+- [ ] T008: Governance OS Ingestion (Planning/Spec Phase)

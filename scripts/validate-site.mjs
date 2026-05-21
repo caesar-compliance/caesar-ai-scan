@@ -60,6 +60,8 @@ function runSiteValidation() {
     'sample-review-workflow.json',
     'sample-export-pack-manifest.json',
     'sample-import-readiness.json',
+    'sample-history-summary.json',
+    'sample-latest-diff.json',
     'site-build.json'
   ];
 
@@ -93,7 +95,7 @@ function runSiteValidation() {
   assert(buildInfo.version, 'site-build.json must contain a version string');
   assert(buildInfo.public_domain === 'ai-scan.caesar.no', `site-build.json public_domain must be "ai-scan.caesar.no", got "${buildInfo.public_domain}"`);
   assert(Array.isArray(buildInfo.included_data_files), 'site-build.json must include included_data_files list');
-  assert(buildInfo.included_data_files.length === 5, 'site-build.json must record all 5 sample data files');
+  assert(buildInfo.included_data_files.length === 7, 'site-build.json must record all 7 sample data files');
 
   console.log('✅ Programmatic static site validation suite PASSED successfully!');
 }

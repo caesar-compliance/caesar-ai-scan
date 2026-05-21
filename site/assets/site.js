@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     reviewWorkflow: null,
     manifest: null,
     readiness: null,
+    historySummary: null,
+    latestDiff: null,
     build: null
   };
 
@@ -51,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
       loadedData.reviewWorkflow = await fetchJson('data/sample-review-workflow.json');
       loadedData.manifest = await fetchJson('data/sample-export-pack-manifest.json');
       loadedData.readiness = await fetchJson('data/sample-import-readiness.json');
+      loadedData.historySummary = await fetchJson('data/sample-history-summary.json');
+      loadedData.latestDiff = await fetchJson('data/sample-latest-diff.json');
 
       updateMetrics();
       updateBuildInfo();
@@ -178,13 +182,45 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       jsonViewer.textContent = summary;
+    } else if (tabName === 'history') {
+      if (!loadedData.historySummary || !loadedData.latestDiff) {
+        jsonViewer.textContent = '// Scan history or diff data not loaded.';
+        return;
+      }
+      
+      let summary = `📜 CAESAR AI SCAN HISTORY SUMMARY\n`;
+      summary += `==========================================\n`;
+      summary += `Total Runs Recorded: ${loadedData.historySummary.run_count}\n`;
+      summary += `Latest Run ID      : ${loadedData.historySummary.latest_run_id}\n\n`;
+
+      summary += `📊 LATEST DIFF REPORT (${loadedData.latestDiff.current_run_id})\n`;
+      summary += `------------------------------------------\n`;
+      summary += `- Added Findings   : ${loadedData.latestDiff.summary.added_count}\n`;
+      summary += `- Removed Findings : ${loadedData.latestDiff.summary.removed_count}\n`;
+      summary += `- Changed Findings : ${loadedData.latestDiff.summary.changed_count}\n`;
+      summary += `- Unchanged        : ${loadedData.latestDiff.summary.unchanged_count}\n`;
+      summary += `Total Findings     : ${loadedData.latestDiff.summary.total_current}\n\n`;
+
+      if (loadedData.latestDiff.summary.added_count > 0) {
+        summary += `➕ NEW FINDINGS INTRODUCED:\n`;
+        loadedData.latestDiff.added_findings.forEach(f => {
+          summary += `  - [${f.rule_id}] ${f.matched_name} in ${f.file_path}\n`;
+        });
+        summary += `\n`;
+      }
+
+      summary += `🕒 Diff Generated At: ${loadedData.latestDiff.generated_at}\n`;
+      
+      jsonViewer.textContent = summary;
     } else if (tabName === 'raw') {
       jsonViewer.textContent = JSON.stringify({
         scanResult: loadedData.scanResult,
         evidenceCandidates: loadedData.evidenceCandidates,
         reviewWorkflow: loadedData.reviewWorkflow,
         manifest: loadedData.manifest,
-        readiness: loadedData.readiness
+        readiness: loadedData.readiness,
+        historySummary: loadedData.historySummary,
+        latestDiff: loadedData.latestDiff
       }, null, 2);
     }
   }

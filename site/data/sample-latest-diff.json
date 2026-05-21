@@ -1,44 +1,21 @@
 {
-  "schema_version": "0.5.0",
-  "scanner": {
-    "name": "caesar-ai-scan",
-    "version": "0.5.0"
-  },
-  "scanned_at": "2026-05-21T15:00:02.288Z",
-  "target": "/Users/nazarkoartem/Desktop/Projects/caesar-compliance/caesar-ai-scan/fixtures/sample-ai-project",
+  "schema_version": "0.8.0",
+  "diff_id": "diff_7922b2a0",
+  "generated_at": "2026-05-21T15:00:02.299Z",
+  "baseline_run_id": "run_2026-05-21T15-00-02-234Z_359a",
+  "current_run_id": "run_2026-05-21T15-00-02-295Z_7197",
   "summary": {
-    "total_files": 8,
-    "scanned_files": 7,
-    "total_findings": 11,
-    "dependency_findings": 4,
-    "env_var_findings": 3,
-    "prompt_findings": 1,
-    "vector_db_findings": 3
+    "total_baseline": 11,
+    "total_current": 11,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 0,
+    "unchanged_count": 11
   },
-  "scope": {
-    "included_count": 7,
-    "excluded_count": 1,
-    "skipped_count": 0,
-    "files": {
-      "included": [
-        ".caesarignore",
-        ".env.example",
-        "caesar-scan.config.json",
-        "package.json",
-        "prompts/system.prompt.md",
-        "requirements.txt",
-        "src/example.js"
-      ],
-      "excluded": [
-        {
-          "relativePath": "generated/ignored-ai-noise.js",
-          "reason": "ignored_by_pattern: generated/"
-        }
-      ],
-      "skipped": []
-    }
-  },
-  "findings": [
+  "added_findings": [],
+  "removed_findings": [],
+  "changed_findings": [],
+  "unchanged_findings": [
     {
       "finding_id": "find_env_hvg9bp8g",
       "category": "AI Credential",
@@ -160,5 +137,6 @@
       "evidence_hint": "Detected vector database library reference on line 17: 'console.log(`Processing ${input} with OpenAI and Chroma...`);'",
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     }
-  ]
+  ],
+  "recommended_review_actions": []
 }
