@@ -19,9 +19,12 @@ import { writeDiffReport } from './report/scan-diff-report.mjs';
 import { buildExportBundleMetadata } from './export-bundle/scan-export-bundle-builder.mjs';
 import { writeExportBundle } from './export-bundle/scan-export-bundle-writer.mjs';
 import { generateBundleReport } from './report/scan-export-bundle-report.mjs';
-import { runImportDryRun } from './import-dry-run/import-dry-run-builder.mjs';
+import { runImportDryRun } from './import-dry-run/import-dry-run-builder.mjs';,
+import { runLocalJsonStoreAdapter } from "./backend-adapter/local-json-store-adapter.mjs";
+import { generateLocalJsonStoreReport } from "./report/local-json-store-report.mjs";
 import { writeImportLedger } from './import-dry-run/import-ledger-writer.mjs';
 import { generateImportReport } from './report/import-dry-run-report.mjs';
+import { writeOutput } from "./scanner/scan-runner.mjs";
 
 function parseArgs(args) {
   const options = {
@@ -46,6 +49,8 @@ function parseArgs(args) {
     importFromBundle: null,
     importDryRunOut: null,
     importLedgerOut: null,
+    localStoreDir: null,
+    localStoreReport: null,
     importReportOut: null
   };
 
@@ -97,6 +102,12 @@ function parseArgs(args) {
       options.importLedgerOut = args[++i];
     } else if (arg === '--import-report') {
       options.importReportOut = args[++i];
+    } else if (arg === '--local-store-dir') {
+      options.localStoreDir = args[++i];
+    } else if (arg === '--local-store-report') {
+      options.localStoreReport = args[++i];
+    } else if (arg === '--store-from-import') {
+      options.storeFromImport = args[++i];
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }

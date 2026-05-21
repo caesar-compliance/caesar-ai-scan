@@ -1,6 +1,6 @@
 {
   "name": "caesar-ai-scan",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Static-analysis CLI and CI/CD tool to inventory AI dependencies, framework usage, vector DBs, and credentials.",
   "type": "module",
   "main": "src/cli.mjs",
