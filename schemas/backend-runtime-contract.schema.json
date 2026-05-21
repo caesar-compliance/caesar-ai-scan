@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.17.0",
+  "contract_type": "caesar-ai-scan-backend-runtime-contract",
+  "runtime_status": "planned_not_connected",
+  "allowed_modes": [
+    "offline_review_only",
+    "local_json_dry_run",
+    "local_read_only_api",
+    "future_hosted_read_only_api"
+  ],
+  "disallowed_in_t017": [
+    "database_writes",
+    "live_ingestion",
+    "scheduler",
+    "external_fetching",
+    "customer_data_ingestion",
+    "production_deployment"
+  ],
+  "data_sources": [
+    "scan_export_bundle",
+    "import_dry_run",
+    "local_json_store",
+    "api_projection"
+  ],
+  "future_storage_model": [
+    "scan_runs",
+    "findings",
+    "inventory_components",
+    "review_items",
+    "import_ledger"
+  ],
+  "future_api_surface": [
+    "health",
+    "dashboard_summary",
+    "scan_runs",
+    "findings",
+    "inventory_components",
+    "review_items",
+    "import_ledger"
+  ],
+  "security_boundary": {
+    "no_secrets_in_repo": true,
+    "no_private_account_mapping_in_tracked_files": true,
+    "environment_placeholders_only": true
+  },
+  "safety": {
+    "no_live_backend_connection": true,
+    "no_database_writes": true,
+    "no_external_fetching": true,
+    "no_deployment": true
+  }
+}

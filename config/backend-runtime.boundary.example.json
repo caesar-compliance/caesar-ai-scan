@@ -1,0 +1,10 @@
+{
+  "runtime_provider": "supabase_cloudflare_planned",
+  "supabase_project_ref": "REPLACE_ME",
+  "cloudflare_worker_name": "REPLACE_ME",
+  "allowed_origin": "REPLACE_ME",
+  "ingestion_enabled": false,
+  "external_fetching_enabled": false,
+  "scheduler_enabled": false,
+  "deployment_enabled": false
+}
