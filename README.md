@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Status** | v0.8.0 — offline scan, review, export pack, history/diff, public static site demo including safe history/diff |
+| **Status** | v0.9.0 — Rule Pack v1 (expanded AI framework detection), offline scan, review, export pack, history/diff, public static site demo |
 | **Mode** | Offline CLI — no live API calls, no remote ingestion |
 | **Scope** | Local static analysis, review workflow, evidence export candidates |
 | **Safety** | Draft-only exports; human review required — not legal advice |
@@ -17,7 +17,7 @@ Part of the [Caesar AI Governance Hub](https://github.com/caesar-compliance/caes
 
 ## What it does
 
-- **Static scan** — Detects AI API usage, dependencies, prompts, vector DBs, and credential signals in local codebases.
+- **Static scan (Rule Pack v1)** — Detects 40+ AI API providers, orchestration frameworks (LangChain, LangGraph, etc.), RAG/Vector DBs, ML artifacts, prompts, and credential signals.
 - **Review workflow** — Assigns review lanes, classifies evidence gaps, and scores export readiness offline.
 - **Evidence export pack** — Builds a self-contained offline pack for [caesar-ai-evidence](https://github.com/caesar-compliance/caesar-ai-evidence) integration (draft, review-required).
 - **Scope control** — `caesar-scan.config.json` and `.caesarignore` for bounded scan targets.

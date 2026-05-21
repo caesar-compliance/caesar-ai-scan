@@ -39,7 +39,8 @@
         "dependency_findings",
         "env_var_findings",
         "prompt_findings",
-        "vector_db_findings"
+        "vector_db_findings",
+        "ml_artifact_findings"
       ],
       "properties": {
         "total_files": { "type": "INTEGER", "minimum": 0 },
@@ -48,7 +49,8 @@
         "dependency_findings": { "type": "INTEGER", "minimum": 0 },
         "env_var_findings": { "type": "INTEGER", "minimum": 0 },
         "prompt_findings": { "type": "INTEGER", "minimum": 0 },
-        "vector_db_findings": { "type": "INTEGER", "minimum": 0 }
+        "vector_db_findings": { "type": "INTEGER", "minimum": 0 },
+        "ml_artifact_findings": { "type": "INTEGER", "minimum": 0 }
       }
     },
     "findings": {
@@ -57,24 +59,38 @@
         "type": "OBJECT",
         "required": [
           "finding_id",
+          "rule_pack_version",
           "category",
+          "detection_category",
           "severity",
+          "confidence",
           "detector",
+          "detector_id",
+          "signal_type",
+          "evidence_kind",
           "rule_id",
           "matched_name",
           "file_path",
           "evidence_hint",
+          "governance_relevance",
           "recommended_review"
         ],
         "properties": {
           "finding_id": { "type": "STRING" },
+          "rule_pack_version": { "type": "STRING" },
           "category": { "type": "STRING" },
+          "detection_category": { "type": "STRING" },
           "severity": { "type": "STRING", "enum": ["low", "medium", "high", "critical"] },
+          "confidence": { "type": "STRING", "enum": ["high", "medium", "low"] },
           "detector": { "type": "STRING" },
+          "detector_id": { "type": "STRING" },
+          "signal_type": { "type": "STRING" },
+          "evidence_kind": { "type": "STRING", "enum": ["dependency", "import", "config", "filename", "text_pattern"] },
           "rule_id": { "type": "STRING" },
           "matched_name": { "type": "STRING" },
           "file_path": { "type": "STRING" },
           "evidence_hint": { "type": "STRING" },
+          "governance_relevance": { "type": "STRING" },
           "recommended_review": { "type": "STRING" }
         }
       }

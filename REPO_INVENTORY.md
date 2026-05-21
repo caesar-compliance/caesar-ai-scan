@@ -129,4 +129,8 @@ When modifying this repository:
 - `scripts/validate-scan-history.mjs`
 - `docs/OFFLINE_SCAN_HISTORY_USAGE.md`
 - `docs/SCAN_DIFF_MODEL.md`
-- `work-items/T006-offline-scan-history-diff/`
+- `src/detectors/ml-artifact-detector.mjs` (AI model file detection)
+- `scripts/validate-rule-pack-v1.mjs` (Rule Pack v1 validation)
+- `docs/RULE_PACK_V1.md` (Rule Pack v1 documentation)
+- `fixtures/sample-ai-frameworks-project/` (Expanded AI stack test project)
+- `work-items/T009-rule-pack-v1-ai-framework-detection/` (T009 task tracking)

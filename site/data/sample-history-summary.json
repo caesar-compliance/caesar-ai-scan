@@ -1,19 +1,19 @@
 {
   "schema_version": "0.8.0",
-  "generated_at": "2026-05-21T15:16:56.460Z",
-  "history_dir": "/Users/nazarkoartem/Desktop/Projects/caesar-compliance/caesar-ai-scan/tmp/sample-history",
-  "target_project": "/Users/nazarkoartem/Desktop/Projects/caesar-compliance/caesar-ai-scan/fixtures/sample-ai-project",
+  "generated_at": "2026-05-21T15:38:15.948Z",
+  "history_dir": "./tmp/sample-history",
+  "target_project": "./fixtures/sample-ai-project",
   "runs": [
     {
-      "run_id": "run_2026-05-21T15-16-56-358Z_1734",
-      "generated_at": "2026-05-21T15:16:56.358Z"
+      "run_id": "run_2026-05-21T15-38-15-891Z_9ad6",
+      "generated_at": "2026-05-21T15:38:15.891Z"
     },
     {
-      "run_id": "run_2026-05-21T15-16-56-459Z_f1ee",
-      "generated_at": "2026-05-21T15:16:56.460Z"
+      "run_id": "run_2026-05-21T15-38-15-948Z_d46a",
+      "generated_at": "2026-05-21T15:38:15.948Z"
     }
   ],
-  "latest_run_id": "run_2026-05-21T15-16-56-459Z_f1ee",
+  "latest_run_id": "run_2026-05-21T15-38-15-948Z_d46a",
   "run_count": 2,
   "safety_notes": [
     "This history index is strictly local and offline.",

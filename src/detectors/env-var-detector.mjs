@@ -37,13 +37,20 @@ export function detectEnvVars(file, rules) {
 
           findings.push({
             finding_id: `find_env_${Math.random().toString(36).substring(2, 10)}`,
+            rule_pack_version: 'v1',
             category: rule.category,
+            detection_category: rule.detection_category || 'config_signal',
             severity: rule.severity,
+            confidence: rule.confidence || 'high',
             detector: 'env-var-detector',
+            detector_id: 'env_var_match',
+            signal_type: 'config_signal',
+            evidence_kind: 'text_pattern',
             rule_id: rule.id,
             matched_name: rule.pattern,
             file_path: relativePath,
             evidence_hint: `Detected environment variable usage on line ${i + 1}: '${maskedLine}'`,
+            governance_relevance: rule.governance_relevance || 'Potential AI credential or configuration signal.',
             recommended_review: rule.recommended_review
           });
         }

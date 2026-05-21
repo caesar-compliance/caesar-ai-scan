@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.8.1`
-*   **Current Phase:** `T008 / v0.8.1 — AI Scan Reference Lab + Competitor Implementation Matrix`
+*   **Current Version:** `0.9.0`
+*   **Current Phase:** `T009 / v0.9.0 — Rule Pack v1 / AI Framework Detection Expansion`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T008 AI Scan Reference Lab + Competitor Implementation Matrix. Established local reference lab and benchmark docs.`
+*   **Latest Completed Task:** `T009 Rule Pack v1 / AI Framework Detection Expansion. Implemented expanded AI framework, provider, and ML artifact detection with path sanitization.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `T009 Rule Pack v1 / AI Framework Detection Expansion.`
+*   **Next Recommended Step:** `T010 AI-BOM / AI Usage Inventory Export.`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---

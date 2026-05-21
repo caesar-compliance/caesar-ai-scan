@@ -4,7 +4,25 @@ import { detectDependencies } from '../detectors/dependency-detector.mjs';
 import { detectEnvVars } from '../detectors/env-var-detector.mjs';
 import { detectPromptFiles } from '../detectors/prompt-file-detector.mjs';
 import { detectVectorDBs } from '../detectors/vector-db-detector.mjs';
+import { detectMLArtifacts } from '../detectors/ml-artifact-detector.mjs';
 import { resolve } from 'path';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Helper to get version from package.json
+function getScannerVersion() {
+  try {
+    const pkgPath = join(__dirname, '../../package.json');
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
+    return pkg.version;
+  } catch (e) {
+    return '0.9.0';
+  }
+}
 
 /**
  * Orchestrates the full static-analysis scan over the target directory.
@@ -14,6 +32,8 @@ import { resolve } from 'path';
  * @returns {Object} Structured scan-result matching schemas/scan-result.schema.json.
  */
 export function runScan(targetDir, options = {}) {
+  const scannerVersion = getScannerVersion();
+
   // Load clean-room rules
   const rules = loadRules(options.rulesPath);
 
@@ -45,6 +65,10 @@ export function runScan(targetDir, options = {}) {
     // 4. Vector DB findings
     const vectorFindings = detectVectorDBs(file, rules.dependencies);
     findings.push(...vectorFindings);
+
+    // 5. ML Artifact findings
+    const mlFindings = detectMLArtifacts(file, rules.ml_artifacts);
+    findings.push(...mlFindings);
   }
 
   // Count findings by detector/category
@@ -52,15 +76,21 @@ export function runScan(targetDir, options = {}) {
   const envCount = findings.filter(f => f.detector === 'env-var-detector').length;
   const promptCount = findings.filter(f => f.detector === 'prompt-file-detector').length;
   const vectorCount = findings.filter(f => f.detector === 'vector-db-detector').length;
+  const mlCount = findings.filter(f => f.detector === 'ml-artifact-detector').length;
+
+  // Sanitize target path to be relative if it is within or under CWD to avoid leaking local system paths
+  const relativeTarget = targetDir.startsWith(process.cwd()) 
+    ? './' + targetDir.replace(process.cwd(), '').replace(/^\/+/, '')
+    : targetDir;
 
   const result = {
     schema_version: '0.5.0',
     scanner: {
       name: 'caesar-ai-scan',
-      version: '0.5.0'
+      version: scannerVersion
     },
     scanned_at: new Date().toISOString(),
-    target: targetDir,
+    target: relativeTarget,
     summary: {
       total_files: scope.summary.included_count + scope.summary.excluded_count + scope.summary.skipped_count,
       scanned_files: files.length,
@@ -68,7 +98,8 @@ export function runScan(targetDir, options = {}) {
       dependency_findings: depCount,
       env_var_findings: envCount,
       prompt_findings: promptCount,
-      vector_db_findings: vectorCount
+      vector_db_findings: vectorCount,
+      ml_artifact_findings: mlCount
     },
     scope: {
       included_count: scope.summary.included_count,

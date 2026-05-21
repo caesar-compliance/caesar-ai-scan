@@ -22,6 +22,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.0] - 21 May 2026
+- **T009 — Rule Pack v1 / AI Framework Detection Expansion.**
+- Expanded detection rules to cover 40+ AI framework, provider SDK, RAG/Vector stack, and ML signals.
+- Added Rule Pack v1 metadata (category, confidence, governance relevance, etc.) to all findings.
+- Implemented `ml-artifact-detector` for AI model file identification.
+- Implemented local path sanitization in all generated outputs to prevent leaking host system information (e.g., `/Users/` paths).
+- Added `fixtures/sample-ai-frameworks-project/` representing a modern agentic AI stack.
+- Added `scripts/validate-rule-pack-v1.mjs`.
+
 ## [0.8.1] - 21 May 2026
 - **T008 — AI Scan Reference Lab + Competitor Implementation Matrix.**
 - Established local Reference Lab at `../_reference-lab/scan` with shallow clones of 20 approved open-source repositories.

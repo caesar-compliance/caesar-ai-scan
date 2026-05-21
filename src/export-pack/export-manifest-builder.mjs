@@ -32,12 +32,18 @@ export function buildExportManifest(targetProjectPath, artifactPayloads) {
 
   const envVarFindingsCount = scanResult ? (scanResult.summary ? scanResult.summary.env_var_findings : 0) : 0;
 
+  // Sanitize path for safety
+  const cwd = process.cwd();
+  const safeTargetProjectPath = targetProjectPath.startsWith(cwd) 
+    ? './' + targetProjectPath.replace(cwd, '').replace(/^\/+/, '')
+    : targetProjectPath;
+
   return {
     manifest_id: `man_${Math.random().toString(36).substring(2, 10)}${Math.random().toString(36).substring(2, 10)}`,
     generated_at: new Date().toISOString(),
     source_tool: 'caesar-ai-scan',
-    source_tool_version: '0.5.0',
-    target_project_path: targetProjectPath,
+    source_tool_version: scanResult ? (scanResult.scanner ? scanResult.scanner.version : '0.9.0') : '0.9.0',
+    target_project_path: safeTargetProjectPath,
     included_artifacts: includedArtifacts,
     artifact_counts: {
       findings_count: findingsCount,

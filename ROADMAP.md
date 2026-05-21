@@ -88,3 +88,5 @@ v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review [COMPLETE] �
 
 - T008 (v0.8.1): AI Scan Reference Lab + Competitor Implementation Matrix (Completed)
 
+- T009 (v0.9.0): Rule Pack v1 / AI Framework Detection Expansion (Completed)
+

@@ -20,10 +20,11 @@ function runValidation() {
   // Assertions on scan result schema
   assert(result.schema_version === '0.5.0', 'Schema version should be 0.5.0');
   assert(result.scanner && result.scanner.name === 'caesar-ai-scan', 'Scanner name matches');
-  assert(result.scanner.version === '0.5.0', 'Scanner version matches');
+  // version is now 0.9.0
+  assert(result.scanner.version === '0.9.0', `Scanner version should be 0.9.0, got ${result.scanner.version}`);
 
   assert(result.scanned_at, 'scanned_at timestamp exists');
-  assert(result.target === targetDir, 'target matches scanned path');
+  assert(result.target === './fixtures/sample-ai-project' || result.target === targetDir, 'target matches scanned path');
   assert(result.summary, 'summary object exists');
   assert(Array.isArray(result.findings), 'findings should be an array');
 
@@ -46,16 +47,23 @@ function runValidation() {
   assert(promptFindings.length >= 1, 'Should find at least one prompt file finding');
   assert(vectorFindings.length >= 1, 'Should find at least one vector DB finding');
 
-  // Verify all fields exist on findings
+  // Verify all Rule Pack v1 fields exist on findings
   for (const f of findings) {
     assert(f.finding_id, 'finding_id exists');
+    assert(f.rule_pack_version === 'v1', 'rule_pack_version should be v1');
     assert(f.category, 'category exists');
+    assert(f.detection_category, 'detection_category exists');
     assert(f.severity, 'severity exists');
+    assert(f.confidence, 'confidence exists');
     assert(f.detector, 'detector exists');
+    assert(f.detector_id, 'detector_id exists');
+    assert(f.signal_type, 'signal_type exists');
+    assert(f.evidence_kind, 'evidence_kind exists');
     assert(f.rule_id, 'rule_id exists');
     assert(f.matched_name, 'matched_name exists');
     assert(f.file_path, 'file_path exists');
     assert(f.evidence_hint, 'evidence_hint exists');
+    assert(f.governance_relevance, 'governance_relevance exists');
     assert(f.recommended_review, 'recommended_review exists');
   }
 

@@ -28,13 +28,20 @@ export function detectDependencies(file, rules) {
           if (regex.test(depName)) {
             findings.push({
               finding_id: `find_dep_${Math.random().toString(36).substring(2, 10)}`,
+              rule_pack_version: 'v1',
               category: rule.category,
+              detection_category: rule.detection_category || 'provider_sdk',
               severity: rule.severity,
+              confidence: rule.confidence || 'high',
               detector: 'dependency-detector',
+              detector_id: 'dep_pkg_match',
+              signal_type: rule.detection_category || 'provider_sdk',
+              evidence_kind: 'dependency',
               rule_id: rule.id,
               matched_name: depName,
               file_path: relativePath,
               evidence_hint: `Detected '${depName}': '${depVersion}' in package.json dependencies list.`,
+              governance_relevance: rule.governance_relevance || 'AI-related dependency in package.json.',
               recommended_review: rule.recommended_review
             });
           }
@@ -59,13 +66,20 @@ export function detectDependencies(file, rules) {
             if (regex.test(match)) {
               findings.push({
                 finding_id: `find_dep_${Math.random().toString(36).substring(2, 10)}`,
+                rule_pack_version: 'v1',
                 category: rule.category,
+                detection_category: rule.detection_category || 'provider_sdk',
                 severity: rule.severity,
+                confidence: rule.confidence || 'high',
                 detector: 'dependency-detector',
+                detector_id: 'dep_requirements_match',
+                signal_type: rule.detection_category || 'provider_sdk',
+                evidence_kind: 'dependency',
                 rule_id: rule.id,
                 matched_name: match,
                 file_path: relativePath,
                 evidence_hint: `Detected '${match}' on line ${i + 1} of requirements.txt: '${line}'`,
+                governance_relevance: rule.governance_relevance || 'AI-related dependency in requirements.txt.',
                 recommended_review: rule.recommended_review
               });
             }

@@ -1,9 +1,9 @@
 {
-  "manifest_id": "man_q4oa1116y2rviq1m",
-  "generated_at": "2026-05-21T15:16:56.454Z",
+  "manifest_id": "man_wuh20q7orn3yquft",
+  "generated_at": "2026-05-21T15:38:15.945Z",
   "source_tool": "caesar-ai-scan",
-  "source_tool_version": "0.5.0",
-  "target_project_path": "/Users/nazarkoartem/Desktop/Projects/caesar-compliance/caesar-ai-scan/fixtures/sample-ai-project",
+  "source_tool_version": "0.9.0",
+  "target_project_path": "./fixtures/sample-ai-project",
   "included_artifacts": [
     "scan-result.json",
     "evidence-candidates.json",
@@ -23,11 +23,11 @@
     "no_competitor_licenses_flagged": true
   },
   "hash_summary": {
-    "scan-result.json": "049fba1c544f2ec9373a12eea68ee8370b98ee546e6d5667a24b5187ec9fc592",
-    "evidence-candidates.json": "fe202effc84a769a6a1b397ce4bf9dabaeb1a7b842629095745733ea0acb9559",
-    "review-workflow.json": "c23feadc6ec029da46c728c271a7d03d39ef6de7c824eca4647e12cafaef0b8f",
+    "scan-result.json": "dffa1809f00c9ae223acef2caec71a3544b81ed64b14ea9d9e18160aa80e6504",
+    "evidence-candidates.json": "9940b9b594846cf0f9c8efca56a0ff92890436bf28f18e5cde4494d2eea3fe62",
+    "review-workflow.json": "f05a2f88598d98563178a22ec5a8f904a01aaf93f7bbfd58984cb6ea4c9013af",
     "import-readiness.json": "f503a790c3324c10968333b6838306ebb1dc56e8ac9edf42dd5dc43499643d7e",
-    "human-review-checklist.json": "54d2ca036b453ed14a4bb7e6735fc4c96557e2022ce9184f1691eda9c33c7577"
+    "human-review-checklist.json": "a914fc22385bdc3c49c34be58d83bde01b99be32f0400255492642e9c4aa4852"
   },
   "compatibility": {
     "schema_version": "0.5.0",

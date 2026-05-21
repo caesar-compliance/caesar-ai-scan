@@ -21,6 +21,16 @@ export function writeScanHistory(historyDir, runId, options) {
 
   const generatedAt = new Date().toISOString();
 
+  // Sanitize paths for safety
+  const cwd = process.cwd();
+  const safeTargetProject = targetProject.startsWith(cwd) 
+    ? './' + targetProject.replace(cwd, '').replace(/^\/+/, '')
+    : targetProject;
+  
+  const safeHistoryDir = historyDir.startsWith(cwd)
+    ? './' + historyDir.replace(cwd, '').replace(/^\/+/, '')
+    : historyDir;
+
   // Copy files
   const scanResultDest = path.join(runDir, 'scan-result.json');
   fs.copyFileSync(scanResultPath, scanResultDest);
@@ -49,8 +59,8 @@ export function writeScanHistory(historyDir, runId, options) {
     generated_at: generatedAt,
     source_tool: "caesar-ai-scan",
     source_tool_version: toolVersion,
-    target_project: targetProject,
-    target_hash: scanResult.target || targetProject,
+    target_project: safeTargetProject,
+    target_hash: scanResult.target || safeTargetProject,
     scan_result_ref: "scan-result.json",
     review_workflow_ref: fs.existsSync(path.join(runDir, 'review-workflow.json')) ? "review-workflow.json" : null,
     export_pack_ref: fs.existsSync(path.join(runDir, 'export-pack-manifest.json')) ? "export-pack-manifest.json" : null,
@@ -66,8 +76,8 @@ export function writeScanHistory(historyDir, runId, options) {
   let historyIndex = {
     schema_version: "0.8.0",
     generated_at: generatedAt,
-    history_dir: historyDir,
-    target_project: targetProject,
+    history_dir: safeHistoryDir,
+    target_project: safeTargetProject,
     runs: [],
     latest_run_id: null,
     run_count: 0,
@@ -93,7 +103,7 @@ export function writeScanHistory(historyDir, runId, options) {
   historyIndex.generated_at = generatedAt;
   historyIndex.latest_run_id = runId;
   historyIndex.run_count = historyIndex.runs.length;
-  historyIndex.target_project = targetProject; // Ensure it matches the latest
+  historyIndex.target_project = safeTargetProject; // Ensure it matches the latest
 
   fs.writeFileSync(indexPath, JSON.stringify(historyIndex, null, 2));
   

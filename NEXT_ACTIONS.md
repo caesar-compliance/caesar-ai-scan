@@ -30,4 +30,5 @@ This document prioritizes upcoming development tasks and establishes execution b
 - [x] T006: Offline Scan History & Diff Model
 - [x] T007: Public Site Demo History + Diff Presentation (v0.8.0)
 - [x] T008: AI Scan Reference Lab + Competitor Implementation Matrix (v0.8.1)
-- [ ] T009: Rule Pack v1 / AI Framework Detection Expansion
+- [x] T009: Rule Pack v1 / AI Framework Detection Expansion (v0.9.0)
+- [ ] T010: AI-BOM / AI Usage Inventory Export

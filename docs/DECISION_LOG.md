@@ -70,3 +70,8 @@ This document maps all high-level technical, strategic, and governance decisions
 **Date:** 2026-05-21
 **Context:** Need a structured way to study existing scanners and governance tools.
 **Decision:** Establish a local Reference Lab at `../_reference-lab/scan` containing shallow clones of approved open-source repositories. Define strict usage policies to prevent code leakage into production.
+
+## DECISION-T009: Rule Pack v1 Implementation
+**Date:** 2026-05-21
+**Context:** Need to expand scanner coverage for the modern AI framework and ML stack.
+**Decision:** Implemented **Rule Pack v1** covering 6 major AI detection categories (Provider SDKs, Orchestration Frameworks, RAG/Vector Stack, ML Artifacts, Prompt Assets, Config Signals). Mandated Rule Pack v1 metadata for all findings. Implemented local path sanitization in all generated outputs to prevent leaking host system information.

@@ -6,8 +6,9 @@ Insights from the Reference Lab mapped to future development tasks in Caesar AI 
 
 ### T009: Rule Pack v1 / AI Framework Detection Expansion
 - **Reference**: `getregula`, `semgrep`
+- **Status**: **Implemented (v0.9.0)**
 - **Goal**: Expand detection rules to cover more AI frameworks and specific regulatory requirements.
-- **Action**: Map `getregula` patterns to Caesar rule format.
+- **Action**: Rule Pack v1 implemented with 6 categories and 40+ signals.
 
 ### T010: AI-BOM / AI Usage Inventory Export
 - **Reference**: `syft`, `cdxgen`, `cyclonedx-specification`

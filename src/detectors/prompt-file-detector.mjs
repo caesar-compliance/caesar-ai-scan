@@ -16,13 +16,20 @@ export function detectPromptFiles(file, rules) {
     if (regex.test(relativePath) || regex.test(name)) {
       findings.push({
         finding_id: `find_prompt_${Math.random().toString(36).substring(2, 10)}`,
+        rule_pack_version: 'v1',
         category: rule.category,
+        detection_category: rule.detection_category || 'prompt_asset',
         severity: rule.severity,
+        confidence: rule.confidence || 'medium',
         detector: 'prompt-file-detector',
+        detector_id: 'prompt_path_match',
+        signal_type: 'prompt_asset',
+        evidence_kind: 'filename',
         rule_id: rule.id,
         matched_name: name,
         file_path: relativePath,
         evidence_hint: `Prompt artifact matched pattern: '${rule.pattern}' (File name: '${name}')`,
+        governance_relevance: rule.governance_relevance || 'Dedicated AI prompt or configuration asset.',
         recommended_review: rule.recommended_review
       });
       // Break early to avoid double-matching the same file with multiple prompt rules
