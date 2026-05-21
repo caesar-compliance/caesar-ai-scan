@@ -19,12 +19,11 @@ import { writeDiffReport } from './report/scan-diff-report.mjs';
 import { buildExportBundleMetadata } from './export-bundle/scan-export-bundle-builder.mjs';
 import { writeExportBundle } from './export-bundle/scan-export-bundle-writer.mjs';
 import { generateBundleReport } from './report/scan-export-bundle-report.mjs';
-import { runImportDryRun } from './import-dry-run/import-dry-run-builder.mjs';,
+import { runImportDryRun } from './import-dry-run/import-dry-run-builder.mjs';
 import { runLocalJsonStoreAdapter } from "./backend-adapter/local-json-store-adapter.mjs";
 import { generateLocalJsonStoreReport } from "./report/local-json-store-report.mjs";
 import { writeImportLedger } from './import-dry-run/import-ledger-writer.mjs';
 import { generateImportReport } from './report/import-dry-run-report.mjs';
-import { writeOutput } from "./scanner/scan-runner.mjs";
 
 function parseArgs(args) {
   const options = {

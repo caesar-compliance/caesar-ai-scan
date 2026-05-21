@@ -1,6 +1,6 @@
 {
-  "manifest_id": "man_yu59dhyxnpww4rhs",
-  "generated_at": "2026-05-21T17:34:53.962Z",
+  "manifest_id": "man_tt7z4wo5j6zjsqii",
+  "generated_at": "2026-05-21T17:51:35.560Z",
   "source_tool": "caesar-ai-scan",
   "source_tool_version": "0.10.0",
   "target_project_path": "./fixtures/sample-ai-project",
@@ -23,11 +23,11 @@
     "no_competitor_licenses_flagged": true
   },
   "hash_summary": {
-    "scan-result.json": "96cb560bd331207338e4ea5a08c8df71561acebbd412c00ab33f3205e4bf267d",
-    "evidence-candidates.json": "fed66bfeab1c7f06616057ea383bc6f794bcd6b35afa562903710299f6ad738b",
-    "review-workflow.json": "d7f1e9bda9087de70ce4e9b9d5d40f4d822e6ba9e90360544ff65f900445ce50",
+    "scan-result.json": "e730d696c359254a3f200d0e6b416810c564082c6ffd414814348df9fe24521a",
+    "evidence-candidates.json": "c7c60cf07dfdb002b160df79f5e37c7b3eea530105af3f7041c9ef66b22b154e",
+    "review-workflow.json": "5d0a15e6b77b5aae78b276e883ea04a985f3ecfe0d5b56aac44b6a69bcabe2ea",
     "import-readiness.json": "f503a790c3324c10968333b6838306ebb1dc56e8ac9edf42dd5dc43499643d7e",
-    "human-review-checklist.json": "2dc59cb0db5d45ff5538f9caa1ca8fa2ef0936be86461bb34b4c6a0575bf7bbc"
+    "human-review-checklist.json": "0aaeb8cf777b7d4469ca0c90c2a881f35a1634398cff965dc5fec88181efea43"
   },
   "compatibility": {
     "schema_version": "0.5.0",
