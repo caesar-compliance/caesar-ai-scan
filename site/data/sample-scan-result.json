@@ -1,242 +1,215 @@
-{
-  "schema_version": "0.5.0",
-  "scanner": {
-    "name": "caesar-ai-scan",
-    "version": "0.10.0"
-  },
-  "scanned_at": "2026-05-21T17:24:49.095Z",
-  "target": "./fixtures/sample-ai-project",
-  "summary": {
-    "total_files": 8,
-    "scanned_files": 7,
-    "total_findings": 11,
-    "dependency_findings": 4,
-    "env_var_findings": 3,
-    "prompt_findings": 1,
-    "vector_db_findings": 3,
-    "ml_artifact_findings": 0
-  },
-  "scope": {
-    "included_count": 7,
-    "excluded_count": 1,
-    "skipped_count": 0,
-    "files": {
-      "included": [
-        ".caesarignore",
-        ".env.example",
-        "caesar-scan.config.json",
-        "package.json",
-        "prompts/system.prompt.md",
-        "requirements.txt",
-        "src/example.js"
-      ],
-      "excluded": [
-        {
-          "relativePath": "generated/ignored-ai-noise.js",
-          "reason": "ignored_by_pattern: generated/"
-        }
-      ],
-      "skipped": []
-    }
-  },
-  "findings": [
-    {
-      "finding_id": "find_env_axbk483n",
-      "rule_pack_version": "v1",
-      "category": "AI Credential",
-      "detection_category": "config_signal",
-      "severity": "high",
-      "confidence": "high",
-      "detector": "env-var-detector",
-      "detector_id": "env_var_match",
-      "signal_type": "config_signal",
-      "evidence_kind": "text_pattern",
-      "rule_id": "rule_env_openai",
-      "matched_name": "OPENAI_API_KEY",
-      "file_path": ".env.example",
-      "evidence_hint": "Detected environment variable usage on line 6: 'OPENAI_API_KEY=your-openai-api-key-here'",
-      "governance_relevance": "High risk of credential leakage for proprietary AI provider.",
-      "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
-    },
-    {
-      "finding_id": "find_env_8g6vpfx0",
-      "rule_pack_version": "v1",
-      "category": "AI Credential",
-      "detection_category": "config_signal",
-      "severity": "high",
-      "confidence": "high",
-      "detector": "env-var-detector",
-      "detector_id": "env_var_match",
-      "signal_type": "config_signal",
-      "evidence_kind": "text_pattern",
-      "rule_id": "rule_env_anthropic",
-      "matched_name": "ANTHROPIC_API_KEY",
-      "file_path": ".env.example",
-      "evidence_hint": "Detected environment variable usage on line 7: 'ANTHROPIC_API_KEY=placeholder-value-for-anthropic-key'",
-      "governance_relevance": "High risk of credential leakage for proprietary AI provider.",
-      "recommended_review": "Ensure API key is removed from repository commits immediately."
-    },
-    {
-      "finding_id": "find_dep_0zjsnnfg",
-      "rule_pack_version": "v1",
-      "category": "AI SDK",
-      "detection_category": "provider_sdk",
-      "severity": "medium",
-      "confidence": "high",
-      "detector": "dependency-detector",
-      "detector_id": "dep_pkg_match",
-      "signal_type": "provider_sdk",
-      "evidence_kind": "dependency",
-      "rule_id": "rule_dep_openai",
-      "matched_name": "openai",
-      "file_path": "package.json",
-      "evidence_hint": "Detected 'openai': '^4.20.0' in package.json dependencies list.",
-      "governance_relevance": "Direct usage of proprietary LLM provider via official SDK.",
-      "recommended_review": "Verify usage complies with company data privacy policy. Ensure no proprietary data is sent to external LLMs without explicit authorization."
-    },
-    {
-      "finding_id": "find_dep_yzgvydda",
-      "rule_pack_version": "v1",
-      "category": "AI Framework",
-      "detection_category": "orchestration_framework",
-      "severity": "medium",
-      "confidence": "high",
-      "detector": "dependency-detector",
-      "detector_id": "dep_pkg_match",
-      "signal_type": "orchestration_framework",
-      "evidence_kind": "dependency",
-      "rule_id": "rule_dep_langchain",
-      "matched_name": "langchain",
-      "file_path": "package.json",
-      "evidence_hint": "Detected 'langchain': '^0.0.198' in package.json dependencies list.",
-      "governance_relevance": "LangChain usage indicates complex LLM workflows and chaining.",
-      "recommended_review": "LangChain pipelines dynamically construct chains. Trace all active prompts and integrations to ensure there are no un-monitored model connections."
-    },
-    {
-      "finding_id": "find_prompt_5qxe8n3x",
-      "rule_pack_version": "v1",
-      "category": "AI Prompt Artifact",
-      "detection_category": "prompt_asset",
-      "severity": "low",
-      "confidence": "high",
-      "detector": "prompt-file-detector",
-      "detector_id": "prompt_path_match",
-      "signal_type": "prompt_asset",
-      "evidence_kind": "filename",
-      "rule_id": "rule_prompt_artifact",
-      "matched_name": "system.prompt.md",
-      "file_path": "prompts/system.prompt.md",
-      "evidence_hint": "Prompt artifact matched pattern: '\\.(prompt|prompts|system-prompt)\\.(md|txt|json|yaml)$' (File name: 'system.prompt.md')",
-      "governance_relevance": "Explicit prompt engineering artifact.",
-      "recommended_review": "Review prompt content for bias, safety, and proprietary data."
-    },
-    {
-      "finding_id": "find_dep_5ui63fy0",
-      "rule_pack_version": "v1",
-      "category": "AI Framework",
-      "detection_category": "orchestration_framework",
-      "severity": "medium",
-      "confidence": "high",
-      "detector": "dependency-detector",
-      "detector_id": "dep_requirements_match",
-      "signal_type": "orchestration_framework",
-      "evidence_kind": "dependency",
-      "rule_id": "rule_dep_llamaindex",
-      "matched_name": "llama-index",
-      "file_path": "requirements.txt",
-      "evidence_hint": "Detected 'llama-index' on line 2 of requirements.txt: 'llama-index>=0.8.0'",
-      "governance_relevance": "LlamaIndex usage indicates RAG (Retrieval-Augmented Generation) patterns.",
-      "recommended_review": "LlamaIndex connects files to LLMs. Audit all document parsing pipelines and local index stores to prevent leaking restricted intellectual property."
-    },
-    {
-      "finding_id": "find_dep_8s4tcn07",
-      "rule_pack_version": "v1",
-      "category": "Vector DB",
-      "detection_category": "rag_vector",
-      "severity": "medium",
-      "confidence": "high",
-      "detector": "dependency-detector",
-      "detector_id": "dep_requirements_match",
-      "signal_type": "rag_vector",
-      "evidence_kind": "dependency",
-      "rule_id": "rule_dep_chroma",
-      "matched_name": "chromadb",
-      "file_path": "requirements.txt",
-      "evidence_hint": "Detected 'chromadb' on line 3 of requirements.txt: 'chromadb==0.4.15'",
-      "governance_relevance": "Commonly used for local/embedded vector storage.",
-      "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
-    },
-    {
-      "finding_id": "find_env_6y5x3oxg",
-      "rule_pack_version": "v1",
-      "category": "AI Credential",
-      "detection_category": "config_signal",
-      "severity": "high",
-      "confidence": "high",
-      "detector": "env-var-detector",
-      "detector_id": "env_var_match",
-      "signal_type": "config_signal",
-      "evidence_kind": "text_pattern",
-      "rule_id": "rule_env_openai",
-      "matched_name": "OPENAI_API_KEY",
-      "file_path": "src/example.js",
-      "evidence_hint": "Detected environment variable usage on line 5: 'const apiKey=proc...[REDACTED]'",
-      "governance_relevance": "High risk of credential leakage for proprietary AI provider.",
-      "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
-    },
-    {
-      "finding_id": "find_vector_akv2rsbu",
-      "rule_pack_version": "v1",
-      "category": "Vector DB",
-      "detection_category": "rag_vector",
-      "severity": "medium",
-      "confidence": "high",
-      "detector": "vector-db-detector",
-      "detector_id": "vector_lib_reference",
-      "signal_type": "rag_vector",
-      "evidence_kind": "text_pattern",
-      "rule_id": "rule_dep_chroma",
-      "matched_name": "Chroma DB",
-      "file_path": "src/example.js",
-      "evidence_hint": "Detected vector database library reference on line 2: 'import { ChromaClient } from 'chromadb';'",
-      "governance_relevance": "Commonly used for local/embedded vector storage.",
-      "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
-    },
-    {
-      "finding_id": "find_vector_oac5t8qo",
-      "rule_pack_version": "v1",
-      "category": "Vector DB",
-      "detection_category": "rag_vector",
-      "severity": "medium",
-      "confidence": "high",
-      "detector": "vector-db-detector",
-      "detector_id": "vector_lib_reference",
-      "signal_type": "rag_vector",
-      "evidence_kind": "text_pattern",
-      "rule_id": "rule_dep_chroma",
-      "matched_name": "Chroma DB",
-      "file_path": "src/example.js",
-      "evidence_hint": "Detected vector database library reference on line 12: 'const chroma = new ChromaClient({'",
-      "governance_relevance": "Commonly used for local/embedded vector storage.",
-      "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
-    },
-    {
-      "finding_id": "find_vector_vfrszjvk",
-      "rule_pack_version": "v1",
-      "category": "Vector DB",
-      "detection_category": "rag_vector",
-      "severity": "medium",
-      "confidence": "high",
-      "detector": "vector-db-detector",
-      "detector_id": "vector_lib_reference",
-      "signal_type": "rag_vector",
-      "evidence_kind": "text_pattern",
-      "rule_id": "rule_dep_chroma",
-      "matched_name": "Chroma DB",
-      "file_path": "src/example.js",
-      "evidence_hint": "Detected vector database library reference on line 17: 'console.log(`Processing ${input} with OpenAI and Chroma...`);'",
-      "governance_relevance": "Commonly used for local/embedded vector storage.",
-      "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
-    }
-  ]
-}
+# Caesar AI Codebase Compliance Scan Report
+
+## 📊 Scan Metadata
+
+- **Target Directory:** `./fixtures/sample-ai-project`
+- **Scan Run Time:** `Thu, 21 May 2026 17:33:41 GMT`
+- **Scanner Engine:** `caesar-ai-scan (v0.10.0)`
+- **Compliance Version:** `v0.5.0`
+
+## 🛡️ Executive Summary
+
+| Metric | Count |
+| :--- | :--- |
+| Total Files Traversed | 8 |
+| Total AI Usage Signals Detected | **11** |
+| Dependency Warnings | 4 |
+| Plaintext Environment Variables | 3 |
+| Dedicated Prompt Artifacts | 1 |
+| Active Vector DB Code References | 3 |
+
+## 🚦 Findings Inventory
+
+| Finding ID | Severity | Category | Match | File Path |
+| :--- | :--- | :--- | :--- | :--- |
+| `find_env_jerg976m` | 🔴 **HIGH** | AI Credential | `OPENAI_API_KEY` | `.env.example` |
+| `find_env_faz2sab3` | 🔴 **HIGH** | AI Credential | `ANTHROPIC_API_KEY` | `.env.example` |
+| `find_dep_oiu5q4mt` | 🟡 **MEDIUM** | AI SDK | `openai` | `package.json` |
+| `find_dep_3pisjixz` | 🟡 **MEDIUM** | AI Framework | `langchain` | `package.json` |
+| `find_prompt_e6hqyr4d` | 🟢 **LOW** | AI Prompt Artifact | `system.prompt.md` | `prompts/system.prompt.md` |
+| `find_dep_z07el058` | 🟡 **MEDIUM** | AI Framework | `llama-index` | `requirements.txt` |
+| `find_dep_6sp7f46t` | 🟡 **MEDIUM** | Vector DB | `chromadb` | `requirements.txt` |
+| `find_env_2j6s2a7x` | 🔴 **HIGH** | AI Credential | `OPENAI_API_KEY` | `src/example.js` |
+| `find_vector_ihh1v8gu` | 🟡 **MEDIUM** | Vector DB | `Chroma DB` | `src/example.js` |
+| `find_vector_gw9tifec` | 🟡 **MEDIUM** | Vector DB | `Chroma DB` | `src/example.js` |
+| `find_vector_cfm4f28a` | 🟡 **MEDIUM** | Vector DB | `Chroma DB` | `src/example.js` |
+
+## 🔍 Detailed Evidence & Recommended Reviews
+
+### Finding `find_env_jerg976m`: AI Credential (OPENAI_API_KEY)
+
+- **File:** `.env.example`
+- **Severity:** `HIGH`
+- **Detector Module:** `env-var-detector`
+- **Rule Identification:** `rule_env_openai`
+
+> [!WARNING]
+> **Evidence Hint:**
+> Detected environment variable usage on line 6: 'OPENAI_API_KEY=your-openai-api-key-here'
+
+#### Recommended Compliance Review Action:
+Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager.
+
+---
+
+### Finding `find_env_faz2sab3`: AI Credential (ANTHROPIC_API_KEY)
+
+- **File:** `.env.example`
+- **Severity:** `HIGH`
+- **Detector Module:** `env-var-detector`
+- **Rule Identification:** `rule_env_anthropic`
+
+> [!WARNING]
+> **Evidence Hint:**
+> Detected environment variable usage on line 7: 'ANTHROPIC_API_KEY=placeholder-value-for-anthropic-key'
+
+#### Recommended Compliance Review Action:
+Ensure API key is removed from repository commits immediately.
+
+---
+
+### Finding `find_dep_oiu5q4mt`: AI SDK (openai)
+
+- **File:** `package.json`
+- **Severity:** `MEDIUM`
+- **Detector Module:** `dependency-detector`
+- **Rule Identification:** `rule_dep_openai`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Detected 'openai': '^4.20.0' in package.json dependencies list.
+
+#### Recommended Compliance Review Action:
+Verify usage complies with company data privacy policy. Ensure no proprietary data is sent to external LLMs without explicit authorization.
+
+---
+
+### Finding `find_dep_3pisjixz`: AI Framework (langchain)
+
+- **File:** `package.json`
+- **Severity:** `MEDIUM`
+- **Detector Module:** `dependency-detector`
+- **Rule Identification:** `rule_dep_langchain`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Detected 'langchain': '^0.0.198' in package.json dependencies list.
+
+#### Recommended Compliance Review Action:
+LangChain pipelines dynamically construct chains. Trace all active prompts and integrations to ensure there are no un-monitored model connections.
+
+---
+
+### Finding `find_prompt_e6hqyr4d`: AI Prompt Artifact (system.prompt.md)
+
+- **File:** `prompts/system.prompt.md`
+- **Severity:** `LOW`
+- **Detector Module:** `prompt-file-detector`
+- **Rule Identification:** `rule_prompt_artifact`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Prompt artifact matched pattern: '\.(prompt|prompts|system-prompt)\.(md|txt|json|yaml)$' (File name: 'system.prompt.md')
+
+#### Recommended Compliance Review Action:
+Review prompt content for bias, safety, and proprietary data.
+
+---
+
+### Finding `find_dep_z07el058`: AI Framework (llama-index)
+
+- **File:** `requirements.txt`
+- **Severity:** `MEDIUM`
+- **Detector Module:** `dependency-detector`
+- **Rule Identification:** `rule_dep_llamaindex`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Detected 'llama-index' on line 2 of requirements.txt: 'llama-index>=0.8.0'
+
+#### Recommended Compliance Review Action:
+LlamaIndex connects files to LLMs. Audit all document parsing pipelines and local index stores to prevent leaking restricted intellectual property.
+
+---
+
+### Finding `find_dep_6sp7f46t`: Vector DB (chromadb)
+
+- **File:** `requirements.txt`
+- **Severity:** `MEDIUM`
+- **Detector Module:** `dependency-detector`
+- **Rule Identification:** `rule_dep_chroma`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Detected 'chromadb' on line 3 of requirements.txt: 'chromadb==0.4.15'
+
+#### Recommended Compliance Review Action:
+Ensure persistent database directories are located in secure environments. Block unauthorized exports.
+
+---
+
+### Finding `find_env_2j6s2a7x`: AI Credential (OPENAI_API_KEY)
+
+- **File:** `src/example.js`
+- **Severity:** `HIGH`
+- **Detector Module:** `env-var-detector`
+- **Rule Identification:** `rule_env_openai`
+
+> [!WARNING]
+> **Evidence Hint:**
+> Detected environment variable usage on line 5: 'const apiKey=proc...[REDACTED]'
+
+#### Recommended Compliance Review Action:
+Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager.
+
+---
+
+### Finding `find_vector_ihh1v8gu`: Vector DB (Chroma DB)
+
+- **File:** `src/example.js`
+- **Severity:** `MEDIUM`
+- **Detector Module:** `vector-db-detector`
+- **Rule Identification:** `rule_dep_chroma`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Detected vector database library reference on line 2: 'import { ChromaClient } from 'chromadb';'
+
+#### Recommended Compliance Review Action:
+Ensure persistent database directories are located in secure environments. Block unauthorized exports.
+
+---
+
+### Finding `find_vector_gw9tifec`: Vector DB (Chroma DB)
+
+- **File:** `src/example.js`
+- **Severity:** `MEDIUM`
+- **Detector Module:** `vector-db-detector`
+- **Rule Identification:** `rule_dep_chroma`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Detected vector database library reference on line 12: 'const chroma = new ChromaClient({'
+
+#### Recommended Compliance Review Action:
+Ensure persistent database directories are located in secure environments. Block unauthorized exports.
+
+---
+
+### Finding `find_vector_cfm4f28a`: Vector DB (Chroma DB)
+
+- **File:** `src/example.js`
+- **Severity:** `MEDIUM`
+- **Detector Module:** `vector-db-detector`
+- **Rule Identification:** `rule_dep_chroma`
+
+> [!NOTE]
+> **Evidence Hint:**
+> Detected vector database library reference on line 17: 'console.log(`Processing ${input} with OpenAI and Chroma...`);'
+
+#### Recommended Compliance Review Action:
+Ensure persistent database directories are located in secure environments. Block unauthorized exports.
+
+---
+
+*Report generated automatically by Caesar static analysis toolset. For questions or SaaS compliance integrations, visit [caesar.no](https://caesar.no).*

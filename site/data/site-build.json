@@ -1,7 +1,7 @@
 {
   "version": "0.12.0",
-  "generated_at": "2026-05-21T17:24:49.216Z",
-  "source_commit": "060f0cb3ede8b8b229d8d9245af3005ca7e7acc1",
+  "generated_at": "2026-05-21T17:33:42.500Z",
+  "source_commit": "eaf0c0b9586fa91b4da6643516705ad50a43a0b5",
   "source_tool": "caesar-ai-site-builder",
   "public_domain": "ai-scan.caesar.no",
   "included_data_files": [

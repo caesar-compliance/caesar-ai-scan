@@ -1,19 +1,19 @@
 {
   "schema_version": "0.8.0",
-  "generated_at": "2026-05-21T16:46:59.559Z",
+  "generated_at": "2026-05-21T17:33:40.686Z",
   "history_dir": "./tmp/sample-history",
   "target_project": "./fixtures/sample-ai-project",
   "runs": [
     {
-      "run_id": "run_2026-05-21T16-46-59-427Z_4cc8",
-      "generated_at": "2026-05-21T16:46:59.432Z"
+      "run_id": "run_2026-05-21T17-33-40-604Z_dbe3",
+      "generated_at": "2026-05-21T17:33:40.605Z"
     },
     {
-      "run_id": "run_2026-05-21T16-46-59-558Z_f607",
-      "generated_at": "2026-05-21T16:46:59.559Z"
+      "run_id": "run_2026-05-21T17-33-40-686Z_e189",
+      "generated_at": "2026-05-21T17:33:40.686Z"
     }
   ],
-  "latest_run_id": "run_2026-05-21T16-46-59-558Z_f607",
+  "latest_run_id": "run_2026-05-21T17-33-40-686Z_e189",
   "run_count": 2,
   "safety_notes": [
     "This history index is strictly local and offline.",
