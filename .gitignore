@@ -1,4 +1,15 @@
 .DS_Store
+
+# macOS Finder duplicate files accidentally created during local agent work
+* 2.*
+* 3.*
+* 4.*
+* 5.*
+* 6.*
+* 7.*
+* 8.*
+* 9.*
+
 tmp/
 node_modules/
 .caesar/history/
