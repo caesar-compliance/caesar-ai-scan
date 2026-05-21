@@ -1,0 +1,2 @@
+# T019 Decisions
+- T019 defines a Cloudflare Worker API boundary and local Worker route mock contract for future hosted read-only API delivery while intentionally avoiding Worker deployment, Wrangler publish, Cloudflare API calls, live Supabase connections, database writes, deployment, scheduler, GitHub Actions scanner mode, PR annotations, SARIF, real customer ingestion, external fetching, secrets, account emails, account IDs, real Worker URLs, and real project refs in tracked files.
