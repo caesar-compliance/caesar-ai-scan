@@ -33,7 +33,9 @@ function parseArgs(args) {
     historyDir: null,
     recordHistory: false,
     diffPrevious: false,
-    historyReport: null
+    historyReport: null,
+    inventoryOut: null,
+    inventoryReport: null
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -70,6 +72,10 @@ function parseArgs(args) {
       options.diffPrevious = true;
     } else if (arg === '--history-report') {
       options.historyReport = args[++i];
+    } else if (arg === '--inventory-out') {
+      options.inventoryOut = args[++i];
+    } else if (arg === '--inventory-report') {
+      options.inventoryReport = args[++i];
     } else if (!arg.startsWith('--')) {
       options.target = arg;
     }
@@ -120,6 +126,8 @@ async function main() {
       exportPack: cliOptions.exportPack || (fileConfig.outputs && fileConfig.outputs.export_pack) || null,
       scopeOut: cliOptions.scopeOut || (fileConfig.outputs && fileConfig.outputs.scope_out) || null,
       scopeReport: cliOptions.scopeReport || (fileConfig.outputs && fileConfig.outputs.scope_report) || null,
+      inventoryOut: cliOptions.inventoryOut || (fileConfig.outputs && fileConfig.outputs.inventory_out) || null,
+      inventoryReport: cliOptions.inventoryReport || (fileConfig.outputs && fileConfig.outputs.inventory_report) || null,
       exclude: [...(cliOptions.exclude || []), ...(fileConfig.exclude || [])],
       rulesPath: fileConfig.rulesPath || null
     };

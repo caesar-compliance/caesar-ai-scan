@@ -21,7 +21,7 @@ function runValidation() {
   assert(result.schema_version === '0.5.0', 'Schema version should be 0.5.0');
   assert(result.scanner && result.scanner.name === 'caesar-ai-scan', 'Scanner name matches');
   // version is now 0.9.0
-  assert(result.scanner.version === '0.9.0', `Scanner version should be 0.9.0, got ${result.scanner.version}`);
+  assert(result.scanner.version === '0.10.0', `Scanner version should be 0.10.0, got ${result.scanner.version}`);
 
   assert(result.scanned_at, 'scanned_at timestamp exists');
   assert(result.target === './fixtures/sample-ai-project' || result.target === targetDir, 'target matches scanned path');

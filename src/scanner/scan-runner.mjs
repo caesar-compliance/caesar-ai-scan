@@ -5,8 +5,10 @@ import { detectEnvVars } from '../detectors/env-var-detector.mjs';
 import { detectPromptFiles } from '../detectors/prompt-file-detector.mjs';
 import { detectVectorDBs } from '../detectors/vector-db-detector.mjs';
 import { detectMLArtifacts } from '../detectors/ml-artifact-detector.mjs';
+import { buildInventory } from '../inventory/ai-usage-inventory-builder.mjs';
+import { generateInventoryReport } from '../report/ai-usage-inventory-report.mjs';
 import { resolve } from 'path';
-import { readFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -20,7 +22,7 @@ function getScannerVersion() {
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
     return pkg.version;
   } catch (e) {
-    return '0.9.0';
+    return '0.10.0';
   }
 }
 
@@ -109,6 +111,17 @@ export function runScan(targetDir, options = {}) {
     },
     findings
   };
+
+  // Inventory Export
+  if (options.inventoryOut) {
+    const inventory = buildInventory(findings, { target: relativeTarget, scanned_at: result.scanned_at });
+    writeFileSync(options.inventoryOut, JSON.stringify(inventory, null, 2));
+    
+    if (options.inventoryReport) {
+      const report = generateInventoryReport(inventory);
+      writeFileSync(options.inventoryReport, report);
+    }
+  }
 
   return result;
 }

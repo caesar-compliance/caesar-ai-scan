@@ -1,31 +1,31 @@
 {
   "schema_version": "0.5.0",
-  "generated_at": "2026-05-21T15:38:15.944Z",
+  "generated_at": "2026-05-21T16:30:21.807Z",
   "source_scan": {
-    "target": "./fixtures/sample-ai-project",
-    "scanned_at": "2026-05-21T15:38:15.943Z"
+    "target": "./fixtures/sample-ai-frameworks-project",
+    "scanned_at": "2026-05-21T16:30:21.795Z"
   },
   "summary": {
-    "total_findings": 11,
-    "total_review_items": 11,
-    "blocked_items": 11,
+    "total_findings": 21,
+    "total_review_items": 21,
+    "blocked_items": 21,
     "ready_items": 0,
     "triggered_lanes": [
       "technical_owner_review",
       "security_review",
       "model_inventory_review",
       "legal_compliance_review",
-      "vendor_review",
-      "risk_classification_review",
       "human_oversight_review",
       "retention_and_logging_review",
+      "vendor_review",
+      "risk_classification_review",
       "privacy_review"
     ]
   },
   "review_items": [
     {
-      "review_item_id": "ri_d_env_r67b43tl",
-      "finding_ref": "find_env_r67b43tl",
+      "review_item_id": "ri_d_env_w4565j62",
+      "finding_ref": "find_env_w4565j62",
       "matched_name": "OPENAI_API_KEY",
       "category": "AI Credential",
       "severity": "high",
@@ -84,11 +84,11 @@
         "Ensure key usage permissions follow the principle of least privilege."
       ],
       "export_readiness": 20,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_r67b43tl. Blocked from export due to 4 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_w4565j62. Blocked from export due to 4 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_env_svz62oda",
-      "finding_ref": "find_env_svz62oda",
+      "review_item_id": "ri_d_env_yr5vrois",
+      "finding_ref": "find_env_yr5vrois",
       "matched_name": "ANTHROPIC_API_KEY",
       "category": "AI Credential",
       "severity": "high",
@@ -147,11 +147,148 @@
         "Ensure key usage permissions follow the principle of least privilege."
       ],
       "export_readiness": 20,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_svz62oda. Blocked from export due to 4 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_yr5vrois. Blocked from export due to 4 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_fm3wizm6",
-      "finding_ref": "find_dep_fm3wizm6",
+      "review_item_id": "ri_d_env_0dyt89tr",
+      "finding_ref": "find_env_0dyt89tr",
+      "matched_name": "PINECONE_API_KEY",
+      "category": "AI Credential",
+      "severity": "high",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "security_review",
+        "model_inventory_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_security_review",
+          "gap_type": "missing_security_review",
+          "severity": "high",
+          "reason": "The code exposes potentially un-hashed keys or plaintext credentials in development configurations.",
+          "required_for": "security_review",
+          "recommended_resolution": "Migrate development environment credentials to verified secrets managers immediately.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Are the credentials for 'PINECONE_API_KEY' safely managed via a secure secrets manager rather than plaintext environments?",
+        "Which model provider endpoint does the 'PINECONE_API_KEY' credential authorize?",
+        "Has a security review been completed to verify the access control and usage limits of this credential?"
+      ],
+      "recommended_actions": [
+        "Migrate development environment credentials to verified secrets managers immediately.",
+        "Rotate any keys that have been exposed in plain text in local development environments.",
+        "Ensure key usage permissions follow the principle of least privilege."
+      ],
+      "export_readiness": 20,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_0dyt89tr. Blocked from export due to 4 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_prompt_oi7000cc",
+      "finding_ref": "find_prompt_oi7000cc",
+      "matched_name": "model-card.md",
+      "category": "AI Config Artifact",
+      "severity": "low",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "legal_compliance_review",
+        "human_oversight_review",
+        "retention_and_logging_review",
+        "technical_owner_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_human_oversight_description",
+          "gap_type": "missing_human_oversight_description",
+          "severity": "medium",
+          "reason": "The codebase contains no documented human-in-the-loop validation or prompt guardrails safety layer description.",
+          "required_for": "human_oversight_review",
+          "recommended_resolution": "Document human oversight procedures and validation gates implemented for LLM outputs.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_logging_or_retention_policy",
+          "gap_type": "missing_logging_or_retention_policy",
+          "severity": "medium",
+          "reason": "Model prompt and completion logs lack a clear retention and audit policy.",
+          "required_for": "retention_and_logging_review",
+          "recommended_resolution": "Define log aggregation constraints and specify standard data purging intervals.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_user_disclosure_assessment",
+          "gap_type": "missing_user_disclosure_assessment",
+          "severity": "low",
+          "reason": "The system lacks user-facing disclosures indicating interaction with generative AI systems.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Verify if user disclosures are required and ensure notices are present on front-end components.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "What is the concrete business purpose of processing user data using the prompt template in 'model-card.md'?",
+        "Are inputs sanitized before prompt assembly to mitigate prompt injection and data exfiltration risks?",
+        "What logging, retention, and data-scrubbing policies apply to model prompts and completions?",
+        "Is there a human-in-the-loop validation or automated guardrail system checking output quality and safety?"
+      ],
+      "recommended_actions": [
+        "Document human oversight procedures and validation gates implemented for LLM outputs.",
+        "Verify if user disclosures are required and ensure notices are present on front-end components.",
+        "Define prompt/completion log aggregation constraints and specify standard data purging intervals."
+      ],
+      "export_readiness": 35,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_oi7000cc. Blocked from export due to 2 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_nr2goivy",
+      "finding_ref": "find_dep_nr2goivy",
       "matched_name": "openai",
       "category": "AI SDK",
       "severity": "medium",
@@ -240,11 +377,11 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_fm3wizm6. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_nr2goivy. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_t015kqhy",
-      "finding_ref": "find_dep_t015kqhy",
+      "review_item_id": "ri_d_dep_jnnziy8d",
+      "finding_ref": "find_dep_jnnziy8d",
       "matched_name": "langchain",
       "category": "AI Framework",
       "severity": "medium",
@@ -333,87 +470,13 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_t015kqhy. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_jnnziy8d. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_prompt_j8pf6ikk",
-      "finding_ref": "find_prompt_j8pf6ikk",
-      "matched_name": "system.prompt.md",
-      "category": "AI Prompt Artifact",
-      "severity": "low",
-      "review_status": "blocked_missing_context",
-      "assigned_review_lanes": [
-        "legal_compliance_review",
-        "human_oversight_review",
-        "retention_and_logging_review",
-        "technical_owner_review"
-      ],
-      "evidence_gaps": [
-        {
-          "gap_id": "gap_missing_processing_purpose",
-          "gap_type": "missing_processing_purpose",
-          "severity": "medium",
-          "reason": "The operational purpose of processing data via this AI signal is undefined.",
-          "required_for": "legal_compliance_review",
-          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
-          "blocks_export": true
-        },
-        {
-          "gap_id": "gap_missing_human_oversight_description",
-          "gap_type": "missing_human_oversight_description",
-          "severity": "medium",
-          "reason": "The codebase contains no documented human-in-the-loop validation or prompt guardrails safety layer description.",
-          "required_for": "human_oversight_review",
-          "recommended_resolution": "Document human oversight procedures and validation gates implemented for LLM outputs.",
-          "blocks_export": false
-        },
-        {
-          "gap_id": "gap_missing_logging_or_retention_policy",
-          "gap_type": "missing_logging_or_retention_policy",
-          "severity": "medium",
-          "reason": "Model prompt and completion logs lack a clear retention and audit policy.",
-          "required_for": "retention_and_logging_review",
-          "recommended_resolution": "Define log aggregation constraints and specify standard data purging intervals.",
-          "blocks_export": false
-        },
-        {
-          "gap_id": "gap_missing_user_disclosure_assessment",
-          "gap_type": "missing_user_disclosure_assessment",
-          "severity": "low",
-          "reason": "The system lacks user-facing disclosures indicating interaction with generative AI systems.",
-          "required_for": "legal_compliance_review",
-          "recommended_resolution": "Verify if user disclosures are required and ensure notices are present on front-end components.",
-          "blocks_export": false
-        },
-        {
-          "gap_id": "gap_missing_export_authorization",
-          "gap_type": "missing_export_authorization",
-          "severity": "medium",
-          "reason": "This candidate record lacks authorized digital sign-off signatures.",
-          "required_for": "technical_owner_review",
-          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
-          "blocks_export": true
-        }
-      ],
-      "recommended_questions": [
-        "What is the concrete business purpose of processing user data using the prompt template in 'prompts/system.prompt.md'?",
-        "Are inputs sanitized before prompt assembly to mitigate prompt injection and data exfiltration risks?",
-        "What logging, retention, and data-scrubbing policies apply to model prompts and completions?",
-        "Is there a human-in-the-loop validation or automated guardrail system checking output quality and safety?"
-      ],
-      "recommended_actions": [
-        "Document human oversight procedures and validation gates implemented for LLM outputs.",
-        "Verify if user disclosures are required and ensure notices are present on front-end components.",
-        "Define prompt/completion log aggregation constraints and specify standard data purging intervals."
-      ],
-      "export_readiness": 35,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_j8pf6ikk. Blocked from export due to 2 unresolved blocking evidence gaps."
-    },
-    {
-      "review_item_id": "ri_d_dep_4lditb4w",
-      "finding_ref": "find_dep_4lditb4w",
-      "matched_name": "llama-index",
-      "category": "AI Framework",
+      "review_item_id": "ri_d_dep_o0vkx8rr",
+      "finding_ref": "find_dep_o0vkx8rr",
+      "matched_name": "@anthropic-ai/sdk",
+      "category": "AI SDK",
       "severity": "medium",
       "review_status": "blocked_missing_context",
       "assigned_review_lanes": [
@@ -489,8 +552,8 @@
         }
       ],
       "recommended_questions": [
-        "Who is the designated technical and business owner for the AI dependency 'llama-index'?",
-        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'llama-index' connect to?",
+        "Who is the designated technical and business owner for the AI dependency '@anthropic-ai/sdk'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does '@anthropic-ai/sdk' connect to?",
         "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
         "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
       ],
@@ -500,11 +563,104 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_4lditb4w. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_o0vkx8rr. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_dep_4w7q33pk",
-      "finding_ref": "find_dep_4w7q33pk",
+      "review_item_id": "ri_d_dep_4xtpqfj6",
+      "finding_ref": "find_dep_4xtpqfj6",
+      "matched_name": "pinecone-client",
+      "category": "Vector DB",
+      "severity": "medium",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'pinecone-client'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'pinecone-client' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_4xtpqfj6. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_avt4o73x",
+      "finding_ref": "find_dep_avt4o73x",
       "matched_name": "chromadb",
       "category": "Vector DB",
       "severity": "medium",
@@ -593,11 +749,829 @@
         "Map this component to the corporate AI use case registry."
       ],
       "export_readiness": 0,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_4w7q33pk. Blocked from export due to 6 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_avt4o73x. Blocked from export due to 6 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_env_ln5cfaqb",
-      "finding_ref": "find_env_ln5cfaqb",
+      "review_item_id": "ri_d_prompt_msli9081",
+      "finding_ref": "find_prompt_msli9081",
+      "matched_name": "system.prompt.md",
+      "category": "AI Prompt Artifact",
+      "severity": "low",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "legal_compliance_review",
+        "human_oversight_review",
+        "retention_and_logging_review",
+        "technical_owner_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_human_oversight_description",
+          "gap_type": "missing_human_oversight_description",
+          "severity": "medium",
+          "reason": "The codebase contains no documented human-in-the-loop validation or prompt guardrails safety layer description.",
+          "required_for": "human_oversight_review",
+          "recommended_resolution": "Document human oversight procedures and validation gates implemented for LLM outputs.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_logging_or_retention_policy",
+          "gap_type": "missing_logging_or_retention_policy",
+          "severity": "medium",
+          "reason": "Model prompt and completion logs lack a clear retention and audit policy.",
+          "required_for": "retention_and_logging_review",
+          "recommended_resolution": "Define log aggregation constraints and specify standard data purging intervals.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_user_disclosure_assessment",
+          "gap_type": "missing_user_disclosure_assessment",
+          "severity": "low",
+          "reason": "The system lacks user-facing disclosures indicating interaction with generative AI systems.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Verify if user disclosures are required and ensure notices are present on front-end components.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "What is the concrete business purpose of processing user data using the prompt template in 'prompts/system.prompt.md'?",
+        "Are inputs sanitized before prompt assembly to mitigate prompt injection and data exfiltration risks?",
+        "What logging, retention, and data-scrubbing policies apply to model prompts and completions?",
+        "Is there a human-in-the-loop validation or automated guardrail system checking output quality and safety?"
+      ],
+      "recommended_actions": [
+        "Document human oversight procedures and validation gates implemented for LLM outputs.",
+        "Verify if user disclosures are required and ensure notices are present on front-end components.",
+        "Define prompt/completion log aggregation constraints and specify standard data purging intervals."
+      ],
+      "export_readiness": 35,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_msli9081. Blocked from export due to 2 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_n4ujuvs3",
+      "finding_ref": "find_dep_n4ujuvs3",
+      "matched_name": "google-generativeai",
+      "category": "AI SDK",
+      "severity": "medium",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'google-generativeai'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'google-generativeai' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_n4ujuvs3. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_548s53w0",
+      "finding_ref": "find_dep_548s53w0",
+      "matched_name": "langgraph",
+      "category": "AI Framework",
+      "severity": "high",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'langgraph'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'langgraph' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_548s53w0. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_2qk96qjk",
+      "finding_ref": "find_dep_2qk96qjk",
+      "matched_name": "llama-index",
+      "category": "AI Framework",
+      "severity": "medium",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'llama-index'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'llama-index' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_2qk96qjk. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_6n157v4e",
+      "finding_ref": "find_dep_6n157v4e",
+      "matched_name": "crewai",
+      "category": "AI Framework",
+      "severity": "high",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'crewai'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'crewai' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_6n157v4e. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_17xx9twr",
+      "finding_ref": "find_dep_17xx9twr",
+      "matched_name": "torch",
+      "category": "ML Library",
+      "severity": "medium",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'torch'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'torch' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_17xx9twr. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_xddznue4",
+      "finding_ref": "find_dep_xddznue4",
+      "matched_name": "transformers",
+      "category": "ML Library",
+      "severity": "medium",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'transformers'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'transformers' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_xddznue4. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_32d8bc7x",
+      "finding_ref": "find_dep_32d8bc7x",
+      "matched_name": "scikit-learn",
+      "category": "ML Library",
+      "severity": "medium",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'scikit-learn'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'scikit-learn' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_32d8bc7x. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_dep_end7dojm",
+      "finding_ref": "find_dep_end7dojm",
+      "matched_name": "pymilvus",
+      "category": "Vector DB",
+      "severity": "medium",
+      "review_status": "blocked_missing_context",
+      "assigned_review_lanes": [
+        "technical_owner_review",
+        "legal_compliance_review",
+        "model_inventory_review",
+        "vendor_review",
+        "risk_classification_review"
+      ],
+      "evidence_gaps": [
+        {
+          "gap_id": "gap_missing_system_owner",
+          "gap_type": "missing_system_owner",
+          "severity": "medium",
+          "reason": "No technical or business owner is assigned to this codebase AI component.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Assign a lead software engineer or system owner to assume responsibility for the component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_processing_purpose",
+          "gap_type": "missing_processing_purpose",
+          "severity": "medium",
+          "reason": "The operational purpose of processing data via this AI signal is undefined.",
+          "required_for": "legal_compliance_review",
+          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_ai_use_case_description",
+          "gap_type": "missing_ai_use_case_description",
+          "severity": "low",
+          "reason": "No high-level usage description is associated with this AI dependency.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Add a brief system summary mapping the component to corporate AI use case registers.",
+          "blocks_export": false
+        },
+        {
+          "gap_id": "gap_missing_model_or_provider_identification",
+          "gap_type": "missing_model_or_provider_identification",
+          "severity": "high",
+          "reason": "The exact external model name (e.g. gpt-4o) or hosting provider is not explicitly declared.",
+          "required_for": "model_inventory_review",
+          "recommended_resolution": "Configure the specific model variant and hosting region in system properties.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_vendor_terms_review",
+          "gap_type": "missing_vendor_terms_review",
+          "severity": "high",
+          "reason": "No verified vendor data privacy agreement (DPA) or commercial SLA has been reviewed for this third-party LLM provider.",
+          "required_for": "vendor_review",
+          "recommended_resolution": "Review model provider terms to verify training exclusion and data privacy protections.",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_risk_classification",
+          "gap_type": "missing_risk_classification",
+          "severity": "high",
+          "reason": "This AI integration lacks a formal risk tier classification.",
+          "required_for": "risk_classification_review",
+          "recommended_resolution": "Complete the risk assessment survey to categorize the integration (e.g. Minimal, High risk).",
+          "blocks_export": true
+        },
+        {
+          "gap_id": "gap_missing_export_authorization",
+          "gap_type": "missing_export_authorization",
+          "severity": "medium",
+          "reason": "This candidate record lacks authorized digital sign-off signatures.",
+          "required_for": "technical_owner_review",
+          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
+          "blocks_export": true
+        }
+      ],
+      "recommended_questions": [
+        "Who is the designated technical and business owner for the AI dependency 'pymilvus'?",
+        "Which specific external AI model (e.g. gpt-4o) and endpoint does 'pymilvus' connect to?",
+        "Has the commercial SLA and Data Processing Agreement (DPA) been approved for this third-party provider?",
+        "What is the formal risk tier classification (Minimal, Limited, High, Unacceptable) registered for this AI library?"
+      ],
+      "recommended_actions": [
+        "Assign a lead software engineer or system owner to assume responsibility for the component in the inventory.",
+        "Review model provider terms to verify training exclusion and data privacy protections.",
+        "Map this component to the corporate AI use case registry."
+      ],
+      "export_readiness": 0,
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_end7dojm. Blocked from export due to 6 unresolved blocking evidence gaps."
+    },
+    {
+      "review_item_id": "ri_d_env_u3v7gbiy",
+      "finding_ref": "find_env_u3v7gbiy",
       "matched_name": "OPENAI_API_KEY",
       "category": "AI Credential",
       "severity": "high",
@@ -656,12 +1630,12 @@
         "Ensure key usage permissions follow the principle of least privilege."
       ],
       "export_readiness": 20,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_ln5cfaqb. Blocked from export due to 4 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_env_u3v7gbiy. Blocked from export due to 4 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_vector_4ix22a45",
-      "finding_ref": "find_vector_4ix22a45",
-      "matched_name": "Chroma DB",
+      "review_item_id": "ri_d_vector_i90s8jnn",
+      "finding_ref": "find_vector_i90s8jnn",
+      "matched_name": "Qdrant",
       "category": "Vector DB",
       "severity": "medium",
       "review_status": "blocked_missing_context",
@@ -710,7 +1684,7 @@
         }
       ],
       "recommended_questions": [
-        "Does the vector database 'Chroma DB' store or process user personally identifiable information (PII)?",
+        "Does the vector database 'Qdrant' store or process user personally identifiable information (PII)?",
         "Has a formal Data Protection Impact Assessment (DPIA) been completed for this vector search pipeline?",
         "What is the data retention and purging policy for vector embeddings and metadata index databases?"
       ],
@@ -720,12 +1694,12 @@
         "Establish clear procedures for processing data subject deletion requests within vector indexes."
       ],
       "export_readiness": 30,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_4ix22a45. Blocked from export due to 3 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_i90s8jnn. Blocked from export due to 3 unresolved blocking evidence gaps."
     },
     {
-      "review_item_id": "ri_d_vector_7w7wjx3b",
-      "finding_ref": "find_vector_7w7wjx3b",
-      "matched_name": "Chroma DB",
+      "review_item_id": "ri_d_vector_fix4182h",
+      "finding_ref": "find_vector_fix4182h",
+      "matched_name": "Qdrant",
       "category": "Vector DB",
       "severity": "medium",
       "review_status": "blocked_missing_context",
@@ -774,7 +1748,7 @@
         }
       ],
       "recommended_questions": [
-        "Does the vector database 'Chroma DB' store or process user personally identifiable information (PII)?",
+        "Does the vector database 'Qdrant' store or process user personally identifiable information (PII)?",
         "Has a formal Data Protection Impact Assessment (DPIA) been completed for this vector search pipeline?",
         "What is the data retention and purging policy for vector embeddings and metadata index databases?"
       ],
@@ -784,71 +1758,7 @@
         "Establish clear procedures for processing data subject deletion requests within vector indexes."
       ],
       "export_readiness": 30,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_7w7wjx3b. Blocked from export due to 3 unresolved blocking evidence gaps."
-    },
-    {
-      "review_item_id": "ri_d_vector_a7ms8q5p",
-      "finding_ref": "find_vector_a7ms8q5p",
-      "matched_name": "Chroma DB",
-      "category": "Vector DB",
-      "severity": "medium",
-      "review_status": "blocked_missing_context",
-      "assigned_review_lanes": [
-        "privacy_review",
-        "retention_and_logging_review",
-        "legal_compliance_review",
-        "technical_owner_review"
-      ],
-      "evidence_gaps": [
-        {
-          "gap_id": "gap_missing_data_processing_assessment",
-          "gap_type": "missing_data_processing_assessment",
-          "severity": "high",
-          "reason": "No data protection impact assessment (DPIA) has been completed for transfer of data to this service.",
-          "required_for": "privacy_review",
-          "recommended_resolution": "Conduct a DPIA to evaluate potential risks of transferring user identifiers to third-party endpoints.",
-          "blocks_export": true
-        },
-        {
-          "gap_id": "gap_missing_logging_or_retention_policy",
-          "gap_type": "missing_logging_or_retention_policy",
-          "severity": "medium",
-          "reason": "Model prompt and completion logs lack a clear retention and audit policy.",
-          "required_for": "retention_and_logging_review",
-          "recommended_resolution": "Define log aggregation constraints and specify standard data purging intervals.",
-          "blocks_export": false
-        },
-        {
-          "gap_id": "gap_missing_processing_purpose",
-          "gap_type": "missing_processing_purpose",
-          "severity": "medium",
-          "reason": "The operational purpose of processing data via this AI signal is undefined.",
-          "required_for": "legal_compliance_review",
-          "recommended_resolution": "Document the concrete business goals and customer data paths utilized by the AI component.",
-          "blocks_export": true
-        },
-        {
-          "gap_id": "gap_missing_export_authorization",
-          "gap_type": "missing_export_authorization",
-          "severity": "medium",
-          "reason": "This candidate record lacks authorized digital sign-off signatures.",
-          "required_for": "technical_owner_review",
-          "recommended_resolution": "Acquire technical lead cryptographical signature authorization in the compliance portal.",
-          "blocks_export": true
-        }
-      ],
-      "recommended_questions": [
-        "Does the vector database 'Chroma DB' store or process user personally identifiable information (PII)?",
-        "Has a formal Data Protection Impact Assessment (DPIA) been completed for this vector search pipeline?",
-        "What is the data retention and purging policy for vector embeddings and metadata index databases?"
-      ],
-      "recommended_actions": [
-        "Conduct a Data Protection Impact Assessment (DPIA) to evaluate privacy risks of data transfer to vector storage.",
-        "Verify that stored embedding collections exclude un-hashed user identifiers.",
-        "Establish clear procedures for processing data subject deletion requests within vector indexes."
-      ],
-      "export_readiness": 30,
-      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_a7ms8q5p. Blocked from export due to 3 unresolved blocking evidence gaps."
+      "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_fix4182h. Blocked from export due to 3 unresolved blocking evidence gaps."
     }
   ]
 }
