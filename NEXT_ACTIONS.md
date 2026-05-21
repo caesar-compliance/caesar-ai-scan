@@ -29,4 +29,5 @@ This document prioritizes upcoming development tasks and establishes execution b
 
 - [x] T006: Offline Scan History & Diff Model
 - [x] T007: Public Site Demo History + Diff Presentation (v0.8.0)
-- [ ] T008: Governance OS Ingestion (Planning/Spec Phase)
+- [x] T008: AI Scan Reference Lab + Competitor Implementation Matrix (v0.8.1)
+- [ ] T009: Rule Pack v1 / AI Framework Detection Expansion

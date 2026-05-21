@@ -22,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.1] - 21 May 2026
+- **T008 — AI Scan Reference Lab + Competitor Implementation Matrix.**
+- Established local Reference Lab at `../_reference-lab/scan` with shallow clones of 20 approved open-source repositories.
+- Added AI Scan reference lab policy, open-source audit, scanner feature matrix, and roadmap mapping.
+- Added Big Player Product Benchmarks documentation for major proprietary platforms.
+
 ## [0.8.0] - 21 May 2026
 - **T007 — Public Site Demo History + Diff Presentation.** Expose safe sample/demo scan history and diff information on public static site.
 - Fix scan diff accounting correctness.

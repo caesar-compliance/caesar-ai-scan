@@ -23,6 +23,7 @@ Part of the [Caesar AI Governance Hub](https://github.com/caesar-compliance/caes
 - **Scope control** — `caesar-scan.config.json` and `.caesarignore` for bounded scan targets.
 - **Scan history & diff** — Records offline scan runs and produces diff reports between runs (no cloud sync).
 - **Public static demo** — GitHub Pages site at [ai-scan.caesar.no](https://ai-scan.caesar.no/) with synthetic sample outputs only.
+- **Reference Lab** — Developer-only local lab at `../_reference-lab/scan` for architectural study and product benchmarking (see [docs/REFERENCE_LAB_POLICY.md](docs/REFERENCE_LAB_POLICY.md)).
 
 ## What it is not
 

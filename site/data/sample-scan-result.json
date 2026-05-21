@@ -4,7 +4,7 @@
     "name": "caesar-ai-scan",
     "version": "0.5.0"
   },
-  "scanned_at": "2026-05-21T15:00:02.288Z",
+  "scanned_at": "2026-05-21T15:16:56.450Z",
   "target": "/Users/nazarkoartem/Desktop/Projects/caesar-compliance/caesar-ai-scan/fixtures/sample-ai-project",
   "summary": {
     "total_files": 8,
@@ -40,7 +40,7 @@
   },
   "findings": [
     {
-      "finding_id": "find_env_hvg9bp8g",
+      "finding_id": "find_env_u3po5yhd",
       "category": "AI Credential",
       "severity": "high",
       "detector": "env-var-detector",
@@ -51,7 +51,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager (AWS Secrets Manager, Doppler, etc.)."
     },
     {
-      "finding_id": "find_env_35488oah",
+      "finding_id": "find_env_wozo878t",
       "category": "AI Credential",
       "severity": "high",
       "detector": "env-var-detector",
@@ -62,7 +62,7 @@
       "recommended_review": "Ensure API key is removed from repository commits immediately. Verify secrets distribution mechanism."
     },
     {
-      "finding_id": "find_dep_1nmaf9hg",
+      "finding_id": "find_dep_vr4b3sck",
       "category": "AI SDK",
       "severity": "medium",
       "detector": "dependency-detector",
@@ -73,7 +73,7 @@
       "recommended_review": "Verify usage complies with company data privacy policy. Ensure no proprietary data is sent to external LLMs without explicit authorization."
     },
     {
-      "finding_id": "find_dep_hxy2h383",
+      "finding_id": "find_dep_pp0u2y6y",
       "category": "AI Framework",
       "severity": "medium",
       "detector": "dependency-detector",
@@ -84,7 +84,7 @@
       "recommended_review": "LangChain pipelines dynamically construct chains. Trace all active prompts and integrations to ensure there are no un-monitored model connections."
     },
     {
-      "finding_id": "find_prompt_pzgbc6hg",
+      "finding_id": "find_prompt_ki378o2w",
       "category": "AI Prompt Artifact",
       "severity": "low",
       "detector": "prompt-file-detector",
@@ -95,7 +95,7 @@
       "recommended_review": "Review prompt content to verify there are no hidden jailbreak vulnerabilities, bias, or leakage risks. Ensure user instructions are sanitised."
     },
     {
-      "finding_id": "find_dep_i5g8mfc2",
+      "finding_id": "find_dep_echo0qda",
       "category": "AI Framework",
       "severity": "medium",
       "detector": "dependency-detector",
@@ -106,7 +106,7 @@
       "recommended_review": "LlamaIndex connects files to LLMs. Audit all document parsing pipelines and local index stores to prevent leaking restricted intellectual property."
     },
     {
-      "finding_id": "find_dep_q8fdecb7",
+      "finding_id": "find_dep_m4cxjl4p",
       "category": "Vector DB",
       "severity": "medium",
       "detector": "dependency-detector",
@@ -117,7 +117,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_env_6268bm8b",
+      "finding_id": "find_env_7mrplk8d",
       "category": "AI Credential",
       "severity": "high",
       "detector": "env-var-detector",
@@ -128,7 +128,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager (AWS Secrets Manager, Doppler, etc.)."
     },
     {
-      "finding_id": "find_vector_712vgj8r",
+      "finding_id": "find_vector_cuhmf6on",
       "category": "Vector DB",
       "severity": "medium",
       "detector": "vector-db-detector",
@@ -139,7 +139,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_vector_xtjhhx4j",
+      "finding_id": "find_vector_06x273r0",
       "category": "Vector DB",
       "severity": "medium",
       "detector": "vector-db-detector",
@@ -150,7 +150,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_vector_p75sb880",
+      "finding_id": "find_vector_555pclxn",
       "category": "Vector DB",
       "severity": "medium",
       "detector": "vector-db-detector",

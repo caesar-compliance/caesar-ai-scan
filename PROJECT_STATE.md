@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.8.0`
-*   **Current Phase:** `T007 / v0.8.0 — Public Site Demo History + Diff Presentation`
+*   **Current Version:** `0.8.1`
+*   **Current Phase:** `T008 / v0.8.1 — AI Scan Reference Lab + Competitor Implementation Matrix`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T007 Public Site Demo History + Diff Presentation. Public demo history/diff available as sample-only static data.`
+*   **Latest Completed Task:** `T008 AI Scan Reference Lab + Competitor Implementation Matrix. Established local reference lab and benchmark docs.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `T006-A monitoring run model planning (docs only) or next governance integration milestone per ROADMAP.md.`
+*   **Next Recommended Step:** `T009 Rule Pack v1 / AI Framework Detection Expansion.`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---

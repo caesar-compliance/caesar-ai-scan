@@ -80,6 +80,11 @@ v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review [COMPLETE] �
 > - **Simulated Presentation Site**: The public site deployed at `ai-scan.caesar.no` presents static mock data only. It does not perform live repo scanning or network integration.
 > - **No live integrations:** No network calls, workspace scanning, pull request scanning, monitoring, or real database ingestion are included in this version.
 
-- **T006-A (v0.6.1):** Monitoring Run Model Planning Pack (Completed)
+- T006-A (v0.6.1): Monitoring Run Model Planning Pack (Completed)
 
-- **T006 (v0.7.0):** Offline Scan History & Diff Model (Completed)
+- T006 (v0.7.0): Offline Scan History & Diff Model (Completed)
+
+- T007 (v0.8.0): Public Site Demo History + Diff Presentation (Completed)
+
+- T008 (v0.8.1): AI Scan Reference Lab + Competitor Implementation Matrix (Completed)
+

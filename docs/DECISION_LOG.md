@@ -60,3 +60,13 @@ This document maps all high-level technical, strategic, and governance decisions
 **Date:** 2026-05-20
 **Context:** Finding IDs are random per scan run, making naive ID comparison useless for diffing.
 **Decision:** Derive a stable MD5 hash key from category + detector + rule_id + matched_name + file_path.
+
+## DECISION-T007: Safe Public Demo History and Diff
+**Date:** 2026-05-21
+**Context:** Need to demonstrate history/diff features on public site without exposing real data.
+**Decision:** Export anonymized sample history summary and latest diff to static JSON files in `site/data/` for public presentation.
+
+## DECISION-T008: AI Scan Reference Lab Establishment
+**Date:** 2026-05-21
+**Context:** Need a structured way to study existing scanners and governance tools.
+**Decision:** Establish a local Reference Lab at `../_reference-lab/scan` containing shallow clones of approved open-source repositories. Define strict usage policies to prevent code leakage into production.

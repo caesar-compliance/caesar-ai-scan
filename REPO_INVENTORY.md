@@ -80,6 +80,12 @@ This is a living registry of all files currently tracked in the `caesar-ai-scan`
 | 📜 **`docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md`** | OS Contract | Specifications for importing export packages into Governance OS. |
 | 🤝 **`docs/CAESAR_AI_EVIDENCE_HANDOFF.md`** | Handoff Contract | Specifies data model and mappings from scanner to caesar-ai-evidence. |
 | 👣 **`docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md`** | Sign-off Workflow | Manual sign-off procedures and verification checklist. |
+| 📚 **`docs/REFERENCE_LAB_POLICY.md`** | Ref Lab Policy | Policy for using the local AI Scan Reference Lab. |
+| 📊 **`docs/OPEN_SOURCE_REFERENCE_AUDIT.md`** | Ref Lab Audit | Audit of cloned reference repositories and lessons learned. |
+| 📊 **`docs/SCANNER_FEATURE_MATRIX.md`** | Feature Matrix | Comparison of Caesar features against reference implementations. |
+| 📋 **`docs/REFERENCE_REPO_ALLOWLIST.md`** | Ref Lab Allowlist | Approved repositories for the Reference Lab. |
+| 🚦 **`docs/REFERENCE_TO_ROADMAP.md`** | Ref Lab Roadmap | Mapping reference insights to future development tasks. |
+| 📊 **`docs/BIG_PLAYER_PRODUCT_BENCHMARKS.md`** | Product Benchmarks | Manual benchmark notes for major proprietary AI governance platforms. |
 | 📚 **`docs/SCAN_CONFIGURATION.md`** | Config Guide | Documents scan settings, merged priority sequence and parameters. |
 | 📚 **`docs/CAESARIGNORE_REFERENCE.md`** | Ignore Guide | Explains .caesarignore syntax and glob rules. |
 | 📚 **`docs/SCOPE_CONTROL_POLICY.md`** | Scope Guide | Details file categorization policies and directory tree crawlers. |

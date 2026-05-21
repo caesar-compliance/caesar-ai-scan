@@ -2,3 +2,8 @@
 tmp/
 node_modules/
 .caesar/history/
+_reference-lab/
+reference-lab/
+third-party-references/
+references/
+vendor-references/
