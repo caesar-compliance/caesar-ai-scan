@@ -1,4 +1,0 @@
-OPENAI_API_KEY=my-secret-key-12345
-ANTHROPIC_API_KEY=placeholder-value
-PINECONE_API_KEY=your-pinecone-key
-DATABASE_URL=postgres://localhost:5432/mydb
