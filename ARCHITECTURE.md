@@ -1,6 +1,6 @@
 # Architecture — caesar-ai-scan
 
-This document outlines the high-level architecture, module layers, and data-flow pipelines for the `caesar-ai-scan` static-analysis tool as of version `0.6.0`.
+This document outlines the high-level architecture, module layers, and data-flow pipelines for the `caesar-ai-scan` static-analysis tool as of version `0.20.0`.
 
 ---
 
@@ -148,6 +148,24 @@ The operational life cycle of a single scan run and site build proceeds as follo
 5. **Serialization:** Reports and candidates are printed to console or written to JSON/markdown targets.
 6. **Presentation Packaging**: The site builder copies selected anonymized mock outputs into the site data bundle, generating build logs.
 7. **Anti-Leak Validation**: The programmatic validator parses indices, checking domains, validating asset mappings, and asserting absolute exclusion of analytics or tracker connections.
+
+---
+
+## Backend Rehearsal Layer (v0.20.0)
+
+Offline backend preparation without live services:
+
+```
+T018 storage draft SQL
+        │
+        ▼
+T020 rehearsal forward/rollback SQL + manifest
+        │
+        ▼
+validate:supabase-rehearsal (no DB connection)
+```
+
+T019 Cloudflare Worker boundary remains a separate local mock contract (`validate:worker-boundary`). No `supabase/config.toml`, no applied migrations, no Worker deployment.
 
 ---
 

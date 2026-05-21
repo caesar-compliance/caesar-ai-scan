@@ -41,4 +41,4 @@ This document prioritizes upcoming development tasks and establishes execution b
 - [x] T017: Backend runtime readiness boundary (v0.17.0)
 - [x] T018: Supabase storage schema draft + import mapping (v0.18.0)
 - [x] T019: Cloudflare Worker API boundary + local mock (v0.19.0)
-- [ ] T020: Supabase local migration rehearsal pack + SQL safety validator (v0.20.0)
+- [x] T020: Supabase local migration rehearsal pack + SQL safety validator (v0.20.0)

@@ -1,10 +1,10 @@
 {
   "schema_version": "0.14.0",
   "projection_type": "caesar-ai-scan-read-only-api-projection",
-  "projection_id": "1ee45d26-c18c-43d5-b145-64079f3ab9a8",
-  "generated_at": "2026-05-21T20:11:53.554Z",
+  "projection_id": "77f4a434-b93a-4ecd-b04b-d99a8715d3d5",
+  "generated_at": "2026-05-21T20:18:41.764Z",
   "source_store": {
-    "store_id": "store_1779394313550",
+    "store_id": "store_1779394721762",
     "store_type": "caesar-ai-scan-local-json-store",
     "schema_version": "0.13.0"
   },

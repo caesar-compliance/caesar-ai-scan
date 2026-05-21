@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.20.0] - 21 May 2026
+- **T020 — Supabase local migration rehearsal pack.** Added forward/rollback rehearsal SQL, manifest, schema, report builder, and `validate:supabase-rehearsal`. No live Supabase connections or applied migrations.
+
 ## [0.19.0] - 21 May 2026
 - **T019 — Cloudflare Worker API boundary.** Added boundary schema, example config/env, local Worker route mock, route manifest builder, and `validate:worker-boundary`. No Wrangler deploy, Cloudflare API, or live Supabase connections.
 

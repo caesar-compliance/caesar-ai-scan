@@ -90,3 +90,5 @@ v0.1 Foundation ──> v0.2 Scanner [COMPLETE] ──> v0.3 Review [COMPLETE] �
 
 - T009 (v0.9.0): Rule Pack v1 / AI Framework Detection Expansion (Completed)
 
+- T020 (v0.20.0): Supabase Local Migration Rehearsal Pack + SQL Safety Validator (Completed)
+

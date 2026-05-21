@@ -1,6 +1,6 @@
 # Specification — caesar-ai-scan
 
-This document outlines the technical specification, commands, and inputs/outputs for the codebase scanning tool `caesar-ai-scan` as of version `0.6.0`.
+This document outlines the technical specification, commands, and inputs/outputs for the codebase scanning tool `caesar-ai-scan` as of version `0.20.0`.
 
 ---
 
@@ -30,12 +30,16 @@ Codebases increasingly consume third-party AI APIs and frameworks without proper
 *   **GitHub Pages Action Pipeline (T005 / v0.6.0):** Configures `.github/workflows/deploy-pages.yml` with official GitHub Actions to automatically run full offline validation and deploy the static website bundle on every push to `main`.
 *   **Zero External Dependencies:** Built purely using Node.js standard libraries.
 
-### 5. Future Scope
+### 5. Backend Rehearsal (v0.20.0, offline only)
+*   **Supabase migration rehearsal pack (T020):** Forward/rollback rehearsal SQL, manifest, and `validate:supabase-rehearsal` — not applied to any database.
+*   **Supabase storage draft (T018)** and **Cloudflare Worker boundary (T019):** Architectural contracts only; no live connections.
+
+### 6. Future Scope
 *   **AST Analysis:** In-depth source code parsing (Python, TypeScript, Go ASTs) to trace exact LLM initialization params.
 *   **GitHub Action Integration:** Pre-built Action to post pull request inline annotations.
 *   **Governance OS Direct Pipeline:** Ingestion flow triggers when explicitly authorized.
 
-### 6. Non-Goals
+### 7. Non-Goals
 *   Dynamic runtime vulnerability scanning (this is not an active exploit detector).
 *   Automatic patching or code modification (the tool only identifies and reports, it does not modify target code).
 *   Enforcement of legal blocking rules (it acts as an auditing helper, not a gateway blocker).

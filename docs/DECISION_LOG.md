@@ -80,3 +80,8 @@ This document maps all high-level technical, strategic, and governance decisions
 **Date:** 2026-05-21
 **Context:** Prepare hosted read-only API delivery without deploying Workers or connecting to live backends.
 **Decision:** T019 defines a Cloudflare Worker API boundary and local Worker route mock contract for future hosted read-only API delivery while intentionally avoiding Worker deployment, Wrangler publish, Cloudflare API calls, live Supabase connections, database writes, deployment, scheduler, GitHub Actions scanner mode, PR annotations, SARIF, real customer ingestion, external fetching, secrets, account emails, account IDs, real Worker URLs, and real project refs in tracked files.
+
+## DECISION-T020: Supabase Migration Rehearsal Pack
+**Date:** 2026-05-21
+**Context:** Rehearse future Supabase/Postgres setup safely after T018 schema draft.
+**Decision:** T020 introduces a local-only Supabase/Postgres migration rehearsal pack and SQL safety validator to prepare future backend setup while intentionally avoiding live Supabase connections, applied migrations, database writes, deployment, scheduler, GitHub Actions scanner mode, PR annotations, SARIF, real customer ingestion, external fetching, secrets, account emails, real project refs, active Supabase config, and Cloudflare deployment config in tracked files.

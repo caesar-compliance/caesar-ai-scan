@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.19.0`
-*   **Current Phase:** `T019 / v0.19.0 — Cloudflare Worker API boundary + local Worker mock contract`
+*   **Current Version:** `0.20.0`
+*   **Current Phase:** `T020 / v0.20.0 — Supabase local migration rehearsal pack + SQL safety validator`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T019 Cloudflare Worker API boundary. Local route mock and boundary validation; no Worker deploy or live backends.`
+*   **Latest Completed Task:** `T020 Supabase migration rehearsal pack. Forward/rollback rehearsal SQL, manifest, and validate:supabase-rehearsal; no live Supabase or applied migrations.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `T020 Supabase local migration rehearsal pack + SQL safety validator.`
+*   **Next Recommended Step:** `Controlled live Supabase setup (future, out of repo rehearsal scope).`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---
