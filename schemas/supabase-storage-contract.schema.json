@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.18.0",
+  "contract_type": "caesar-ai-scan-supabase-storage-contract",
+  "contract_status": "draft_not_applied",
+  "runtime_status": "planned_not_connected",
+  "storage_provider": "supabase_postgres_planned",
+  "source_layers": [
+    "scan_export_bundle",
+    "import_dry_run",
+    "local_json_store",
+    "api_projection"
+  ],
+  "tables": [
+    "ai_scan_projects",
+    "ai_scan_runs",
+    "ai_scan_findings",
+    "ai_inventory_components",
+    "ai_review_items",
+    "ai_import_ledger"
+  ],
+  "relationships": "TBD",
+  "row_level_security_plan": "Planned: tenant_id-scoped isolation",
+  "ingestion_modes": [
+    "offline_review_only",
+    "future_controlled_ingestion"
+  ],
+  "disallowed_in_t018": [
+    "live_database_connection",
+    "applied_migrations",
+    "database_writes",
+    "live_customer_ingestion",
+    "external_fetching",
+    "scheduler",
+    "deployment"
+  ],
+  "safety": {
+    "draft_only": true,
+    "no_database_writes": true,
+    "no_live_backend_connection": true,
+    "no_secrets_in_repo": true,
+    "placeholders_only": true
+  }
+}
