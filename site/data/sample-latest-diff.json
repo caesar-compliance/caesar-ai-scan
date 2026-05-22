@@ -1,9 +1,9 @@
 {
   "schema_version": "0.8.0",
-  "diff_id": "diff_aabdebf3",
-  "generated_at": "2026-05-22T17:16:29.753Z",
-  "baseline_run_id": "run_2026-05-22T17-16-29-691Z_56e9",
-  "current_run_id": "run_2026-05-22T17-16-29-751Z_d375",
+  "diff_id": "diff_4c67407c",
+  "generated_at": "2026-05-22T17:30:10.249Z",
+  "baseline_run_id": "run_2026-05-22T17-30-10-191Z_c8f0",
+  "current_run_id": "run_2026-05-22T17-30-10-247Z_f030",
   "summary": {
     "total_baseline": 11,
     "total_current": 11,
@@ -17,7 +17,7 @@
   "changed_findings": [],
   "unchanged_findings": [
     {
-      "finding_id": "find_env_b1e140zj",
+      "finding_id": "find_env_ynlspxu4",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -35,7 +35,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     {
-      "finding_id": "find_env_egn9m5et",
+      "finding_id": "find_env_qx3lu0tk",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -53,7 +53,7 @@
       "recommended_review": "Ensure API key is removed from repository commits immediately."
     },
     {
-      "finding_id": "find_dep_k4xtlfw4",
+      "finding_id": "find_dep_v98s4ain",
       "rule_pack_version": "v1",
       "category": "AI SDK",
       "detection_category": "provider_sdk",
@@ -71,7 +71,7 @@
       "recommended_review": "Verify usage complies with company data privacy policy. Ensure no proprietary data is sent to external LLMs without explicit authorization."
     },
     {
-      "finding_id": "find_dep_w0bnlby0",
+      "finding_id": "find_dep_902tjgeq",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -89,7 +89,7 @@
       "recommended_review": "LangChain pipelines dynamically construct chains. Trace all active prompts and integrations to ensure there are no un-monitored model connections."
     },
     {
-      "finding_id": "find_prompt_q3e9b3pw",
+      "finding_id": "find_prompt_ap33ut9v",
       "rule_pack_version": "v1",
       "category": "AI Prompt Artifact",
       "detection_category": "prompt_asset",
@@ -107,7 +107,7 @@
       "recommended_review": "Review prompt content for bias, safety, and proprietary data."
     },
     {
-      "finding_id": "find_dep_uelchz45",
+      "finding_id": "find_dep_8ynzagmg",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -125,7 +125,7 @@
       "recommended_review": "LlamaIndex connects files to LLMs. Audit all document parsing pipelines and local index stores to prevent leaking restricted intellectual property."
     },
     {
-      "finding_id": "find_dep_2gcfmi3z",
+      "finding_id": "find_dep_t96hshtt",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -143,7 +143,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_env_k6s5taee",
+      "finding_id": "find_env_rg0kg1gb",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -161,7 +161,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     {
-      "finding_id": "find_vector_5seqs56y",
+      "finding_id": "find_vector_bxguf6he",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -179,7 +179,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_vector_8tpb44i1",
+      "finding_id": "find_vector_91dtsi20",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -197,7 +197,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_vector_p1stim0z",
+      "finding_id": "find_vector_81qljziz",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
