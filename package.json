@@ -1,6 +1,6 @@
 {
   "name": "caesar-ai-scan",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "Static-analysis CLI and CI/CD tool to inventory AI dependencies, framework usage, vector DBs, and credentials.",
   "type": "module",
   "main": "src/cli.mjs",
@@ -47,7 +47,9 @@
     "validate:backend-boundary": "node scripts/validate-backend-runtime-boundary.mjs",
     "backend:readiness-report": "node src/report/backend-runtime-readiness-report.mjs",
     "api:serve-local": "node scripts/serve-local-api.mjs",
-    "validate:local-api": "node scripts/validate-local-api-server.mjs"
+    "validate:local-api": "node scripts/validate-local-api-server.mjs",
+    "postgres:compile-harness-gate-report": "node scripts/build-local-postgres-compile-harness-enable-gate-report.mjs",
+    "validate:postgres-compile-harness-gate": "node scripts/validate-local-postgres-compile-harness-enable-gate.mjs"
   },
   "keywords": [
     "ai",

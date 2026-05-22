@@ -1,0 +1,50 @@
+{
+  "gate_id": "T024-postgres-compile-gate",
+  "version": "0.24.0",
+  "status": "closed",
+  "enabled": false,
+  "execution_allowed_now": false,
+  "future_gate_required": true,
+  "explicit_user_approval_required": true,
+  "source_design_manifest": "docs/backend/supabase/local-compile-harness/local-postgres-compile-harness.manifest.json",
+  "source_stub_manifest": "docs/backend/supabase/local-compile-harness/local-postgres-compile-harness-stub.manifest.json",
+  "source_sql_files": [
+    "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rehearsal.sql",
+    "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rollback.rehearsal.sql"
+  ],
+  "minimum_future_prerequisites": [
+    "clean working tree",
+    "package validation green",
+    "explicit Control Tower approval",
+    "local-only database target",
+    "disposable database only",
+    "no secrets in tracked files",
+    "no live project refs",
+    "no production data",
+    "rollback rehearsal available",
+    "generated report output path defined"
+  ],
+  "forbidden_now": [
+    "docker",
+    "docker compose",
+    "psql",
+    "supabase cli",
+    "supabase link",
+    "supabase db push",
+    "live database URLs",
+    "service role keys",
+    "anon keys",
+    "wrangler deploy",
+    "GitHub Actions scanner mode",
+    "SARIF",
+    "PR annotations",
+    "scheduled execution",
+    "external fetching"
+  ],
+  "allowed_now": [
+    "read local manifest files",
+    "read local SQL rehearsal files",
+    "produce deterministic closed-gate report",
+    "validate safety boundary"
+  ]
+}

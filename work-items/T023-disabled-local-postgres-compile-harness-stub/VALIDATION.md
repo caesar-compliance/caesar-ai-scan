@@ -1,4 +1,45 @@
 # Validation
 
-- Automated validation script `validate-local-postgres-compile-harness-stub.mjs` checks report output.
-- Manual check confirms no forbidden dependencies like `pg` or `docker`.
+- All required T023 deliverables were verified present and schema-compliant.
+- Validated package scripts `postgres:compile-harness-stub` and `validate:postgres-compile-harness-stub` execute successfully as static stub handlers.
+- Integrated into `check:all-offline` pipeline with successful PASS status.
+- Exact validation command results:
+  - npm run check:syntax — PASS
+  - npm run validate:samples — PASS
+  - npm run validate:rule-pack-v1 — PASS
+  - npm run inventory:sample — PASS
+  - npm run validate:inventory — PASS
+  - npm run bundle:sample — PASS
+  - npm run validate:bundle — PASS
+  - npm run import:sample — PASS
+  - npm run validate:import — PASS
+  - npm run store:sample — PASS
+  - npm run validate:store — PASS
+  - npm run api:sample — PASS
+  - npm run dashboard:sample — PASS
+  - npm run validate:dashboard — PASS
+  - npm run validate:local-api — PASS
+  - npm run validate:backend-boundary — PASS
+  - npm run backend:readiness-report — PASS
+  - npm run supabase:mapping-sample — PASS
+  - npm run validate:supabase-draft — PASS
+  - npm run worker:route-sample — PASS
+  - npm run validate:worker-boundary — PASS
+  - npm run supabase:migration-rehearsal-report — PASS
+  - npm run validate:supabase-rehearsal — PASS
+  - npm run sql:compile-rehearsal-report — PASS
+  - npm run validate:sql-compile-rehearsal — PASS
+  - npm run postgres:compile-harness-report — PASS
+  - npm run validate:postgres-compile-harness — PASS
+  - npm run postgres:compile-harness-stub — PASS
+  - npm run validate:postgres-compile-harness-stub — PASS
+  - npm run validate:review — PASS
+  - npm run validate:pack — PASS
+  - npm run validate:scope — PASS
+  - npm run validate:history — PASS
+  - npm run build:site — PASS
+  - npm run validate:site — PASS
+  - npm run check:all-offline — PASS
+  - git diff --check — PASS
+- Verified no pollution (duplicate files removed).
+- Safety confirmed: no database/network/shell/docker commands executed.

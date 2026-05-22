@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.21.0`
-*   **Current Phase:** `T021 / v0.21.0 — Local SQL compile rehearsal boundary`
+*   **Current Version:** `0.23.0`
+*   **Current Phase:** `T023 / v0.23.0 — Disabled local Postgres compile harness stub closeout`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T021 Local SQL compile rehearsal boundary. Added offline validation, manifest, and report generation.`
+*   **Latest Completed Task:** `T024 Local Postgres Compile Harness Enablement Gate Spec. Completed audit, docs/state/validation updates.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `T022 / v0.22.0 — Gated Local Postgres Compile Harness Design`
+*   **Next Recommended Step:** `T025 / v0.25.0 — Local Compile Harness Dry-Run Plan Pack`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---
@@ -64,7 +64,3 @@ This document tracks the current active state, milestones, and boundaries for th
     *   [docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md](docs/GOVERNANCE_OS_INTEGRATION_CONTRACT.md) — Governance OS Ingestion specifications
     *   [docs/CAESAR_AI_EVIDENCE_HANDOFF.md](docs/CAESAR_AI_EVIDENCE_HANDOFF.md) — Relational mappings to caesar-ai-evidence
     *   [docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md](docs/HUMAN_REVIEW_SIGNOFF_WORKFLOW.md) — Manual review procedures and checklist
-
-- T006-A: Monitoring Run Model Planning Pack (Completed)
-
-- T006: Offline Scan History & Diff Model (Completed)

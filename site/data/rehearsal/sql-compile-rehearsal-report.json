@@ -1,6 +1,6 @@
 {
   "version": "0.21.0",
-  "timestamp": "2026-05-22T16:48:33.850Z",
+  "timestamp": "2026-05-22T17:16:35.555Z",
   "status": "success",
   "rehearsalFiles": {
     "forward": "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rehearsal.sql",

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Local Postgres Compile Harness Enablement Gate",
+  "type": "object",
+  "required": ["gate_id", "version", "status", "enabled", "execution_allowed_now", "future_gate_required", "explicit_user_approval_required"],
+  "properties": {
+    "gate_id": { "type": "string" },
+    "version": { "type": "string" },
+    "status": { "type": "string", "enum": ["closed", "open"] },
+    "enabled": { "type": "boolean" },
+    "execution_allowed_now": { "type": "boolean" },
+    "future_gate_required": { "type": "boolean" },
+    "explicit_user_approval_required": { "type": "boolean" }
+  }
+}

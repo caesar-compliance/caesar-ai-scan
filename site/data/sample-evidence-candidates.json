@@ -1,14 +1,14 @@
 [
   {
-    "candidate_id": "ec_rnf454wua5lq5wt4",
+    "candidate_id": "ec_ijx4x1v9tgpk7gnh",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "environment_credential",
     "status": "draft",
-    "finding_ref": "find_env_wd8a5c9u",
+    "finding_ref": "find_env_jqzs4kzy",
     "proposed_payload": {
       "matched_name": "OPENAI_API_KEY",
       "file_path": ".env.example",
@@ -18,7 +18,7 @@
       "remediation_suggestion": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_env_wd8a5c9u. Blocked from export due to 4 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_env_jqzs4kzy. Blocked from export due to 4 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -66,15 +66,15 @@
     ]
   },
   {
-    "candidate_id": "ec_9hmj4k640jadsu7t",
+    "candidate_id": "ec_bdmxdo7rlbpwm5i6",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "environment_credential",
     "status": "draft",
-    "finding_ref": "find_env_888afugd",
+    "finding_ref": "find_env_n9y62oly",
     "proposed_payload": {
       "matched_name": "ANTHROPIC_API_KEY",
       "file_path": ".env.example",
@@ -84,7 +84,7 @@
       "remediation_suggestion": "Ensure API key is removed from repository commits immediately."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_env_888afugd. Blocked from export due to 4 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_env_n9y62oly. Blocked from export due to 4 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -132,15 +132,15 @@
     ]
   },
   {
-    "candidate_id": "ec_col0mefag3palnvw",
+    "candidate_id": "ec_z2erqzbkl7xvv9jb",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "codebase_dependency",
     "status": "draft",
-    "finding_ref": "find_dep_mqpjffdr",
+    "finding_ref": "find_dep_pmh5c1qi",
     "proposed_payload": {
       "matched_name": "openai",
       "file_path": "package.json",
@@ -150,7 +150,7 @@
       "remediation_suggestion": "Verify usage complies with company data privacy policy. Ensure no proprietary data is sent to external LLMs without explicit authorization."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_mqpjffdr. Blocked from export due to 6 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_pmh5c1qi. Blocked from export due to 6 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -227,15 +227,15 @@
     ]
   },
   {
-    "candidate_id": "ec_siq5z0mnqbh3cq50",
+    "candidate_id": "ec_8qa11xo43tdcqmde",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "codebase_dependency",
     "status": "draft",
-    "finding_ref": "find_dep_nf0i3sze",
+    "finding_ref": "find_dep_1net28cl",
     "proposed_payload": {
       "matched_name": "langchain",
       "file_path": "package.json",
@@ -245,7 +245,7 @@
       "remediation_suggestion": "LangChain pipelines dynamically construct chains. Trace all active prompts and integrations to ensure there are no un-monitored model connections."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_nf0i3sze. Blocked from export due to 6 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_1net28cl. Blocked from export due to 6 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -322,15 +322,15 @@
     ]
   },
   {
-    "candidate_id": "ec_udttm282cxwh2kug",
+    "candidate_id": "ec_41ubfd9hjr6y2voq",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "prompt_configuration",
     "status": "draft",
-    "finding_ref": "find_prompt_r88e6u0l",
+    "finding_ref": "find_prompt_3jgygftv",
     "proposed_payload": {
       "matched_name": "system.prompt.md",
       "file_path": "prompts/system.prompt.md",
@@ -340,7 +340,7 @@
       "remediation_suggestion": "Review prompt content for bias, safety, and proprietary data."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_r88e6u0l. Blocked from export due to 2 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_prompt_3jgygftv. Blocked from export due to 2 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -398,15 +398,15 @@
     ]
   },
   {
-    "candidate_id": "ec_cjfkuf00akf3bwfn",
+    "candidate_id": "ec_adxvkiszctq78sx4",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "codebase_dependency",
     "status": "draft",
-    "finding_ref": "find_dep_fhyylxqa",
+    "finding_ref": "find_dep_rdkvt9sn",
     "proposed_payload": {
       "matched_name": "llama-index",
       "file_path": "requirements.txt",
@@ -416,7 +416,7 @@
       "remediation_suggestion": "LlamaIndex connects files to LLMs. Audit all document parsing pipelines and local index stores to prevent leaking restricted intellectual property."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_fhyylxqa. Blocked from export due to 6 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_rdkvt9sn. Blocked from export due to 6 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -493,15 +493,15 @@
     ]
   },
   {
-    "candidate_id": "ec_onwem7gjezuyfuhq",
+    "candidate_id": "ec_2v6mfjxpfiqyd4o2",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "codebase_dependency",
     "status": "draft",
-    "finding_ref": "find_dep_y8f4jatv",
+    "finding_ref": "find_dep_niksypvb",
     "proposed_payload": {
       "matched_name": "chromadb",
       "file_path": "requirements.txt",
@@ -511,7 +511,7 @@
       "remediation_suggestion": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_y8f4jatv. Blocked from export due to 6 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_dep_niksypvb. Blocked from export due to 6 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -588,15 +588,15 @@
     ]
   },
   {
-    "candidate_id": "ec_qgb948cv6iuw3cqw",
+    "candidate_id": "ec_5394c8rttiwut7ai",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "environment_credential",
     "status": "draft",
-    "finding_ref": "find_env_6hfwd9g2",
+    "finding_ref": "find_env_9xh8kbdp",
     "proposed_payload": {
       "matched_name": "OPENAI_API_KEY",
       "file_path": "src/example.js",
@@ -606,7 +606,7 @@
       "remediation_suggestion": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_env_6hfwd9g2. Blocked from export due to 4 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_env_9xh8kbdp. Blocked from export due to 4 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -654,15 +654,15 @@
     ]
   },
   {
-    "candidate_id": "ec_rbchg5g4kt9npy4i",
+    "candidate_id": "ec_h8uufp54dzgmoik2",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "vector_storage",
     "status": "draft",
-    "finding_ref": "find_vector_kywt4r1o",
+    "finding_ref": "find_vector_4g7pzl4c",
     "proposed_payload": {
       "matched_name": "Chroma DB",
       "file_path": "src/example.js",
@@ -672,7 +672,7 @@
       "remediation_suggestion": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_kywt4r1o. Blocked from export due to 3 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_4g7pzl4c. Blocked from export due to 3 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -721,15 +721,15 @@
     ]
   },
   {
-    "candidate_id": "ec_t5thvc9mvgbf8sjo",
+    "candidate_id": "ec_ygfdr3mqrsj3daf9",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "vector_storage",
     "status": "draft",
-    "finding_ref": "find_vector_0cvxdr50",
+    "finding_ref": "find_vector_i9zkkhpe",
     "proposed_payload": {
       "matched_name": "Chroma DB",
       "file_path": "src/example.js",
@@ -739,7 +739,7 @@
       "remediation_suggestion": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_0cvxdr50. Blocked from export due to 3 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_i9zkkhpe. Blocked from export due to 3 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {
@@ -788,15 +788,15 @@
     ]
   },
   {
-    "candidate_id": "ec_yvib708gbkr0o20t",
+    "candidate_id": "ec_j8p22sjq3tvcspdj",
     "source_tool": {
       "name": "caesar-ai-scan",
       "version": "0.5.0"
     },
-    "generated_at": "2026-05-22T16:48:31.687Z",
+    "generated_at": "2026-05-22T17:16:30.840Z",
     "evidence_type": "vector_storage",
     "status": "draft",
-    "finding_ref": "find_vector_ayi9msvt",
+    "finding_ref": "find_vector_zo63duos",
     "proposed_payload": {
       "matched_name": "Chroma DB",
       "file_path": "src/example.js",
@@ -806,7 +806,7 @@
       "remediation_suggestion": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     "review_required": true,
-    "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_ayi9msvt. Blocked from export due to 3 unresolved blocking evidence gaps.",
+    "integration_notes": "Offline candidate assessment generated for finding ID: find_vector_zo63duos. Blocked from export due to 3 unresolved blocking evidence gaps.",
     "review_status": "blocked_missing_context",
     "evidence_gaps": [
       {

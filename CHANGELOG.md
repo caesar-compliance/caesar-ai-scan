@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.23.0] - 2026-05-22
+- **T023 — Disabled local Postgres compile harness stub.** Added stub runner, validator, schema, and local stub report. Stub remains disabled by default with no live database/shell/docker execution.
+
 ## [0.21.0] - 2026-05-22
 - **T021 — Local SQL compile rehearsal boundary.** Added offline validation, manifest, and report generation for Supabase storage schema rehearsal. No live Supabase connections or applied migrations.
 

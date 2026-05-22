@@ -142,3 +142,13 @@ When modifying this repository:
 - `docs/SUPABASE_MIGRATION_REHEARSAL.md` (T020 rehearsal overview)
 - `docs/backend/supabase/MIGRATION_REHEARSAL_GUIDE.md` (T020 rehearsal workflow)
 - `work-items/T020-supabase-local-migration-rehearsal/` (T020 task tracking)
+| 📑 **`schemas/local-postgres-compile-harness-stub.schema.json`** | Stub Schema | Schema for disabled local Postgres compile harness stub. |
+| 🛡️ **`docs/LOCAL_POSTGRES_COMPILE_HARNESS_STUB.md`** | Stub Documentation | Documentation for the disabled local harness stub. |
+| 🚀 **`scripts/run-local-postgres-compile-harness-stub.mjs`** | Stub Runner | CLI tool for executing static stub reports. |
+| 🧪 **`scripts/validate-local-postgres-compile-harness-stub.mjs`** | Stub Validator | Offline assertion suite for harness stub reports. |
+| 📂 **`work-items/T023-disabled-local-postgres-compile-harness-stub/`** | T023 Sandbox | Sandboxed trackers containing T023 tasks, decisions, reports, and validation logs. |
+| 🚪 **`schemas/local-postgres-compile-harness-enable-gate.schema.json`** | Enablement Gate Schema | Schema for the Postgres harness enablement gate. |
+| 🛡️ **`docs/LOCAL_POSTGRES_COMPILE_HARNESS_ENABLEMENT_GATE.md`** | Enablement Gate Docs | Safety documentation for harness gate. |
+| 🚀 **`scripts/build-local-postgres-compile-harness-enable-gate-report.mjs`** | Gate Report Builder | CLI tool to generate status report. |
+| 🧪 **`scripts/validate-local-postgres-compile-harness-enable-gate.mjs`** | Gate Validator | Offline assertion suite for gate integrity. |
+| 📂 **`work-items/T024-local-postgres-compile-harness-enablement-gate-spec/`** | T024 Sandbox | T024 task tracking and decision logs. |
