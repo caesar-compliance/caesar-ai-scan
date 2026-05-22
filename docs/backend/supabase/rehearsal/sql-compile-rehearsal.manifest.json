@@ -1,0 +1,11 @@
+{
+  "version": "0.21.0",
+  "rehearsalPack": {
+    "forward": "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rehearsal.sql",
+    "rollback": "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rollback.rehearsal.sql"
+  },
+  "metadata": {
+    "description": "Local/offline SQL compile rehearsal manifest.",
+    "isOffline": true
+  }
+}

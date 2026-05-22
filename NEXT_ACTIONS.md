@@ -7,6 +7,7 @@ This document prioritizes upcoming development tasks and establishes execution b
 ## 🚦 Next Action Priorities
 
 ### 1. Prioritized Next Steps
+*   **T022 / v0.22.0 — Gated Local Postgres Compile Harness Design:** Create a secure, gated local Postgres environment for testing SQL compiles.
 *   **Dynamic CI Gates and PR Annotations (v0.7.0):** Implement inline code annotation reports for GitHub Pull Request screens using SARIF/GitHub Check Runs integrations.
 *   **Develop AST Parser Extensions:** Integrate light AST parser trees for Javascript/TypeScript and Python codebases to track exact function calls and parameter models.
 *   **Establish Governance OS Active Webhook Connector:** Create a secure authentication handoff module to upload signed evidence packs directly to the Caesar Governance OS endpoint when explicitly authorized by an auditor.

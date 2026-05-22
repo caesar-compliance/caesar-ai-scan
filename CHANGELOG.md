@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.21.0] - 2026-05-22
+- **T021 — Local SQL compile rehearsal boundary.** Added offline validation, manifest, and report generation for Supabase storage schema rehearsal. No live Supabase connections or applied migrations.
+
 ## [0.20.0] - 21 May 2026
 - **T020 — Supabase local migration rehearsal pack.** Added forward/rollback rehearsal SQL, manifest, schema, report builder, and `validate:supabase-rehearsal`. No live Supabase connections or applied migrations.
 

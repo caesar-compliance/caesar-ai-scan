@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.20.1`
-*   **Current Phase:** `T020C / v0.20.1 — Post-T020 validation alignment`
+*   **Current Version:** `0.21.0`
+*   **Current Phase:** `T021 / v0.21.0 — Local SQL compile rehearsal boundary`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T020C Post-T020 validation alignment. Verified all scripts, updated docs, and finalized validation boundary; no live backend connections added.`
+*   **Latest Completed Task:** `T021 Local SQL compile rehearsal boundary. Added offline validation, manifest, and report generation.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `T021 / v0.21.0 — Local Postgres/Supabase SQL compile rehearsal boundary. Local-only.`
+*   **Next Recommended Step:** `T022 / v0.22.0 — Gated Local Postgres Compile Harness Design`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---

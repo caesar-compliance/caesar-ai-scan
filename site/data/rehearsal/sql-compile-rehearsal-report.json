@@ -1,0 +1,23 @@
+{
+  "version": "0.21.0",
+  "timestamp": "2026-05-22T16:26:02.521Z",
+  "status": "success",
+  "rehearsalFiles": {
+    "forward": "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rehearsal.sql",
+    "rollback": "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rollback.rehearsal.sql"
+  },
+  "checks": [
+    {
+      "id": "file-existence",
+      "description": "Rehearsal SQL files exist and are readable",
+      "status": "pass",
+      "details": "Forward and rollback SQL files confirmed."
+    },
+    {
+      "id": "non-empty",
+      "description": "SQL files are non-empty",
+      "status": "pass",
+      "details": "Forward length: 2901, Rollback length: 423"
+    }
+  ]
+}
