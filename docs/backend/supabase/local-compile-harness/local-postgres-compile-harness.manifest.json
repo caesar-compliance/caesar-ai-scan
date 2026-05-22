@@ -1,0 +1,29 @@
+{
+  "harness_id": "postgres-compile-harness-v1",
+  "version": "0.22.0",
+  "status": "design_only",
+  "source_sql_files": [
+    "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rehearsal.sql",
+    "docs/backend/supabase/rehearsal/001_ai_scan_storage_schema.rollback.rehearsal.sql"
+  ],
+  "related_manifests": [
+    "docs/backend/supabase/rehearsal/migration-rehearsal.manifest.json",
+    "docs/backend/supabase/rehearsal/sql-compile-rehearsal.manifest.json"
+  ],
+  "forbidden_now": [
+    "docker",
+    "psql",
+    "supabase cli",
+    "supabase link",
+    "supabase db push",
+    "live database URLs",
+    "service role keys",
+    "anon keys",
+    "wrangler deploy",
+    "GitHub Actions scanner mode",
+    "SARIF",
+    "PR annotations"
+  ],
+  "future_gate_required": true,
+  "no_execution_now": true
+}

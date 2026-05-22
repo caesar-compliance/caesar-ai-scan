@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Local Postgres Compile Harness Report",
+  "type": "object",
+  "properties": {
+    "harness_id": { "type": "string" },
+    "version": { "type": "string" },
+    "status": { "type": "string", "enum": ["design_only"] },
+    "generated_at": { "type": "string" },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "sql_files_exist": { "type": "boolean" },
+        "forbidden_checks_passed": { "type": "boolean" }
+      },
+      "required": ["sql_files_exist", "forbidden_checks_passed"]
+    }
+  },
+  "required": ["harness_id", "version", "status", "generated_at", "validation"]
+}
