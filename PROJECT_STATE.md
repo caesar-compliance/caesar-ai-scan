@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.20.0`
-*   **Current Phase:** `T020 / v0.20.0 — Supabase local migration rehearsal pack + SQL safety validator`
+*   **Current Version:** `0.20.1`
+*   **Current Phase:** `T020C / v0.20.1 — Post-T020 validation alignment`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T020 Supabase migration rehearsal pack. Forward/rollback rehearsal SQL, manifest, and validate:supabase-rehearsal; no live Supabase or applied migrations.`
+*   **Latest Completed Task:** `T020C Post-T020 validation alignment. Verified all scripts, updated docs, and finalized validation boundary; no live backend connections added.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `Controlled live Supabase setup (future, out of repo rehearsal scope).`
+*   **Next Recommended Step:** `T021 / v0.21.0 — Local Postgres/Supabase SQL compile rehearsal boundary. Local-only.`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---

@@ -42,3 +42,7 @@ This document prioritizes upcoming development tasks and establishes execution b
 - [x] T018: Supabase storage schema draft + import mapping (v0.18.0)
 - [x] T019: Cloudflare Worker API boundary + local mock (v0.19.0)
 - [x] T020: Supabase local migration rehearsal pack + SQL safety validator (v0.20.0)
+- [x] T020C: Post-T020 validation alignment (v0.20.1)
+
+## T021 / v0.21.0
+- Local Postgres/Supabase SQL compile rehearsal boundary (local-only, gated, no-live).
