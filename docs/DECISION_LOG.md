@@ -16,3 +16,8 @@
 **Date:** 2026-05-22
 **Context:** Need to ensure all local offline capabilities are verified and coherent before moving to UX improvements or backend integrations.
 **Decision:** T025 implements a product loop readiness report that audits 15+ offline stages and safety gates, confirming that the local prototype is "ready" for demo and further product development without live service dependencies.
+
+## DECISION-T026: Static Dashboard Product UX Upgrade
+**Date:** 2026-05-22
+**Context:** The static dashboard was a minimal prototype that didn't fully represent the product's local capabilities or safety boundaries.
+**Decision:** Upgrade the dashboard to a product-centric view, highlighting the local governance pipeline, safety gates, and AI inventory browser. This supports local demos while strictly enforcing the air-gapped/offline nature of the tool.

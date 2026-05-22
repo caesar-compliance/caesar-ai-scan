@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.26.0] - 2026-05-22
+### Added
+- Upgraded static dashboard product UX for local demos.
+- Visualizations for product loop readiness timeline and safety gates.
+- Safety banners and indicators for disabled backend/live services.
+- Detailed product loop stage information (scripts, outputs, safety notes).
+- Interactive AI usage inventory browser with findings and history.
+- Validation script for product UX requirements and safety boundaries.
+
 ## [0.25.0] - 2026-05-22
 - **T025 — Local product loop readiness pack.** Audited and verified local product loop readiness, ensuring all offline stages and safety gates (like the T024 Postgres gate) are coherent and functioning as designed. Added `product-loop:readiness-report` and `validate:product-loop`.
 

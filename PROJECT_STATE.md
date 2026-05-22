@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.25.0`
-*   **Current Phase:** `T025 / v0.25.0 — Local product loop readiness pack closeout`
+*   **Current Version:** `0.26.0`
+*   **Current Phase:** `T026 / v0.26.0 — Static Dashboard Product UX Upgrade`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T025 Local product loop readiness pack. Completed audit, docs/state/validation updates.`
+*   **Latest Completed Task:** `T026 Static Dashboard Product UX Upgrade. Visualizations for local stages and safety gates added.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `T026 / v0.26.0 — Static Dashboard Product UX Upgrade`
+*   **Next Recommended Step:** `T027 / v0.27.0 — Scan Diff Product View`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---

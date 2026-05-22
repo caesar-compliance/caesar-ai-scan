@@ -3,8 +3,8 @@ import path from 'path';
 
 export function generateReadinessReport() {
     const report = {
-        report_id: "T025-v0.25.0-readiness",
-        version: "0.25.0",
+        report_id: "T026-v0.26.0-readiness",
+        version: "0.26.0",
         timestamp: new Date().toISOString(),
         overall_readiness_status: "ready",
         local_demo_ready: true,

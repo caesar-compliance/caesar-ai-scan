@@ -21,7 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     readiness: null,
     historySummary: null,
     latestDiff: null,
-    build: null
+    build: null,
+    productLoop: null,
+    sqlRehearsal: null,
+    postgresGate: null
   };
 
   // Setup Tab Clicks
@@ -55,9 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
       loadedData.readiness = await fetchJson('data/sample-import-readiness.json');
       loadedData.historySummary = await fetchJson('data/sample-history-summary.json');
       loadedData.latestDiff = await fetchJson('data/sample-latest-diff.json');
+      loadedData.productLoop = await fetchJson('data/product-loop-readiness-report.json');
+      loadedData.sqlRehearsal = await fetchJson('data/rehearsal/sql-compile-rehearsal-report.json');
+      loadedData.postgresGate = await fetchJson('data/rehearsal/local-postgres-compile-harness-enable-gate-report.json');
 
       updateMetrics();
       updateBuildInfo();
+      updateProductStatus();
+      updateProductLoopSection();
+      updateSafetyGates();
       
       // Default initial tab
       renderTabContent('scan');
@@ -65,6 +74,87 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error initializing site data dashboard:', err);
       jsonViewer.textContent = '// Failed to load offline static data files.\n// Run npm run build:site to generate assets.';
     }
+  }
+
+  function updateProductStatus() {
+    const statusContainer = document.getElementById('product-status-container');
+    if (!statusContainer || !loadedData.productLoop) return;
+
+    const loop = loadedData.productLoop;
+    statusContainer.innerHTML = `
+      <div class="metric-card">
+        <div class="status-badge ${loop.product_loop_readiness_status === 'ready' ? 'status-ready' : 'status-blocked'}">
+          ${loop.product_loop_readiness_status}
+        </div>
+        <div class="label">Product Readiness</div>
+      </div>
+      <div class="metric-card">
+        <div class="status-badge ${loop.local_demo_ready ? 'status-ready' : 'status-blocked'}">
+          ${loop.local_demo_ready ? 'READY' : 'NOT READY'}
+        </div>
+        <div class="label">Local Demo Status</div>
+      </div>
+      <div class="metric-card">
+        <div class="status-badge status-disabled">DISABLED</div>
+        <div class="label">Backend Execution</div>
+      </div>
+      <div class="metric-card">
+        <div class="status-badge status-disabled">DISABLED</div>
+        <div class="label">Live Services</div>
+      </div>
+    `;
+  }
+
+  function updateProductLoopSection() {
+    const container = document.getElementById('product-loop-timeline');
+    if (!container || !loadedData.productLoop) return;
+
+    const stages = loadedData.productLoop.pipeline_readiness_pack.stages;
+    container.innerHTML = stages.map(stage => `
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h4>${stage.stage_name} <span class="status-badge ${stage.status === 'ready' ? 'status-ready' : 'status-pending'}">${stage.status}</span></h4>
+          <div class="meta">Script: <code>${stage.package_script}</code> | Validator: <code>${stage.validation_script}</code></div>
+          <p>${stage.product_value_summary}</p>
+          <div class="details">
+            <strong>Output:</strong> <code>${stage.primary_output}</code><br>
+            <small><em>Safety Note: ${stage.safety_note}</em></small>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function updateSafetyGates() {
+    const container = document.getElementById('safety-gates-container');
+    if (!container) return;
+
+    let html = '';
+
+    if (loadedData.postgresGate) {
+      const gate = loadedData.postgresGate;
+      html += `
+        <div class="card">
+          <h3>T024 Postgres Harness Gate <span class="status-badge ${gate.gate_status === 'closed' ? 'status-blocked' : 'status-ready'}">${gate.gate_status === 'closed' ? 'Gate Closed' : 'Gate Open'}</span></h3>
+          <p>${gate.safety_check_summary}</p>
+          <div class="meta">Last Evaluated: ${gate.evaluated_at}</div>
+        </div>
+      `;
+    }
+
+    if (loadedData.sqlRehearsal) {
+      const sql = loadedData.sqlRehearsal;
+      html += `
+        <div class="card">
+          <h3>SQL Compile Rehearsal <span class="status-badge ${sql.rehearsal_status === 'success' ? 'status-ready' : 'status-pending'}">${sql.rehearsal_status}</span></h3>
+          <p>Schema: ${sql.target_schema}</p>
+          <div class="meta">Compiler: ${sql.local_sql_compiler_version}</div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = html || '<p>No safety gate data available.</p>';
   }
 
   function updateMetrics() {

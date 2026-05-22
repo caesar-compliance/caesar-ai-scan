@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caesar AI Scan — Offline AI Governance Scanner</title>
-  <meta name="description" content="An offline static-analysis tool for discovering AI components, dependencies, credentials, vector databases, and matching them against compliance requirements.">
+  <title>Caesar AI Scan — Product Dashboard</title>
+  <meta name="description" content="Local, offline product dashboard for Caesar AI Scan.">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -14,13 +14,14 @@
     <div class="container header-container">
       <a href="#" class="brand">
         🛡️ Caesar AI Scan
-        <span class="brand-badge">Offline MVP</span>
+        <span class="brand-badge">Product Demo</span>
       </a>
       <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#demo">Interactive Demo</a>
-        <a href="#disclaimer">Disclaimers</a>
+        <a href="#overview">Overview</a>
+        <a href="#product-loop">Product Loop</a>
+        <a href="#inventory">AI Inventory</a>
+        <a href="#safety">Safety Gates</a>
+        <a href="#next-actions">Next Actions</a>
       </nav>
     </div>
   </header>
@@ -28,80 +29,83 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <span class="badge-v080">Version 0.8.0 Released</span>
-      <h1>Static-Analysis for AI Governance</h1>
-      <p>An air-gapped compliance scanner prototype detecting AI dependencies, framework usage, vector database configurations, and plain-text API credentials.</p>
+      <span class="badge-v060">Version 0.26.0</span>
+      <h1>Caesar AI Scan Product Dashboard</h1>
+      <p>Local-only, air-gapped compliance scanner. No live services, no backend execution.</p>
     </div>
   </section>
 
   <!-- Content Containers -->
   <main class="container">
 
-    <!-- Alert / Banner -->
-    <div class="alert-banner" id="about">
-      <span>⚠️</span>
+    <!-- Safety Banner -->
+    <div class="safety-banner" id="safety-banner">
+      <div class="icon">🔒</div>
       <div>
-        <strong>Ecosystem Status Beacon:</strong> Caesar AI Scan operates completely offline. All generated evidence candidates are flagged as <em>drafts</em> and hardlocked to require human review before downstream ingestion into Governance OS or caesar-ai-evidence can proceed.
+        <h4>LOCAL-ONLY SAFETY MODE</h4>
+        <p>This dashboard is a static projection of local scan data. <strong>Backend execution is disabled. Live services are disabled.</strong> No data leaves this machine.</p>
       </div>
     </div>
 
-    <!-- Capabilities Section -->
-    <section class="features-section" id="capabilities">
-      <h2 class="section-title">Core Scanner Capabilities</h2>
-      <div class="grid-3">
-        
+    <!-- Product Status Overview -->
+    <section class="features-section" id="overview">
+      <h2 class="section-title">Product Status & Local Demo Readiness</h2>
+      <div class="dashboard-summary" id="product-status-container">
+        <!-- Populated by JS -->
+        <div class="metric-card">Loading status...</div>
+      </div>
+
+      <div class="grid-4">
         <div class="card">
           <div class="card-icon">01</div>
-          <h3>AI Usage Signal Detection</h3>
-          <p>Scans project files for AI dependencies (e.g. OpenAI SDK, LangChain, PyTorch) and high-dimensional vector databases (e.g. Pinecone, ChromaDB).</p>
+          <h3>AI Usage Inventory</h3>
+          <p>Comprehensive list of AI frameworks, libraries, and models detected in the codebase.</p>
+          <div class="status-badge status-ready" style="margin-top: 1rem;">STATUS: READY</div>
         </div>
-
         <div class="card">
           <div class="card-icon">02</div>
-          <h3>Evidence Candidate Export</h3>
-          <p>Converts raw code scanner findings into standard structural evidence export candidates using ecosystem schema specifications.</p>
+          <h3>Export Bundle Readiness</h3>
+          <p>Ready to compile offline scan artifacts into a unified export bundle for governance review.</p>
+          <div class="status-badge status-ready" style="margin-top: 1rem;">STATUS: READY</div>
         </div>
-
         <div class="card">
           <div class="card-icon">03</div>
-          <h3>Review Workflow Orchestration</h3>
-          <p>Classifies missing evidence gaps, generates actionable auditor questions, and routes results to designated governance review lanes.</p>
+          <h3>Backend Execution Disabled</h3>
+          <p>Safety lock engaged. Real-world Supabase/Postgres/Cloudflare execution is prohibited in this mode.</p>
+          <div class="status-badge status-blocked" style="margin-top: 1rem;">STATUS: LOCKED</div>
         </div>
-
         <div class="card">
           <div class="card-icon">04</div>
-          <h3>Export Readiness Model</h3>
-          <p>Computes overall compliance scores. Enforces a strict 70% readiness capping rule when critical evidence gaps remain unresolved.</p>
+          <h3>Live Services Disabled</h3>
+          <p>All network-active governance services are disconnected. The tool operates in a pure air-gapped state.</p>
+          <div class="status-badge status-blocked" style="margin-top: 1rem;">STATUS: DISCONNECTED</div>
         </div>
-
-        <div class="card">
-          <div class="card-icon">05</div>
-          <h3>Offline Evidence Export Pack</h3>
-          <p>Compiles findings, readiness metrics, manifests, and signatures into a unified offline bundle protected by deterministically mapped SHA-256 hashes.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">06</div>
-          <h3>Granular Traversal & Scope Control</h3>
-          <p>Parses local <code>.caesarignore</code> glob patterns and configuration files, halt recursing directories progressively to optimize filesystem access.</p>
-        </div>
-
       </div>
     </section>
 
-    <!-- Interactive Demo Dashboard -->
-    <section class="demo-section" id="demo">
+    <!-- Product Loop Section -->
+    <section class="features-section" id="product-loop">
+      <h2 class="section-title">Product Loop Readiness</h2>
+      <p>The core pipeline stages for local AI governance scanning and validation.</p>
+      <div class="timeline" id="product-loop-timeline">
+        <!-- Populated by JS -->
+        <p>Loading product loop data...</p>
+      </div>
+    </section>
+
+    <!-- AI Inventory Section -->
+    <section class="demo-section" id="inventory">
       <div class="dashboard-header">
         <div class="dashboard-title">
-          <h2>Interactive Scan Dashboard</h2>
-          <p>Browse live, offline scan data parsed directly from the fixture sample project outputs.</p>
+          <h2>AI Usage Inventory & Findings</h2>
+          <p>Browse local scan findings and evidence candidates.</p>
         </div>
         <div class="selector-tabs">
           <button class="selector-tab active" data-tab="scan">Scan Findings</button>
-          <button class="selector-tab" data-tab="history">Scan History / Diff</button>
+          <button class="selector-tab" data-tab="history">Scan History</button>
           <button class="selector-tab" data-tab="candidates">Evidence Candidates</button>
           <button class="selector-tab" data-tab="workflow">Review Workflow</button>
-          <button class="selector-tab" data-tab="raw">Raw JSON Export</button>
+          <button class="selector-tab" data-tab="raw">Raw JSON</button>
         </div>
       </div>
 
@@ -113,7 +117,7 @@
         </div>
         <div class="metric-card">
           <div class="value" id="metric-files">-</div>
-          <div class="label">Files Included</div>
+          <div class="label">Files Scanned</div>
         </div>
         <div class="metric-card">
           <div class="value" id="metric-readiness">-</div>
@@ -121,7 +125,7 @@
         </div>
         <div class="metric-card">
           <div class="value" id="metric-gaps">-</div>
-          <div class="label">Logged Gaps</div>
+          <div class="label">Evidence Gaps</div>
         </div>
       </div>
 
@@ -130,18 +134,32 @@
 
       <!-- Build Metadata Info -->
       <div class="build-info">
-        <div>Ecosystem Version: <strong id="build-version">v0.8.0</strong></div>
-        <div>Build DateTime: <span id="build-date">-</span></div>
+        <div>Ecosystem Version: <strong id="build-version">v0.26.0</strong></div>
+        <div>Generated At: <span id="build-date">-</span></div>
         <div>Source Commit: <code id="build-commit">-</code></div>
       </div>
     </section>
 
-    <!-- Disclaimers Section -->
-    <section class="disclaimer-section" id="disclaimer">
-      <h3>📋 Compliance Policy & Legal Disclaimers</h3>
-      <p><strong>Findings are Signals:</strong> The detection outcomes presented here indicate static-analysis matches (e.g. library imports, prompt files) and do not represent a final legal or regulatory determination of compliance status.</p>
-      <p><strong>No Automated Ingestion:</strong> By default, this offline prototype executes zero automatic database writing, cloud synchronization, or ingestion into caesar-ai-evidence / Governance OS. Ingestion requires explicit, cryptographic human sign-off.</p>
-      <p><strong>Safe Demo Environment:</strong> All demonstrated artifacts represent synthetically configured test environments. No real customer source code, credentials, or proprietary files are uploaded or hosted.</p>
+    <!-- Safety Gates Section -->
+    <section class="features-section" id="safety">
+      <h2 class="section-title">Safety Gates & Backend Rehearsal</h2>
+      <p>Local validation of backend boundaries without live execution.</p>
+      <div class="grid-2" id="safety-gates-container">
+        <!-- Populated by JS -->
+        <p>Loading safety gate data...</p>
+      </div>
+    </section>
+
+    <!-- Next Actions Section -->
+    <section class="disclaimer-section" id="next-actions">
+      <h3>🚀 Recommended Next Step</h3>
+      <p id="next-step-recommendation"><strong>T027 / v0.27.0 — Scan Diff Product View</strong>: Enhance the dashboard with a rich comparison view for historical scan results.</p>
+      <div class="alert-banner" style="margin-top: 1rem;">
+        <span>ℹ️</span>
+        <div>
+          <strong>Note:</strong> Live database execution is NOT recommended as the immediate next step. Focus on closing product UX gaps.
+        </div>
+      </div>
     </section>
 
   </main>
@@ -149,7 +167,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 Caesar AI Governance Ecosystem. Deployed securely at <a href="https://ai-scan.caesar.no/" style="color: var(--accent-primary);">ai-scan.caesar.no</a>.</p>
+      <p>&copy; 2026 Caesar AI Governance Ecosystem. Local Static Projection.</p>
     </div>
   </footer>
 
