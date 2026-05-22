@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Local AI Scan Product Loop Readiness Report",
+  "type": "object",
+  "required": [
+    "report_id",
+    "version",
+    "timestamp",
+    "overall_readiness_status",
+    "local_demo_ready",
+    "backend_execution_enabled",
+    "live_services_enabled",
+    "stages"
+  ],
+  "properties": {
+    "report_id": { "type": "string" },
+    "version": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "overall_readiness_status": { "type": "string", "enum": ["ready", "gaps_identified", "blocked"] },
+    "local_demo_ready": { "type": "boolean" },
+    "backend_execution_enabled": { "type": "boolean" },
+    "live_services_enabled": { "type": "boolean" },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stage_id", "stage_name", "status"],
+        "properties": {
+          "stage_id": { "type": "string" },
+          "stage_name": { "type": "string" },
+          "package_script": { "type": "string" },
+          "output_path": { "type": "string" },
+          "validation_script": { "type": "string" },
+          "status": { "type": "string", "enum": ["available", "missing", "blocked"] },
+          "safety_notes": { "type": "string" },
+          "product_value_summary": { "type": "string" }
+        }
+      }
+    },
+    "open_gaps": { "type": "array", "items": { "type": "string" } },
+    "recommended_next_step": { "type": "string" }
+  }
+}

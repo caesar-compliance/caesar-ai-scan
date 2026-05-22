@@ -1,11 +1,13 @@
 {
   "name": "caesar-ai-scan",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "description": "Static-analysis CLI and CI/CD tool to inventory AI dependencies, framework usage, vector DBs, and credentials.",
   "type": "module",
-  "main": "src/cli.mjs",
   "scripts": {
+    "product-loop:readiness-report": "node scripts/build-product-loop-readiness-report.mjs",
+    "validate:product-loop": "node scripts/validate-product-loop-readiness.mjs",
     "scan:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json",
+
     "validate:samples": "node scripts/validate-samples.mjs",
     "check:syntax": "node scripts/check-syntax.mjs",
     "review:sample": "node src/cli.mjs fixtures/sample-ai-project --format json --out tmp/sample-scan-result.json --export-evidence-candidates tmp/sample-evidence-candidates.json --review-out tmp/sample-review-workflow.json --review-report tmp/sample-review-workflow.md",
@@ -40,7 +42,7 @@
     "validate:postgres-compile-harness": "node scripts/validate-local-postgres-compile-harness.mjs",
     "postgres:compile-harness-stub": "node scripts/run-local-postgres-compile-harness-stub.mjs",
     "validate:postgres-compile-harness-stub": "node scripts/validate-local-postgres-compile-harness-stub.mjs",
-    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run validate:rule-pack-v1 && npm run review:sample && npm run validate:review && npm run pack:sample && npm run validate:pack && npm run scope:sample && npm run validate:scope && npm run validate:history && npm run inventory:sample && npm run validate:inventory && npm run bundle:sample && npm run validate:bundle && npm run import:sample && npm run validate:import && npm run build:site && npm run validate:site && npm run api:sample && npm run dashboard:sample && npm run validate:dashboard && npm run validate:local-api && npm run validate:backend-boundary && npm run store:sample && npm run validate:store && npm run supabase:mapping-sample && npm run validate:supabase-draft && npm run worker:route-sample && npm run validate:worker-boundary && npm run supabase:migration-rehearsal-report && npm run validate:supabase-rehearsal && npm run sql:compile-rehearsal-report && npm run validate:sql-compile-rehearsal && npm run postgres:compile-harness-report && npm run validate:postgres-compile-harness && npm run postgres:compile-harness-stub && npm run validate:postgres-compile-harness-stub && npm run postgres:compile-harness-gate-report && npm run validate:postgres-compile-harness-gate",
+    "check:all-offline": "npm run check:syntax && npm run scan:sample && npm run validate:samples && npm run validate:rule-pack-v1 && npm run review:sample && npm run validate:review && npm run pack:sample && npm run validate:pack && npm run scope:sample && npm run validate:scope && npm run validate:history && npm run inventory:sample && npm run validate:inventory && npm run bundle:sample && npm run validate:bundle && npm run import:sample && npm run validate:import && npm run build:site && npm run validate:site && npm run api:sample && npm run dashboard:sample && npm run validate:dashboard && npm run validate:local-api && npm run validate:backend-boundary && npm run store:sample && npm run validate:store && npm run supabase:mapping-sample && npm run validate:supabase-draft && npm run worker:route-sample && npm run validate:worker-boundary && npm run supabase:migration-rehearsal-report && npm run validate:supabase-rehearsal && npm run sql:compile-rehearsal-report && npm run validate:sql-compile-rehearsal && npm run postgres:compile-harness-report && npm run validate:postgres-compile-harness && npm run postgres:compile-harness-stub && npm run validate:postgres-compile-harness-stub && npm run postgres:compile-harness-gate-report && npm run validate:postgres-compile-harness-gate && npm run product-loop:readiness-report && npm run validate:product-loop",
     "api:sample": "node scripts/generate-api-projection.mjs",
     "dashboard:sample": "node scripts/build-static-dashboard-demo.mjs",
     "validate:dashboard": "node scripts/validate-static-dashboard.mjs",

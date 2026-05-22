@@ -1,0 +1,30 @@
+{
+  "report_id": "T025-v0.25.0-readiness",
+  "version": "0.25.0",
+  "timestamp": "2026-05-22T17:30:15.377Z",
+  "overall_readiness_status": "ready",
+  "local_demo_ready": true,
+  "backend_execution_enabled": false,
+  "live_services_enabled": false,
+  "stages": [
+    {
+      "stage_id": "s1",
+      "stage_name": "scanner sample",
+      "package_script": "bundle:sample",
+      "output_path": "tmp/sample-scan-result.json",
+      "status": "available",
+      "safety_notes": "offline, local file generated",
+      "product_value_summary": "core scan capability"
+    },
+    {
+      "stage_id": "s2",
+      "stage_name": "review sample",
+      "package_script": "validate:review",
+      "status": "available",
+      "safety_notes": "offline",
+      "product_value_summary": "human review workflow"
+    }
+  ],
+  "open_gaps": [],
+  "recommended_next_step": "T026 / v0.26.0 — Static Dashboard Product UX Upgrade"
+}
