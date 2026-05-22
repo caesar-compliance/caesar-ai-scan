@@ -4,7 +4,7 @@
     "name": "caesar-ai-scan",
     "version": "0.10.0"
   },
-  "scanned_at": "2026-05-22T17:30:11.112Z",
+  "scanned_at": "2026-05-22T17:36:43.265Z",
   "target": "./fixtures/sample-ai-project",
   "summary": {
     "total_files": 8,
@@ -41,7 +41,7 @@
   },
   "findings": [
     {
-      "finding_id": "find_env_jc7hdi6t",
+      "finding_id": "find_env_1xtzgkal",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -59,7 +59,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     {
-      "finding_id": "find_env_xgsbjx2x",
+      "finding_id": "find_env_02dnilow",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -77,7 +77,7 @@
       "recommended_review": "Ensure API key is removed from repository commits immediately."
     },
     {
-      "finding_id": "find_dep_1wvj5s42",
+      "finding_id": "find_dep_vq6ny5vj",
       "rule_pack_version": "v1",
       "category": "AI SDK",
       "detection_category": "provider_sdk",
@@ -95,7 +95,7 @@
       "recommended_review": "Verify usage complies with company data privacy policy. Ensure no proprietary data is sent to external LLMs without explicit authorization."
     },
     {
-      "finding_id": "find_dep_50xq8esf",
+      "finding_id": "find_dep_q4psxvzb",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -113,7 +113,7 @@
       "recommended_review": "LangChain pipelines dynamically construct chains. Trace all active prompts and integrations to ensure there are no un-monitored model connections."
     },
     {
-      "finding_id": "find_prompt_5he7qszv",
+      "finding_id": "find_prompt_axnnmx31",
       "rule_pack_version": "v1",
       "category": "AI Prompt Artifact",
       "detection_category": "prompt_asset",
@@ -131,7 +131,7 @@
       "recommended_review": "Review prompt content for bias, safety, and proprietary data."
     },
     {
-      "finding_id": "find_dep_3yswrbvr",
+      "finding_id": "find_dep_bs8088vc",
       "rule_pack_version": "v1",
       "category": "AI Framework",
       "detection_category": "orchestration_framework",
@@ -149,7 +149,7 @@
       "recommended_review": "LlamaIndex connects files to LLMs. Audit all document parsing pipelines and local index stores to prevent leaking restricted intellectual property."
     },
     {
-      "finding_id": "find_dep_71fpnu4r",
+      "finding_id": "find_dep_4d4polvg",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -167,7 +167,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_env_sww8hfl7",
+      "finding_id": "find_env_kyutd4kz",
       "rule_pack_version": "v1",
       "category": "AI Credential",
       "detection_category": "config_signal",
@@ -185,7 +185,7 @@
       "recommended_review": "Never hardcode API keys. Verify that this key is supplied securely at runtime via secrets manager."
     },
     {
-      "finding_id": "find_vector_l818ajk8",
+      "finding_id": "find_vector_q1qmk6k1",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -203,7 +203,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_vector_paispucs",
+      "finding_id": "find_vector_yhol68ea",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",
@@ -221,7 +221,7 @@
       "recommended_review": "Ensure persistent database directories are located in secure environments. Block unauthorized exports."
     },
     {
-      "finding_id": "find_vector_ti54r6x4",
+      "finding_id": "find_vector_z92u6w2p",
       "rule_pack_version": "v1",
       "category": "Vector DB",
       "detection_category": "rag_vector",

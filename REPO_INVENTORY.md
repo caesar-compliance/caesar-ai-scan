@@ -152,3 +152,10 @@ When modifying this repository:
 | 🚀 **`scripts/build-local-postgres-compile-harness-enable-gate-report.mjs`** | Gate Report Builder | CLI tool to generate status report. |
 | 🧪 **`scripts/validate-local-postgres-compile-harness-enable-gate.mjs`** | Gate Validator | Offline assertion suite for gate integrity. |
 | 📂 **`work-items/T024-local-postgres-compile-harness-enablement-gate-spec/`** | T024 Sandbox | T024 task tracking and decision logs. |
+| 📑 **`schemas/product-loop-readiness.schema.json`** | Readiness Schema | Schema for the local product loop readiness report. |
+| 🛡️ **`docs/LOCAL_PRODUCT_LOOP_READINESS.md`** | Readiness Docs | Documentation for the product loop readiness pack. |
+| 📖 **`docs/PRODUCT_LOOP_DEMO_GUIDE.md`** | Demo Guide | Guide for running the local product loop demo. |
+| 🚀 **`src/product-loop/product-loop-readiness-report.mjs`** | Report Builder Logic | Core logic for generating the readiness report. |
+| 🚀 **`scripts/build-product-loop-readiness-report.mjs`** | Report Builder Script | CLI script to build the readiness report. |
+| 🧪 **`scripts/validate-product-loop-readiness.mjs`** | Readiness Validator | Offline assertion suite for product loop readiness. |
+| 📂 **`work-items/T025-local-product-loop-readiness-pack/`** | T025 Sandbox | T025 task tracking, decisions, and reports. |

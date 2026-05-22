@@ -7,12 +7,12 @@ This document tracks the current active state, milestones, and boundaries for th
 ## 🚦 Operational Metadata
 
 *   **Repository Name:** `caesar-ai-scan`
-*   **Current Version:** `0.23.0`
-*   **Current Phase:** `T023 / v0.23.0 — Disabled local Postgres compile harness stub closeout`
+*   **Current Version:** `0.25.0`
+*   **Current Phase:** `T025 / v0.25.0 — Local product loop readiness pack closeout`
 *   **Status:** `completed`
-*   **Latest Completed Task:** `T024 Local Postgres Compile Harness Enablement Gate Spec. Completed audit, docs/state/validation updates.`
+*   **Latest Completed Task:** `T025 Local product loop readiness pack. Completed audit, docs/state/validation updates.`
 *   **Active Work Item:** `None.`
-*   **Next Recommended Step:** `T025 / v0.25.0 — Local Compile Harness Dry-Run Plan Pack`
+*   **Next Recommended Step:** `T026 / v0.26.0 — Static Dashboard Product UX Upgrade`
 *   **Public site:** [https://ai-scan.caesar.no](https://ai-scan.caesar.no) (GitHub Pages, sample data only)
 
 ---

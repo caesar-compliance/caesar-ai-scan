@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [0.25.0] - 2026-05-22
+- **T025 — Local product loop readiness pack.** Audited and verified local product loop readiness, ensuring all offline stages and safety gates (like the T024 Postgres gate) are coherent and functioning as designed. Added `product-loop:readiness-report` and `validate:product-loop`.
+
+## [0.24.0] - 2026-05-22
+- **T024 — Local Postgres compile harness enablement gate spec.** Introduced an architectural gate and schema to prevent unauthorized execution of the Postgres compile harness. Gate defaults to CLOSED.
 
 ## [0.23.0] - 2026-05-22
 - **T023 — Disabled local Postgres compile harness stub.** Added stub runner, validator, schema, and local stub report. Stub remains disabled by default with no live database/shell/docker execution.

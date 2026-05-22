@@ -11,3 +11,8 @@
 **Date:** 2026-05-22
 **Context:** Need an architectural safeguard to prevent future accidental execution of Postgres compile-time harness.
 **Decision:** T024 introduces an enablement gate spec that defaults to CLOSED/DISABLED, preventing any live execution and requiring explicit Control Tower approval for any future harness activation.
+
+## DECISION-T025: Local Product Loop Readiness Pack
+**Date:** 2026-05-22
+**Context:** Need to ensure all local offline capabilities are verified and coherent before moving to UX improvements or backend integrations.
+**Decision:** T025 implements a product loop readiness report that audits 15+ offline stages and safety gates, confirming that the local prototype is "ready" for demo and further product development without live service dependencies.

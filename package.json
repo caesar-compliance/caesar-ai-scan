@@ -28,6 +28,7 @@
     "validate:inventory": "node scripts/validate-ai-usage-inventory.mjs",
     "store:sample": "node scripts/generate-local-json-store-sample.mjs",
     "validate:store": "node scripts/validate-local-json-store.mjs",
+    "validate:api": "node scripts/validate-read-only-api-projection.mjs",
     "validate:rule-pack-v1": "node scripts/validate-rule-pack-v1.mjs",
     "reference:scan:setup": "node scripts/setup-ai-scan-reference-lab.mjs",
     "validate:supabase-draft": "node scripts/validate-supabase-storage-draft.mjs",
