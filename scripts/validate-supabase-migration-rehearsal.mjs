@@ -106,8 +106,8 @@ async function validate() {
   const forwardSql = await fs.readFile(FORWARD_SQL, 'utf8');
   const rollbackSql = await fs.readFile(ROLLBACK_SQL, 'utf8');
 
-  if (schema.schema_version !== '0.22.0') {
-    throw new Error('Schema version must be 0.22.0');
+  if (schema.schema_version !== '0.23.0') {
+    throw new Error('Schema version must be 0.23.0');
   }
   if (manifest.rehearsal_status !== 'local_only_not_applied') {
     throw new Error('Manifest rehearsal_status must be local_only_not_applied');
@@ -140,8 +140,8 @@ async function validate() {
     }
   }
 
-  if (pkg.version !== '0.22.0') {
-    throw new Error('package.json version must be 0.22.0');
+  if (pkg.version !== '0.23.0') {
+    throw new Error('package.json version must be 0.23.0');
   }
   if (!pkg.scripts['validate:supabase-rehearsal'] || !pkg.scripts['supabase:migration-rehearsal-report']) {
     throw new Error('package.json missing supabase rehearsal scripts');

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.20.0",
+  "schema_version": "0.23.0",
   "rehearsal_type": "caesar-ai-scan-supabase-migration-rehearsal",
   "rehearsal_status": "local_only_not_applied",
   "source_contract": {

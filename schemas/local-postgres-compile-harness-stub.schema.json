@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Local Postgres Compile Harness Stub Schema",
+  "type": "object",
+  "properties": {
+    "stub_id": { "type": "string" },
+    "version": { "type": "string" },
+    "status": { "type": "string", "enum": ["disabled"] },
+    "no_execution_now": { "type": "boolean" },
+    "future_gate_required": { "type": "boolean" },
+    "source_design_manifest": { "type": "string" },
+    "source_sql_files": { "type": "array", "items": { "type": "string" } },
+    "forbidden_now": { "type": "array", "items": { "type": "string" } },
+    "allowed_now": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["stub_id", "version", "status", "no_execution_now", "future_gate_required"]
+}

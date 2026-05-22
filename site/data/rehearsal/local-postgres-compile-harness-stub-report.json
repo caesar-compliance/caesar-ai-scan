@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-05-22T16:48:34.339Z",
+  "stub_id": "pg-compile-harness-stub-001",
+  "status": "disabled",
+  "executed_sql": false,
+  "invoked_docker": false,
+  "invoked_psql": false,
+  "invoked_supabase_cli": false,
+  "connected_to_database": false,
+  "applied_migrations": false,
+  "requires_future_gate": true,
+  "notes": "Stub enabled in safe mode. No execution attempted."
+}
