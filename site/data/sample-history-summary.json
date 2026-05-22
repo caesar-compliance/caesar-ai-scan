@@ -1,28 +1,20 @@
 {
   "schema_version": "0.8.0",
-  "generated_at": "2026-05-21T20:18:40.444Z",
+  "generated_at": "2026-05-22T16:16:09.307Z",
   "history_dir": "./tmp/sample-history",
   "target_project": "./fixtures/sample-ai-project",
   "runs": [
     {
-      "run_id": "run_2026-05-21T20-18-40-363Z_5b4b",
-      "generated_at": "2026-05-21T20:18:40.363Z"
+      "run_id": "run_2026-05-22T16-16-09-239Z_c7cf",
+      "generated_at": "2026-05-22T16:16:09.239Z"
     },
     {
-      "run_id": "run_2026-05-21T20-18-40-373Z_cfe7",
-      "generated_at": "2026-05-21T20:18:40.373Z"
-    },
-    {
-      "run_id": "run_2026-05-21T20-18-40-426Z_8788",
-      "generated_at": "2026-05-21T20:18:40.427Z"
-    },
-    {
-      "run_id": "run_2026-05-21T20-18-40-443Z_1176",
-      "generated_at": "2026-05-21T20:18:40.444Z"
+      "run_id": "run_2026-05-22T16-16-09-306Z_2bf6",
+      "generated_at": "2026-05-22T16:16:09.307Z"
     }
   ],
-  "latest_run_id": "run_2026-05-21T20-18-40-443Z_1176",
-  "run_count": 4,
+  "latest_run_id": "run_2026-05-22T16-16-09-306Z_2bf6",
+  "run_count": 2,
   "safety_notes": [
     "This history index is strictly local and offline.",
     "Do not publish this file to public web servers."
