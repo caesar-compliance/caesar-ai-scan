@@ -35,6 +35,7 @@ async function validateDashboard() {
     'Product Loop Readiness',
     'AI Usage Inventory',
     'Export Bundle Readiness',
+    'Scan Diff Product View',
     'Safety Gates'
   ];
 

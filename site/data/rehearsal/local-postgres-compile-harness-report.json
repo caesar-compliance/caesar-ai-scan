@@ -2,7 +2,7 @@
   "harness_id": "postgres-compile-harness-v1",
   "version": "0.22.0",
   "status": "design_only",
-  "generated_at": "2026-05-22T17:50:59.288Z",
+  "generated_at": "2026-05-22T18:28:50.984Z",
   "validation": {
     "sql_files_exist": true,
     "forbidden_checks_passed": true

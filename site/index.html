@@ -19,6 +19,7 @@
       <nav class="nav-links">
         <a href="#overview">Overview</a>
         <a href="#product-loop">Product Loop</a>
+        <a href="#scan-diff">Scan Diff</a>
         <a href="#inventory">AI Inventory</a>
         <a href="#safety">Safety Gates</a>
         <a href="#next-actions">Next Actions</a>
@@ -29,7 +30,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <span class="badge-v060">Version 0.26.0</span>
+      <span class="badge-v060">Version 0.27.0</span>
       <h1>Caesar AI Scan Product Dashboard</h1>
       <p>Local-only, air-gapped compliance scanner. No live services, no backend execution.</p>
     </div>
@@ -70,15 +71,69 @@
         </div>
         <div class="card">
           <div class="card-icon">03</div>
+          <h3>Scan Diff Product View</h3>
+          <p>Compare historical scan results to track new AI dependencies and risk changes over time.</p>
+          <div class="status-badge status-ready" style="margin-top: 1rem;">STATUS: READY</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">04</div>
           <h3>Backend Execution Disabled</h3>
           <p>Safety lock engaged. Real-world Supabase/Postgres/Cloudflare execution is prohibited in this mode.</p>
           <div class="status-badge status-blocked" style="margin-top: 1rem;">STATUS: LOCKED</div>
         </div>
+      </div>
+    </section>
+
+    <!-- Safety Note (to keep Grid-4 but add more items) -->
+    <section class="features-section" style="padding-top: 0;">
+      <div class="grid-4">
         <div class="card">
-          <div class="card-icon">04</div>
+          <div class="card-icon">05</div>
           <h3>Live Services Disabled</h3>
           <p>All network-active governance services are disconnected. The tool operates in a pure air-gapped state.</p>
           <div class="status-badge status-blocked" style="margin-top: 1rem;">STATUS: DISCONNECTED</div>
+        </div>
+        <!-- Placeholder for symmetry -->
+        <div style="opacity: 0.1; background: #333; border-radius: 8px;"></div>
+        <div style="opacity: 0.1; background: #333; border-radius: 8px;"></div>
+        <div style="opacity: 0.1; background: #333; border-radius: 8px;"></div>
+      </div>
+    </section>
+
+    <!-- Scan Diff Section -->
+    <section class="features-section" id="scan-diff">
+      <h2 class="section-title">Scan Diff Product View</h2>
+      <p>Insights into what changed since the last governance scan.</p>
+
+      <div class="dashboard-summary" id="scan-diff-summary-container">
+        <!-- Populated by JS -->
+        <p>Loading scan diff data...</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Signals Impact</h3>
+          <div id="scan-diff-signals-details">
+            <!-- Populated by JS -->
+            <p>No changes detected.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Governance Implications</h3>
+          <div id="scan-diff-governance-details">
+            <!-- Populated by JS -->
+            <ul class="check-list">
+              <li>Review queue is stable.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3>Affected Providers & Frameworks</h3>
+        <div id="scan-diff-ecosystem-details" class="meta" style="font-size: 1.1rem; margin-top: 0.5rem;">
+          <!-- Populated by JS -->
+          None.
         </div>
       </div>
     </section>
@@ -134,7 +189,7 @@
 
       <!-- Build Metadata Info -->
       <div class="build-info">
-        <div>Ecosystem Version: <strong id="build-version">v0.26.0</strong></div>
+        <div>Ecosystem Version: <strong id="build-version">v0.27.0</strong></div>
         <div>Generated At: <span id="build-date">-</span></div>
         <div>Source Commit: <code id="build-commit">-</code></div>
       </div>
@@ -153,7 +208,7 @@
     <!-- Next Actions Section -->
     <section class="disclaimer-section" id="next-actions">
       <h3>🚀 Recommended Next Step</h3>
-      <p id="next-step-recommendation"><strong>T027 / v0.27.0 — Scan Diff Product View</strong>: Enhance the dashboard with a rich comparison view for historical scan results.</p>
+      <p id="next-step-recommendation"><strong>T028 / v0.28.0 — Review Queue Product View</strong>: Implement a dedicated view for the governance review queue to manage pending findings efficiently.</p>
       <div class="alert-banner" style="margin-top: 1rem;">
         <span>ℹ️</span>
         <div>
@@ -161,6 +216,7 @@
         </div>
       </div>
     </section>
+
 
   </main>
 

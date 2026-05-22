@@ -3,8 +3,8 @@ import path from 'path';
 
 export function generateReadinessReport() {
     const report = {
-        report_id: "T026-v0.26.0-readiness",
-        version: "0.26.0",
+        report_id: "T027-v0.27.0-readiness",
+        version: "0.27.0",
         timestamp: new Date().toISOString(),
         overall_readiness_status: "ready",
         local_demo_ready: true,
@@ -80,7 +80,7 @@ export function generateReadinessReport() {
                 stage_name: "local JSON store",
                 package_script: "store:sample",
                 status: "available",
-                safety_notes: "offline JSON only",
+                safety_notes: "offline",
                 product_value_summary: "local persistence boundary"
             },
             {
@@ -142,7 +142,7 @@ export function generateReadinessReport() {
             }
         ],
         open_gaps: [],
-        recommended_next_step: "T026 / v0.26.0 — Static Dashboard Product UX Upgrade"
+        recommended_next_step: "T028 / v0.28.0 — Review Queue Product View"
     };
 
     return report;

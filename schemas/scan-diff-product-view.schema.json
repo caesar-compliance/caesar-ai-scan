@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Caesar Scan Diff Product View",
+  "type": "object",
+  "properties": {
+    "version": { "type": "string" },
+    "generated_from": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "diff_status": { 
+      "type": "string", 
+      "enum": ["available", "sample_only", "missing_input", "blocked"] 
+    },
+    "compared_runs": {
+      "type": "object",
+      "properties": {
+        "baseline": { "type": ["string", "null"] },
+        "current": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total_changes": { "type": "integer" },
+        "added_count": { "type": "integer" },
+        "removed_count": { "type": "integer" },
+        "changed_count": { "type": "integer" },
+        "unchanged_count": { "type": "integer" }
+      },
+      "required": ["total_changes", "added_count", "removed_count", "changed_count", "unchanged_count"]
+    },
+    "sections": {
+      "type": "object",
+      "properties": {
+        "added_signals": { "type": "array" },
+        "removed_signals": { "type": "array" },
+        "changed_signals": { "type": "array" },
+        "affected_files": { "type": "array" },
+        "affected_providers": { "type": "array" },
+        "affected_frameworks": { "type": "array" },
+        "review_implications": { "type": "array" },
+        "safety_notes": { "type": "array" }
+      }
+    },
+    "backend_execution_enabled": { "type": "boolean", "const": false },
+    "live_services_enabled": { "type": "boolean", "const": false }
+  },
+  "required": [
+    "version",
+    "generated_at",
+    "diff_status",
+    "summary",
+    "sections",
+    "backend_execution_enabled",
+    "live_services_enabled"
+  ]
+}

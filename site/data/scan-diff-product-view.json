@@ -1,0 +1,34 @@
+{
+  "version": "0.27.0",
+  "generated_at": "2026-05-22T18:28:49.212Z",
+  "diff_status": "available",
+  "compared_runs": {
+    "baseline": "run_2026-05-22T18-28-47-453Z_0b01",
+    "current": "run_2026-05-22T18-28-47-504Z_8e27"
+  },
+  "summary": {
+    "total_changes": 0,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 0,
+    "unchanged_count": 11
+  },
+  "sections": {
+    "added_signals": [],
+    "removed_signals": [],
+    "changed_signals": [],
+    "affected_files": [],
+    "affected_providers": [],
+    "affected_frameworks": [],
+    "review_implications": [
+      "No significant changes detected. Review queue remains stable."
+    ],
+    "safety_notes": [
+      "This is a static product view derived from local scan history.",
+      "No backend connection was established to generate this report.",
+      "Deterministic local-only analysis used."
+    ]
+  },
+  "backend_execution_enabled": false,
+  "live_services_enabled": false
+}

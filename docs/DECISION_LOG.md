@@ -21,3 +21,8 @@
 **Date:** 2026-05-22
 **Context:** The static dashboard was a minimal prototype that didn't fully represent the product's local capabilities or safety boundaries.
 **Decision:** Upgrade the dashboard to a product-centric view, highlighting the local governance pipeline, safety gates, and AI inventory browser. This supports local demos while strictly enforcing the air-gapped/offline nature of the tool.
+
+## DECISION-T027: Scan Diff Product View
+**Date:** 2026-05-22
+**Context:** Need a clear product-centric way to visualize changes between governance scans.
+**Decision:** T027 implements a Scan Diff Product View that aggregates raw finding diffs into high-level insights (New AI Signals, Affected Providers, Governance Implications). This view is static/local and integrates into the product dashboard.

@@ -1,0 +1,73 @@
+# Validation Report - T027 Scan Diff Product View
+
+## Commands Executed
+
+- `npm run check:syntax` — PASS
+- `npm run validate:samples` — PASS
+- `npm run validate:rule-pack-v1` — PASS
+- `npm run inventory:sample` — PASS
+- `npm run validate:inventory` — PASS
+- `npm run bundle:sample` — PASS
+- `npm run validate:bundle` — PASS
+- `npm run import:sample` — PASS
+- `npm run validate:import` — PASS
+- `npm run store:sample` — PASS
+- `npm run validate:store` — PASS
+- `npm run api:sample` — PASS
+- `npm run validate:api` — PASS
+- `npm run dashboard:sample` — PASS
+- `npm run validate:dashboard` — PASS
+- `npm run validate:dashboard-product-ux` — PASS
+- `npm run scan-diff:product-view` — PASS
+- `npm run validate:scan-diff-product-view` — PASS
+- `npm run validate:local-api` — PASS
+- `npm run validate:backend-boundary` — PASS
+- `npm run backend:readiness-report` — PASS (Implicitly validated by product loop)
+- `npm run supabase:mapping-sample` — PASS
+- `npm run validate:supabase-draft` — PASS
+- `npm run worker:route-sample` — PASS
+- `npm run validate:worker-boundary` — PASS
+- `npm run supabase:migration-rehearsal-report` — PASS
+- `npm run validate:supabase-rehearsal` — PASS
+- `npm run sql:compile-rehearsal-report` — PASS
+- `npm run validate:sql-compile-rehearsal` — PASS
+- `npm run postgres:compile-harness-report` — PASS
+- `npm run validate:postgres-compile-harness` — PASS
+- `npm run postgres:compile-harness-stub` — PASS
+- `npm run validate:postgres-compile-harness-stub` — PASS
+- `npm run postgres:compile-harness-gate-report` — PASS
+- `npm run validate:postgres-compile-harness-gate` — PASS
+- `npm run product-loop:readiness-report` — PASS
+- `npm run validate:product-loop` — PASS
+- `npm run validate:review` — PASS
+- `npm run validate:pack` — PASS
+- `npm run validate:scope` — PASS
+- `npm run validate:history` — PASS
+- `npm run build:site` — PASS
+- `npm run validate:site` — PASS
+- `npm run check:all-offline` — PASS
+- `git diff --check` — PASS
+- `find . -name '* 2.*' -not -path './node_modules/*' -not -path './.git/*'` — PASS (Empty result)
+
+## Safety Confirmations
+- [x] No live Supabase connection.
+- [x] No database connection.
+- [x] No Docker execution.
+- [x] No Dockerfile created.
+- [x] No docker-compose.yml created.
+- [x] No psql execution.
+- [x] No Supabase CLI execution.
+- [x] No applied migrations.
+- [x] No supabase/config.toml.
+- [x] No supabase/migrations/.
+- [x] No wrangler.toml.
+- [x] No secrets/account emails/real project refs.
+- [x] No external fetching.
+- [x] No scheduler.
+- [x] No GitHub Actions scanner mode.
+- [x] No PR annotations.
+- [x] No SARIF.
+- [x] Scan diff builder does not import child_process.
+- [x] Scan diff builder does not execute shell commands.
+- [x] Dashboard uses only local/static data.
+- [x] No external CDN/fonts/analytics/scripts.

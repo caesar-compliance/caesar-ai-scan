@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     readiness: null,
     historySummary: null,
     latestDiff: null,
+    scanDiffProduct: null,
     build: null,
     productLoop: null,
     sqlRehearsal: null,
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loadedData.readiness = await fetchJson('data/sample-import-readiness.json');
       loadedData.historySummary = await fetchJson('data/sample-history-summary.json');
       loadedData.latestDiff = await fetchJson('data/sample-latest-diff.json');
+      loadedData.scanDiffProduct = await fetchJson('data/scan-diff-product-view.json');
       loadedData.productLoop = await fetchJson('data/product-loop-readiness-report.json');
       loadedData.sqlRehearsal = await fetchJson('data/rehearsal/sql-compile-rehearsal-report.json');
       loadedData.postgresGate = await fetchJson('data/rehearsal/local-postgres-compile-harness-enable-gate-report.json');
@@ -65,15 +67,80 @@ document.addEventListener('DOMContentLoaded', () => {
       updateMetrics();
       updateBuildInfo();
       updateProductStatus();
+      updateScanDiffSection();
       updateProductLoopSection();
       updateSafetyGates();
-      
+
       // Default initial tab
       renderTabContent('scan');
     } catch (err) {
       console.error('Error initializing site data dashboard:', err);
       jsonViewer.textContent = '// Failed to load offline static data files.\n// Run npm run build:site to generate assets.';
     }
+  }
+
+  function updateScanDiffSection() {
+    const summaryContainer = document.getElementById('scan-diff-summary-container');
+    const signalsContainer = document.getElementById('scan-diff-signals-details');
+    const governanceContainer = document.getElementById('scan-diff-governance-details');
+    const ecosystemContainer = document.getElementById('scan-diff-ecosystem-details');
+
+    if (!summaryContainer || !loadedData.scanDiffProduct) return;
+
+    const diff = loadedData.scanDiffProduct;
+
+    // Summary Cards
+    summaryContainer.innerHTML = `
+      <div class="metric-card">
+        <div class="value ${diff.summary.added_count > 0 ? 'text-warning' : ''}">${diff.summary.added_count}</div>
+        <div class="label">New AI Signals</div>
+      </div>
+      <div class="metric-card">
+        <div class="value">${diff.summary.removed_count}</div>
+        <div class="label">Removed</div>
+      </div>
+      <div class="metric-card">
+        <div class="value">${diff.summary.changed_count}</div>
+        <div class="label">Changed</div>
+      </div>
+      <div class="metric-card">
+        <div class="status-badge ${diff.diff_status === 'available' ? 'status-ready' : 'status-pending'}">
+          ${diff.diff_status.toUpperCase().replace('_', ' ')}
+        </div>
+        <div class="label">Data Mode</div>
+      </div>
+    `;
+
+    // Signals Details
+    if (diff.sections.added_signals.length > 0) {
+      signalsContainer.innerHTML = diff.sections.added_signals.map(s => `
+        <div style="margin-bottom: 0.5rem; padding: 0.5rem; border-left: 3px solid #ffcc00; background: rgba(255,204,0,0.05);">
+          <strong>[NEW] ${s.name}</strong> (${s.id})<br>
+          <small>${s.file} | Severity: ${s.severity}</small>
+        </div>
+      `).join('');
+    } else {
+      signalsContainer.innerHTML = '<p>No new signals detected since last scan.</p>';
+    }
+
+    // Governance Details
+    governanceContainer.innerHTML = `
+      <ul class="check-list">
+        ${diff.sections.review_implications.map(imp => `<li>${imp}</li>`).join('')}
+      </ul>
+      <div class="meta" style="margin-top: 1rem;">
+        ${diff.sections.safety_notes.map(note => `<small>• ${note}</small><br>`).join('')}
+      </div>
+    `;
+
+    // Ecosystem Details
+    const providers = diff.sections.affected_providers.length > 0 ? diff.sections.affected_providers.join(', ') : 'None';
+    const frameworks = diff.sections.affected_frameworks.length > 0 ? diff.sections.affected_frameworks.join(', ') : 'None';
+
+    ecosystemContainer.innerHTML = `
+      <strong>Providers:</strong> ${providers} <br>
+      <strong>Frameworks:</strong> ${frameworks}
+    `;
   }
 
   function updateProductStatus() {
@@ -184,14 +251,14 @@ document.addEventListener('DOMContentLoaded', () => {
         jsonViewer.textContent = '// Scan results data not loaded.';
         return;
       }
-      
+
       // Render clean summary markdown/text
       let summary = `🛡️ CAESAR AI SCAN SUMMARY\n`;
       summary += `==========================================\n`;
       summary += `Target Directory : ${loadedData.scanResult.target}\n`;
       summary += `Scanned At       : ${loadedData.scanResult.scanned_at}\n`;
       summary += `Version          : ${loadedData.scanResult.scanner.version}\n\n`;
-      
+
       summary += `📊 Findings Breakdown:\n`;
       summary += `- Dependency Signalings : ${loadedData.scanResult.summary.dependency_findings}\n`;
       summary += `- Plaintext Env Keys    : ${loadedData.scanResult.summary.env_var_findings}\n`;
@@ -277,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         jsonViewer.textContent = '// Scan history or diff data not loaded.';
         return;
       }
-      
+
       let summary = `📜 CAESAR AI SCAN HISTORY SUMMARY\n`;
       summary += `==========================================\n`;
       summary += `Total Runs Recorded: ${loadedData.historySummary.run_count}\n`;
@@ -300,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       summary += `🕒 Diff Generated At: ${loadedData.latestDiff.generated_at}\n`;
-      
+
       jsonViewer.textContent = summary;
     } else if (tabName === 'raw') {
       jsonViewer.textContent = JSON.stringify({

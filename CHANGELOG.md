@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.27.0] - 2026-05-22
+### Added
+- Scan Diff Product View for static dashboard.
+- `scripts/build-scan-diff-product-view.mjs` and `src/scan-diff-product/scan-diff-product-view-report.mjs`.
+- `schemas/scan-diff-product-view.schema.json`.
+- `docs/SCAN_DIFF_PRODUCT_VIEW.md`.
+- New "Scan Diff" section in dashboard with summary cards and signals impact analysis.
+
 ## [0.26.0] - 2026-05-22
 ### Added
 - Upgraded static dashboard product UX for local demos.
